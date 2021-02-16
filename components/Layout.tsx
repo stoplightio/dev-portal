@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import * as React from 'react';
 import Link from 'next/link'
 import Head from 'next/head'
 
 type Props = {
-  children?: ReactNode
+  children?: React.ReactNode
   title?: string
 }
 
