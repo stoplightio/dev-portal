@@ -1,5 +1,5 @@
 import { Button, useThemeMode } from '@stoplight/mosaic';
-import * as React from 'react'
+import * as React from 'react';
 
 export const ThemeSwitcher = () => {
   const { mode, setMode } = useThemeMode();

@@ -1,8 +1,8 @@
 import { Provider, subscribeTheme } from '@stoplight/mosaic';
-import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 import * as React from 'react';
 
 import SEO from '../next-seo.config';

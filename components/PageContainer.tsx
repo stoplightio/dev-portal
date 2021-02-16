@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, NoSsr } from '@stoplight/mosaic';
-import * as React from 'react'
+import * as React from 'react';
 
 import { SEO } from './SEO';
 // import { Sidebar } from './Sidebar';
@@ -23,12 +23,7 @@ export function PageContainer(props: PageContainerProps) {
         {/* {sidebar && <Sidebar />} */}
 
         <NoSsr>
-          <HStack
-            as="header"
-            pos="fixed"
-            style={{ top: 10, right: 15 }}
-            spacing={2}
-          >
+          <HStack as="header" pos="fixed" style={{ top: 10, right: 15 }} spacing={2}>
             <ThemeSwitcher />
           </HStack>
         </NoSsr>
