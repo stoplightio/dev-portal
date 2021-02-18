@@ -1,3 +1,4 @@
+// import dynamic from 'next/dynamic';
 import { Box } from '@stoplight/mosaic';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
@@ -7,6 +8,22 @@ import { ErrorBoundary } from '../../components/ErrorBoundary';
 import { PageTransition } from '../../components/PageTransition';
 import { fetchArticle } from '../../handlers/article';
 import { getLayout } from '../../layouts/StoplightProjectLayout';
+
+// const ApiDocs: React.FunctionComponent<ApiDocsProps> = () => {
+//   return (
+//     <Layout
+//       wrapperClass="h-screen flex flex-column"
+//       mainClass="bg-whitegrey-l2 flex flex-1"
+//       hideFooter
+//     >
+//       <StoplightProject workspaceSlug="bigcommerce" projectSlug="docs" scope="docs" tocFile="docs" />
+//     </Layout>
+//   );
+// };
+
+// import '@stoplight/elements/styles/elements.min.css';
+
+// const StoplightProject = dynamic(() => import('@stoplight/elements').then(mod => mod.StoplightProject), { ssr: false });
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T;
 
@@ -27,8 +44,8 @@ export const getStaticProps: GetStaticProps<{
   }
 
   return {
-    // 1 hour
-    revalidate: 60 * 60,
+    // 1 minute
+    revalidate: 60,
     props: {
       article,
     },

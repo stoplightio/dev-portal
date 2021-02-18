@@ -10,7 +10,7 @@ const toc = [
 
 export type StoplightProjectSidebarProps = {};
 
-export const StoplightProjectSidebar = React.memo((props: StoplightProjectSidebarProps) => {
+export const StoplightProjectSidebar = React.memo((_props: StoplightProjectSidebarProps) => {
   // TODO: I suggest using hook from elements to grab table of contents data on the client here
   // NextJS does not have good support for this sort of persistent layout data fetching in SSR
   // We can build a really pretty skeleton ui to make this less painful - it won't harm SEO or anything
