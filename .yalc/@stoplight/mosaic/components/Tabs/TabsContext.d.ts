@@ -1,0 +1,94 @@
+import * as React from 'react';
+import { TabsOwnProps } from './Tabs';
+export declare const TabsContext: React.Context<import("reakit/ts").unstable_IdState & {
+    unstable_virtual: boolean;
+    rtl: boolean;
+    orientation?: import("reakit/ts/Composite/__utils/types").Orientation;
+    items: import("reakit/ts/Composite/__utils/types").Item[];
+    groups: import("reakit/ts/Composite/__utils/types").Group[];
+    currentId?: string;
+    loop: boolean | "horizontal" | "vertical";
+    wrap: boolean | "horizontal" | "vertical";
+    shift: boolean;
+    unstable_moves: number;
+    unstable_hasActiveWidget: boolean;
+    unstable_includesBaseElement: boolean;
+} & {
+    selectedId?: string;
+    panels: import("reakit/ts/Composite/__utils/types").Item[];
+    manual: boolean;
+} & import("reakit/ts").unstable_IdActions & {
+    registerItem: (item: import("reakit/ts/Composite/__utils/types").Item) => void;
+    unregisterItem: (id: string) => void;
+    registerGroup: (group: import("reakit/ts/Composite/__utils/types").Group) => void;
+    unregisterGroup: (id: string) => void;
+    move: (id: string) => void;
+    next: (unstable_allTheWay?: boolean) => void;
+    previous: (unstable_allTheWay?: boolean) => void;
+    up: (unstable_allTheWay?: boolean) => void;
+    down: (unstable_allTheWay?: boolean) => void;
+    first: () => void;
+    last: () => void;
+    sort: () => void;
+    unstable_setVirtual: React.Dispatch<React.SetStateAction<boolean>>;
+    setRTL: React.Dispatch<React.SetStateAction<boolean>>;
+    setOrientation: React.Dispatch<React.SetStateAction<import("reakit/ts/Composite/__utils/types").Orientation>>;
+    setCurrentId: React.Dispatch<React.SetStateAction<string>>;
+    setLoop: React.Dispatch<React.SetStateAction<boolean | "horizontal" | "vertical">>;
+    setWrap: React.Dispatch<React.SetStateAction<boolean | "horizontal" | "vertical">>;
+    setShift: React.Dispatch<React.SetStateAction<boolean>>;
+    reset: () => void;
+    unstable_setIncludesBaseElement: React.Dispatch<React.SetStateAction<boolean>>;
+    unstable_setHasActiveWidget: React.Dispatch<React.SetStateAction<boolean>>;
+} & {
+    select: (id: string) => void;
+    setSelectedId: React.Dispatch<React.SetStateAction<string>>;
+    registerPanel: (item: import("reakit/ts/Composite/__utils/types").Item) => void;
+    unregisterPanel: (id: string) => void;
+} & Pick<TabsOwnProps, "size" | "align" | "isEager">>;
+export declare const useTabContext: () => import("reakit/ts").unstable_IdState & {
+    unstable_virtual: boolean;
+    rtl: boolean;
+    orientation?: import("reakit/ts/Composite/__utils/types").Orientation;
+    items: import("reakit/ts/Composite/__utils/types").Item[];
+    groups: import("reakit/ts/Composite/__utils/types").Group[];
+    currentId?: string;
+    loop: boolean | "horizontal" | "vertical";
+    wrap: boolean | "horizontal" | "vertical";
+    shift: boolean;
+    unstable_moves: number;
+    unstable_hasActiveWidget: boolean;
+    unstable_includesBaseElement: boolean;
+} & {
+    selectedId?: string;
+    panels: import("reakit/ts/Composite/__utils/types").Item[];
+    manual: boolean;
+} & import("reakit/ts").unstable_IdActions & {
+    registerItem: (item: import("reakit/ts/Composite/__utils/types").Item) => void;
+    unregisterItem: (id: string) => void;
+    registerGroup: (group: import("reakit/ts/Composite/__utils/types").Group) => void;
+    unregisterGroup: (id: string) => void;
+    move: (id: string) => void;
+    next: (unstable_allTheWay?: boolean) => void;
+    previous: (unstable_allTheWay?: boolean) => void;
+    up: (unstable_allTheWay?: boolean) => void;
+    down: (unstable_allTheWay?: boolean) => void;
+    first: () => void;
+    last: () => void;
+    sort: () => void;
+    unstable_setVirtual: React.Dispatch<React.SetStateAction<boolean>>;
+    setRTL: React.Dispatch<React.SetStateAction<boolean>>;
+    setOrientation: React.Dispatch<React.SetStateAction<import("reakit/ts/Composite/__utils/types").Orientation>>;
+    setCurrentId: React.Dispatch<React.SetStateAction<string>>;
+    setLoop: React.Dispatch<React.SetStateAction<boolean | "horizontal" | "vertical">>;
+    setWrap: React.Dispatch<React.SetStateAction<boolean | "horizontal" | "vertical">>;
+    setShift: React.Dispatch<React.SetStateAction<boolean>>;
+    reset: () => void;
+    unstable_setIncludesBaseElement: React.Dispatch<React.SetStateAction<boolean>>;
+    unstable_setHasActiveWidget: React.Dispatch<React.SetStateAction<boolean>>;
+} & {
+    select: (id: string) => void;
+    setSelectedId: React.Dispatch<React.SetStateAction<string>>;
+    registerPanel: (item: import("reakit/ts/Composite/__utils/types").Item) => void;
+    unregisterPanel: (id: string) => void;
+} & Pick<TabsOwnProps, "size" | "align" | "isEager">;

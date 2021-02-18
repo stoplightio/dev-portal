@@ -1,16 +1,13 @@
-import Link from 'next/link';
+import { Container, Heading } from '@stoplight/mosaic';
 
-import Layout from '../components/Layout';
+import { getLayout } from '../layouts/SiteLayout';
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
+  <Container size="xl" pt={10}>
+    <Heading size={1}>Landing Page</Heading>
+  </Container>
 );
+
+IndexPage.getLayout = getLayout;
 
 export default IndexPage;

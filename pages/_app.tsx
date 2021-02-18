@@ -1,3 +1,5 @@
+import '../styles.css';
+
 import { Provider, subscribeTheme } from '@stoplight/mosaic';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
@@ -17,7 +19,7 @@ const GlobalProgressBar = dynamic(() => import('../components/GlobalProgressBar'
 
 function App({ Component, pageProps }: AppProps) {
   /** Keep an eye out for full remounts, we want to minimize those */
-  React.useEffect(() => console.info('mount: App'), []);
+  React.useEffect(() => console.info('App.mount'), []);
 
   // @ts-expect-error
   const getLayout = Component.getLayout || (page => page);
@@ -30,11 +32,9 @@ function App({ Component, pageProps }: AppProps) {
 
       <DefaultSeo {...SEO} />
 
-      <Provider>
-        {getLayout(<Component {...pageProps}></Component>)}
+      <Provider style={{ minHeight: '100vh' }}>{getLayout(<Component {...pageProps}></Component>)}</Provider>
 
-        <GlobalProgressBar />
-      </Provider>
+      <GlobalProgressBar />
     </>
   );
 }
