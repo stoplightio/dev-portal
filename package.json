@@ -14,9 +14,10 @@
     "deduplicate": "yarn-deduplicate --strategy fewer && yarn"
   },
   "dependencies": {
-    "@stoplight/elements": "~7.0.0-alpha.3",
     "@stoplight/mosaic": "file:.yalc/@stoplight/mosaic",
+    "@stoplight/elements": "7.0.0-alpha.3",
     "framer-motion": "^3.3.0",
+    "mobx": "^6.1.7",
     "next": "^10.0.7",
     "next-seo": "^4.19.0",
     "nprogress": "^0.2.0",

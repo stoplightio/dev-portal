@@ -1,4 +1,5 @@
 import { Box, containerSizes, Flex } from '@stoplight/mosaic';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { StoplightProjectSidebar } from '../components/StoplightProjectSidebar';
@@ -16,6 +17,10 @@ const SIDEBAR_WIDTH = 300;
 export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
   const { children } = props;
 
+  const { query } = useRouter();
+  const nodeUri = typeof query.docsPath === 'string' ? query.docsPath : query.docsPath?.join('/');
+  const projectSlug = typeof query.projectSlug === 'string' ? query.projectSlug : query.projectSlug?.join('/');
+
   React.useEffect(() => console.info('StoplightProjectLayout.mount'), []);
 
   return (
@@ -29,7 +34,7 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
           minWidth: `${SIDEBAR_WIDTH}px`,
         }}
       >
-        <StoplightProjectSidebar />
+        <StoplightProjectSidebar projectSlug={projectSlug} nodeUri={nodeUri} />
       </Flex>
 
       <Flex as="main" flexGrow>

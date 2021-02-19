@@ -693,7 +693,7 @@
   dependencies:
     lodash "^4.17.19"
 
-"@stoplight/elements@~7.0.0-alpha.3":
+"@stoplight/elements@7.0.0-alpha.3":
   version "7.0.0-alpha.3"
   resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.0.0-alpha.3.tgz#85b39c3611dc7b28465f5a102b600c8041893e8f"
   integrity sha512-PW2ybq3FKx8tDVfgeoAu/1VX07ZSbamPVtcobEzV3QxfEohaliXNMZpecBcPwfNt4PkGT9Ia8alsqDUCPfg7Yw==
@@ -3774,6 +3774,11 @@ mobx-react-lite@^1.4.1, mobx-react-lite@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/mobx-react-lite/-/mobx-react-lite-1.5.2.tgz#c4395b0568b9cb16f07669d8869cc4efa1b8656d"
   integrity sha512-PyZmARqqWtpuQaAoHF5pKX7h6TKNLwq6vtovm4zZvG6sEbMRHHSqioGXSeQbpRmG8Kw8uln3q/W1yMO5IfL5Sg==
+
+mobx@^6.1.7:
+  version "6.1.7"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.1.7.tgz#009c65f6909ee89ab42dd4b058577739f0d899df"
+  integrity sha512-2iIgg2o0jd/bWAK/9KHJ1uwKHGowKyaTUM4qarJ0qGdLskYcB3sJevjjV7t7jW0WVjItz6BBlPNiZ14oHTpvMg==
 
 ms@2.0.0:
   version "2.0.0"
