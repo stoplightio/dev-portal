@@ -50,7 +50,9 @@ export const StoplightProjectSidebar = React.memo<StoplightProjectSidebarProps>(
         as={UIKitTableOfContents}
         w="full"
         contents={contents}
+        // @ts-expect-error : TODO we should take a look at these typings when we convert TOC from UI-Kit to Mosaic
         rowComponent={StoplightProjectSidebarRow}
+        // @ts-expect-error
         rowComponentExtraProps={{ nodeUri, projectSlug }}
       />
     );

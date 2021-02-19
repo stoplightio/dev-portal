@@ -9,6 +9,7 @@ import { PageTransition } from '../../../components/PageTransition';
 import { fetchNode } from '../../../handlers/node';
 import { getLayout } from '../../../layouts/StoplightProjectLayout';
 
+// @ts-expect-error : TODO need to fix the typings or wrap + re-export this component
 const DocsContent = dynamic(() => import('@stoplight/elements/components/Docs').then(mod => mod.Docs), { ssr: false });
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T;
@@ -64,6 +65,7 @@ function DocsPage({ node }: InferGetStaticPropsType<typeof getStaticProps>) {
   } else {
     elem = (
       <Box p={10}>
+        {/* @ts-expect-error : TODO let's make nodeType have a less strict typing (no enums) */}
         <DocsContent nodeType={node.type} nodeData={node.data} />
       </Box>
     );
