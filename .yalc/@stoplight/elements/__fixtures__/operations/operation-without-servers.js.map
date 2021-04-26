@@ -1,0 +1,1 @@
+{"version":3,"file":"operation-without-servers.js","sourceRoot":"","sources":["../../../src/__fixtures__/operations/operation-without-servers.ts"],"names":[],"mappings":";;;AAEa,QAAA,SAAS,GAAmB;IACvC,EAAE,EAAE,qBAAqB;IACzB,GAAG,EAAE,YAAY;IACjB,MAAM,EAAE,KAAK;IACb,IAAI,EAAE,QAAQ;IACd,OAAO,EAAE,SAAS;IAClB,SAAS,EAAE;QACT;YACE,IAAI,EAAE,KAAK;YACX,WAAW,EAAE,IAAI;SAClB;KACF;CACF,CAAC"}

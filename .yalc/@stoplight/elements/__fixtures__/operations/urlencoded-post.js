@@ -1,0 +1,47 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.httpOperation = void 0;
+exports.httpOperation = {
+    id: '?http-operation-id?',
+    iid: 'POST_todos',
+    method: 'post',
+    path: '/todos',
+    summary: 'Create Todo',
+    responses: [
+        {
+            code: '200',
+        },
+    ],
+    servers: [
+        {
+            url: 'https://todos.stoplight.io',
+        },
+    ],
+    request: {
+        body: {
+            contents: [
+                {
+                    mediaType: 'application/x-www-form-urlencoded',
+                    schema: {
+                        type: 'object',
+                        properties: {
+                            name: {
+                                type: 'string',
+                            },
+                            completed: {
+                                type: 'boolean',
+                            },
+                            someEnum: {
+                                type: 'string',
+                                enum: ['a', 'b', 'c'],
+                            },
+                        },
+                        required: ['name', 'completed'],
+                    },
+                },
+            ],
+        },
+    },
+};
+exports.default = exports.httpOperation;
+//# sourceMappingURL=urlencoded-post.js.map

@@ -1,0 +1,66 @@
+{
+  "name": "@stoplight/elements",
+  "version": "7.0.0-beta.1+28699882",
+  "description": "UI components for composing beautiful developer documentation.",
+  "keywords": [],
+  "main": "index.js",
+  "sideEffects": [
+    "web-components.min.js",
+    "src/web-components/**"
+  ],
+  "files": [
+    "**/*"
+  ],
+  "author": "Stoplight <support@stoplight.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoplightio/elements"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10"
+  },
+  "peerDependencies": {
+    "mobx": ">=5",
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@stoplight/elements-utils": "^7.0.0-beta.1",
+    "@stoplight/http-spec": "^3.2.6",
+    "@stoplight/json": "^3.10.0",
+    "@stoplight/json-schema-ref-parser": "^9.0.5",
+    "@stoplight/json-schema-viewer": "^4.0.0-beta.14",
+    "@stoplight/markdown": "^2.10.0",
+    "@stoplight/markdown-viewer": "^4.3.3",
+    "@stoplight/mosaic": "1.0.0-beta.47",
+    "@stoplight/mosaic-code-editor": "1.0.0-beta.47",
+    "@stoplight/mosaic-code-viewer": "1.0.0-beta.47",
+    "@stoplight/path": "^1.3.2",
+    "@stoplight/react-error-boundary": "^1.1.0",
+    "@stoplight/tree-list": "^5.0.3",
+    "@stoplight/types": "^11.10.0",
+    "@stoplight/ui-kit": "^3.0.0-beta.39",
+    "@stoplight/yaml": "^4.2.1",
+    "axios": "^0.21.1",
+    "classnames": "^2.2.6",
+    "fast-text-encoding": "^1.0.1",
+    "httpsnippet": "^1.24.0",
+    "jotai": "^0.12.4",
+    "lodash": "^4.17.19",
+    "nanoid": "^3.1.20",
+    "openapi-sampler": "^1.0.0-beta.18",
+    "prop-types": "^15.7.2",
+    "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.1.0",
+    "swr": "^0.3.0",
+    "tslib": "^2.1.0",
+    "unist-util-select": "^3.0.1",
+    "urijs": "^1.19.6"
+  },
+  "typings": "index.d.ts",
+  "yalcSig": "28699882677f4176bcdd25b8455263c9"
+}

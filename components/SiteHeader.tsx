@@ -71,7 +71,7 @@ const SiteHeader = React.memo(() => {
           </Link>
 
           <HStack spacing={4}>
-            <SiteHeaderLink to="/docs/platform/b.overview.md">Docs</SiteHeaderLink>
+            <SiteHeaderLink to="/docs/platform">Docs</SiteHeaderLink>
             <SiteHeaderLink to="/guides">Guides</SiteHeaderLink>
 
             <Menu
@@ -85,44 +85,42 @@ const SiteHeader = React.memo(() => {
               }
             >
               <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/spectral/README.md">Styleguides with Spectral</SiteHeaderMenuLink>}
+                text={<SiteHeaderMenuLink to="/docs/spectral">Styleguides with Spectral</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/spectral/README.md');
+                  router.push('/docs/spectral');
                 }}
               />
 
               <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/prism/README.md">Mock with Prism</SiteHeaderMenuLink>}
+                text={<SiteHeaderMenuLink to="/docs/prism">Mock with Prism</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/prism/README.md');
+                  router.push('/docs/prism');
                 }}
               />
 
               <MenuItem
-                text={
-                  <SiteHeaderMenuLink to="/docs/elements/docs/introduction.md">Docs with Elements</SiteHeaderMenuLink>
-                }
+                text={<SiteHeaderMenuLink to="/docs/elements">Docs with Elements</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/elements/docs/introduction.md');
+                  router.push('/docs/elements');
                 }}
               />
 
               <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/cli/README.md">Stoplight CLI</SiteHeaderMenuLink>}
+                text={<SiteHeaderMenuLink to="/docs/cli">Stoplight CLI</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/cli/README.md');
+                  router.push('/docs/cli');
                 }}
               />
 
               <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/platform-api/openapi.v1.yaml">Stoplight API</SiteHeaderMenuLink>}
+                text={<SiteHeaderMenuLink to="/docs/platform-api">Stoplight API</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/platform-api/openapi.v1.yaml');
+                  router.push('/docs/platform-api');
                 }}
               />
             </Menu>
