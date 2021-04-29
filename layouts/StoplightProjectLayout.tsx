@@ -5,28 +5,30 @@ import * as React from 'react';
 
 import { NodeLink } from '../components/NodeLink';
 import { useTableOfContents } from '../hooks/useTableOfContents';
+import { getParam } from '../utils/params';
+import { getNodeIdFromSlug } from '../utils/projects';
 import { getLayout as getSiteLayout } from './SiteLayout';
 
 interface StoplightProjectLayoutProps {
-  title?: string;
-  description?: string;
   children: React.ReactNode;
-  sidebar?: boolean;
 }
 
 const SIDEBAR_WIDTH = 300;
 
 export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
+  React.useEffect(() => console.info('StoplightProjectLayout.mount'), []);
+
   const { children } = props;
 
-  const { query } = useRouter();
-  const projectBranchSlug = typeof query.projectSlug === 'string' ? query.projectSlug : query.projectSlug?.join('/');
-  const nodeIdSlug = typeof query.nodeIdSlug === 'string' ? query.nodeIdSlug : query.nodeIdSlug?.join('/');
-  const activeNodeId = nodeIdSlug?.split('-')[0];
+  const router = useRouter();
+  const [projectSlug, branchSlug = ''] = getParam(router.query, 'projectBranchSlug').split(':');
+  const nodeSlug = getParam(router.query, 'nodeSlug');
+  const activeId = nodeSlug ? getNodeIdFromSlug(nodeSlug) : undefined;
 
-  const { data, isFetched } = useTableOfContents(projectBranchSlug);
+  const { data, isFetched } = useTableOfContents(projectSlug, branchSlug);
+  const tree = isFetched && data ? data.items : undefined;
 
-  React.useEffect(() => console.info('StoplightProjectLayout.mount'), []);
+  // TODO: Need to handle redirecting to the first node
 
   return (
     <Box flex={1} pos="relative">
@@ -43,11 +45,13 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
             minWidth: `${SIDEBAR_WIDTH}px`,
           }}
         >
-          {isFetched && data?.items && <TableOfContents activeId={activeNodeId} tree={data.items} Link={NodeLink} />}
+          {tree && <TableOfContents activeId={activeId} tree={tree} Link={NodeLink} />}
         </Flex>
 
-        <Flex as="main" flexGrow>
-          <Box style={{ maxWidth: '750px' }}>{children}</Box>
+        <Flex as="main" flexGrow px={24} flex={1} overflowY="auto" overflowX="hidden" w="full">
+          <Box pt={16} pb={24} style={{ maxWidth: 1500 }}>
+            {children}
+          </Box>
         </Flex>
       </Flex>
     </Box>

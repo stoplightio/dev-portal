@@ -1,31 +1,35 @@
-import * as _path from 'path';
-
-import { projectIdBySlug } from '../utils/projects';
+import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
 
 export const fetchNode = async ({
-  nodeIdSlug,
-  projectBranchSlug,
+  nodeSlug,
+  projectSlug,
+  branchSlug,
 }: {
-  nodeIdSlug: string;
-  projectBranchSlug: string;
-}): Promise<NodeContent> => {
-  const [nodeId] = nodeIdSlug.split('-');
-  const [projectSlug, branchSlug] = projectBranchSlug.split(':');
-  const projectId = projectIdBySlug[projectSlug];
+  nodeSlug: string;
+  projectSlug: string;
+  branchSlug: string;
+}): Promise<Node> => {
+  const nodeId = getNodeIdFromSlug(nodeSlug);
+  const projectId = getProjectIdFromSlug(projectSlug);
   const branchQuery = branchSlug ? `?branch=${branchSlug}` : '';
-  const data = await (
-    await fetch(`${process.env.NEXT_PUBLIC_HOSTNAME}/api/v1/projects/${projectId}/nodes/${nodeId}${branchQuery}`)
-  ).json();
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_HOSTNAME}/api/v1/projects/${projectId}/nodes/${nodeId}${branchQuery}`,
+  );
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data);
+  }
 
   return data;
 };
 
-export type NodeContent = {
+export type Node = {
   id: string;
   type: string;
   uri: string;
   slug: string;
-  name: string;
+  title: string;
   summary: string;
   project_id: number;
   branch_id: number;

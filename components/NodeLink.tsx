@@ -13,7 +13,7 @@ export const NodeLink: CustomLinkComponent = ({ className, to, children }) => {
         pathname: router.route,
         query: {
           ...router.query,
-          nodeIdSlug: to,
+          nodeSlug: to,
         },
       }}
       passHref

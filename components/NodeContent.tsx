@@ -2,12 +2,16 @@ import { Docs } from '@stoplight/elements/components/Docs';
 import { MarkdownComponentsProvider } from '@stoplight/elements/components/MarkdownViewer/CustomComponents/Provider';
 import { CustomLinkComponent } from '@stoplight/elements/components/MosaicTableOfContents/types';
 import { PersistenceContextProvider } from '@stoplight/elements/context/Persistence';
+import { Box } from '@stoplight/mosaic';
 import { dirname, resolve } from '@stoplight/path';
 import * as React from 'react';
 
-import { NodeContent as NodeContentType } from '../handlers/node';
+import { Node as NodeContentType } from '../handlers/node';
 
-export type NodeContentProps = { node: NodeContentType; Link: CustomLinkComponent };
+export type NodeContentProps = {
+  node: NodeContentType;
+  Link: CustomLinkComponent;
+};
 
 export const NodeContent = ({ node, Link }: NodeContentProps) => {
   const LinkComponent = ({ children, node: { url } }: any) => {
@@ -26,10 +30,12 @@ export const NodeContent = ({ node, Link }: NodeContentProps) => {
   };
 
   return (
-    <PersistenceContextProvider>
-      <MarkdownComponentsProvider value={{ link: LinkComponent }}>
-        <Docs nodeType={node.type} nodeData={node.data} />
-      </MarkdownComponentsProvider>
-    </PersistenceContextProvider>
+    <Box style={{ maxWidth: node.type === 'article' ? 1000 : undefined }}>
+      <PersistenceContextProvider>
+        <MarkdownComponentsProvider value={{ link: LinkComponent }}>
+          <Docs nodeType={node.type} nodeData={node.data} />
+        </MarkdownComponentsProvider>
+      </PersistenceContextProvider>
+    </Box>
   );
 };

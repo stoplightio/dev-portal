@@ -117,10 +117,10 @@ const SiteHeader = React.memo(() => {
               />
 
               <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/platform-api">Stoplight API</SiteHeaderMenuLink>}
+                text={<SiteHeaderMenuLink to="/docs/studio-demo">Studio Demo</SiteHeaderMenuLink>}
                 onClick={() => {
                   // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/platform-api');
+                  router.push('/docs/studio-demo');
                 }}
               />
             </Menu>
