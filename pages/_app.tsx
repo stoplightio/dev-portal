@@ -42,7 +42,9 @@ function App({ Component, pageProps }: AppProps) {
       <DefaultSeo {...SEO} />
 
       <QueryClientProvider client={queryClient}>
-        <Provider style={{ minHeight: '100vh' }}>{getLayout(<Component {...pageProps}></Component>)}</Provider>
+        <Provider style={{ minHeight: '100vh' }}>
+          {getLayout(<Component {...pageProps}></Component>, pageProps)}
+        </Provider>
       </QueryClientProvider>
 
       <GlobalProgressBar />

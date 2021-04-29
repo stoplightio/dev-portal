@@ -27,4 +27,4 @@ export function SiteLayout(props: SiteLayoutProps) {
   );
 }
 
-export const getLayout = page => <SiteLayout>{page}</SiteLayout>;
+export const getLayout = (page, layoutProps) => <SiteLayout {...layoutProps}>{page}</SiteLayout>;

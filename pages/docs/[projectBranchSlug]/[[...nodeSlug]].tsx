@@ -9,7 +9,6 @@ import { NodeContentProps } from '../../../components/NodeContent';
 import { NodeLink } from '../../../components/NodeLink';
 import { NotFound } from '../../../components/NotFound';
 import { PageTransition } from '../../../components/PageTransition';
-import { SEO } from '../../../components/SEO';
 import { fetchNode, Node } from '../../../handlers/node';
 import { fetchProject, Project } from '../../../handlers/project';
 import { getLayout as getStoplightProjectlayout } from '../../../layouts/StoplightProjectLayout';
@@ -94,7 +93,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-function DocsPage({ node, title, description }: InferGetStaticPropsType<typeof getStaticProps>) {
+function DocsPage({ node }: InferGetStaticPropsType<typeof getStaticProps>) {
   React.useEffect(() => console.info('DocsPage.mount'), []);
   console.info('DocsPage.render');
 
@@ -111,7 +110,6 @@ function DocsPage({ node, title, description }: InferGetStaticPropsType<typeof g
 
   return (
     <PageTransition id={node?.id} key="main">
-      <SEO title={title} description={description} />
       <ErrorBoundary>{elem}</ErrorBoundary>
     </PageTransition>
   );

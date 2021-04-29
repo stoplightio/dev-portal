@@ -30,7 +30,7 @@ export const NodeContent = ({ node, Link }: NodeContentProps) => {
   };
 
   return (
-    <Box style={{ maxWidth: node.type === 'article' ? 1000 : undefined }}>
+    <Box style={{ maxWidth: ['article', 'model'].includes(node.type) ? 1000 : undefined }}>
       <PersistenceContextProvider>
         <MarkdownComponentsProvider value={{ link: LinkComponent }}>
           <Docs nodeType={node.type} nodeData={node.data} />
