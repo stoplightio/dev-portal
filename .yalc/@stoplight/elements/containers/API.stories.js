@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Instagram = exports.Github = exports.DigitalOcean = exports.Box = exports.StackedLayout = exports.Petstore = exports.APIWithoutDescription = exports.APIWithJSONProvidedDirectly = exports.APIWithYamlProvidedDirectly = void 0;
+exports.Instagram = exports.Github = exports.DigitalOcean = exports.Box = exports.StackedLayout = exports.APIWithoutDescription = exports.APIWithJSONProvidedDirectly = exports.APIWithYamlProvidedDirectly = void 0;
 const tslib_1 = require("tslib");
 const yaml_1 = require("@stoplight/yaml");
 const React = tslib_1.__importStar(require("react"));
@@ -40,11 +40,6 @@ exports.APIWithoutDescription.args = {
     apiDescriptionDocument: simpleApiWithoutDescription_1.simpleApiWithoutDescription,
 };
 exports.APIWithoutDescription.storyName = 'API Without Description';
-exports.Petstore = Template.bind({});
-exports.Petstore.args = {
-    apiDescriptionUrl: 'https://petstore.swagger.io/v2/swagger.json',
-};
-exports.Petstore.storyName = 'Swagger Petstore v2';
 exports.StackedLayout = Template.bind({});
 exports.StackedLayout.args = {
     apiDescriptionDocument: JSON.stringify(yaml_1.parse(zoomApiYaml_1.zoomApiYaml), null, '  '),

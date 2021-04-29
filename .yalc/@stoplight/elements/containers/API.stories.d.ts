@@ -47,7 +47,6 @@ export default _default;
 export declare const APIWithYamlProvidedDirectly: Story<APIProps>;
 export declare const APIWithJSONProvidedDirectly: Story<APIProps>;
 export declare const APIWithoutDescription: Story<APIProps>;
-export declare const Petstore: Story<APIProps>;
 export declare const StackedLayout: Story<APIProps>;
 export declare const Box: Story<APIProps>;
 export declare const DigitalOcean: Story<APIProps>;

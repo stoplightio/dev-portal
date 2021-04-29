@@ -14,6 +14,7 @@ const SidebarLayout_1 = require("../components/API/SidebarLayout");
 const StackedLayout_1 = require("../components/API/StackedLayout");
 const InlineRefResolver_1 = require("../context/InlineRefResolver");
 const Persistence_1 = require("../context/Persistence");
+const withMosaicProvider_1 = require("../hoc/withMosaicProvider");
 const withRouter_1 = require("../hoc/withRouter");
 const useBundleRefsIntoDocument_1 = require("../hooks/useBundleRefsIntoDocument");
 const useParsedValue_1 = require("../hooks/useParsedValue");
@@ -50,5 +51,5 @@ const APIImpl = props => {
     }
     return (React.createElement(InlineRefResolver_1.InlineRefResolverProvider, { document: parsedDocument }, layout === 'stacked' ? React.createElement(StackedLayout_1.StackedLayout, { serviceNode: serviceNode }) : React.createElement(SidebarLayout_1.SidebarLayout, { serviceNode: serviceNode })));
 };
-exports.API = fp_1.pipe(withRouter_1.withRouter, styled_1.withStyles, Persistence_1.withPersistenceBoundary)(APIImpl);
+exports.API = fp_1.pipe(withRouter_1.withRouter, styled_1.withStyles, Persistence_1.withPersistenceBoundary, withMosaicProvider_1.withMosaicProvider)(APIImpl);
 //# sourceMappingURL=API.js.map

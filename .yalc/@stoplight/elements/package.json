@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/elements",
-  "version": "7.0.0-beta.1+28699882",
+  "version": "7.0.0-beta.1+7237b8d1",
   "description": "UI components for composing beautiful developer documentation.",
   "keywords": [],
   "main": "index.js",
@@ -62,5 +62,5 @@
     "urijs": "^1.19.6"
   },
   "typings": "index.d.ts",
-  "yalcSig": "28699882677f4176bcdd25b8455263c9"
+  "yalcSig": "7237b8d12e2b4f11550bd88aae22a48f"
 }

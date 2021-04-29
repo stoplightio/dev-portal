@@ -5,7 +5,6 @@ const tslib_1 = require("tslib");
 const mosaic_1 = require("@stoplight/mosaic");
 const react_error_boundary_1 = require("@stoplight/react-error-boundary");
 const React = tslib_1.__importStar(require("react"));
-const react_router_dom_1 = require("react-router-dom");
 const Provider_1 = require("../../../containers/Provider");
 const MarkdownViewer_1 = require("../../MarkdownViewer");
 const Badges_1 = require("../HttpOperation/Badges");
@@ -19,8 +18,7 @@ const enhanceVersionString = (version) => {
 const HttpServiceComponent = React.memo(({ className, data, headless }) => {
     var _a, _b, _c, _d;
     const context = React.useContext(Provider_1.StoplightProjectContext);
-    const { search } = react_router_dom_1.useLocation();
-    const query = new URLSearchParams(search);
+    const query = new URLSearchParams(window.location.search);
     const description = data.description && React.createElement(MarkdownViewer_1.MarkdownViewer, { className: "sl-mb-10", markdown: data.description });
     const dataPanel = (React.createElement(mosaic_1.VStack, { spacing: 6 },
         ((_a = data.servers) !== null && _a !== void 0 ? _a : (_b = context.mockUrl) === null || _b === void 0 ? void 0 : _b.servicePath) && (React.createElement(ServerInfo_1.ServerInfo, { servers: data.servers, mockUrl: (_c = context.mockUrl) === null || _c === void 0 ? void 0 : _c.servicePath })),

@@ -1,8 +1,19 @@
-export const projectIdBySlug = {
-  platform: 'cHJvajox',
+// TODO: Ideally we fetch the list of projects to get their IDs instead of hardcoding
+// Until then, you'll need to update this mapping to match your env
+const projectIdBySlug = {
+  platform: 'cHJvajozMw',
   elements: 'cHJvajoy',
-  prism: 'cHJvajoz',
-  spectral: 'cHJvajo0',
+  prism: 'cHJvajozNQ',
+  spectral: 'cHJvajozNA',
   cli: 'cHJvajo1',
-  reference: 'cHJvajo2',
+  'studio-demo': 'cHJvajozNg',
 };
+
+export function getProjectIdFromSlug(projectSlug: string) {
+  return projectIdBySlug[projectSlug];
+}
+
+export function getNodeIdFromSlug(nodeSlug: string) {
+  const [nodeId] = nodeSlug.split('-');
+  return nodeId;
+}

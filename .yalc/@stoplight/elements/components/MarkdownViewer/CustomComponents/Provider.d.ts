@@ -14,9 +14,10 @@ export declare const useMarkdownComponents: () => Partial<{
     blockquote: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/smdast").IBlockquote<{}>>;
     html: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IHTML>;
     strong: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IStrong>;
+    delete: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IDelete>;
+    yaml: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IYAML>;
     break: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IBreak>;
     definition: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IDefinition>;
-    delete: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IDelete>;
     element: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/smdast").IElement>;
     emphasis: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IEmphasis>;
     footnote: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IFootnote>;
@@ -34,7 +35,6 @@ export declare const useMarkdownComponents: () => Partial<{
     tableCell: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").ITableCell>;
     tableRow: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").ITableRow>;
     thematicBreak: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IThematicBreak>;
-    yaml: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown").IYAML>;
 }>;
 interface MarkdownComponentsProviderProps {
     value: Partial<IComponentMapping> | undefined;

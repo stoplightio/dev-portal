@@ -5,8 +5,10 @@ require("@testing-library/jest-dom");
 const types_1 = require("@stoplight/types");
 const react_1 = require("@testing-library/react");
 const React = tslib_1.__importStar(require("react"));
+const Persistence_1 = require("../../context/Persistence");
 const types_2 = require("../../types");
 const _1 = require(".");
+const CodeComponent_1 = require("./CustomComponents/CodeComponent");
 const Provider_1 = require("./CustomComponents/Provider");
 const ResolvedImage_1 = require("./CustomComponents/ResolvedImage");
 describe('MarkdownViewer', () => {
@@ -78,6 +80,33 @@ describe('MarkdownViewer', () => {
                 React.createElement(_1.MarkdownViewer, { markdown: `![alt text](../../common/images/icon48.png "Logo Title Text 1")` })));
             const image = react_1.screen.getByTitle('Logo Title Text 1');
             expect(image).toHaveAttribute('src', expectedUrl);
+        });
+    });
+    describe('CodeComponent', () => {
+        it('Should render TryIt correctly', () => {
+            const MarkdownViewerWithTryIt = Persistence_1.withPersistenceBoundary(_1.MarkdownViewer);
+            const markdown = `### Raw Http Request
+
+<!-- type: http -->
+
+\`\`\`json
+{
+  "method": "get",
+  "url": "/gifs/search",
+  "baseUrl": "http://api.giphy.com/v1",
+  "headers": {},
+  "query": {
+    "api_key": ["dc6zaTOxFJmzC"],
+    "limit": ["1"],
+    "q": ["cats"]
+  }
+}
+\`\`\`
+`;
+            react_1.render(React.createElement(Provider_1.MarkdownComponentsProvider, { value: { code: CodeComponent_1.CodeComponent } },
+                React.createElement(MarkdownViewerWithTryIt, { markdown: markdown })));
+            expect(react_1.screen.getByRole('heading', { name: 'GET /gifs/search' })).toBeInTheDocument();
+            expect(react_1.screen.getByText('api_key')).toBeInTheDocument();
         });
     });
 });
