@@ -1046,44 +1046,10 @@
     tslib "^2.1.0"
     zustand "^3.3.3"
 
-"@stoplight/mosaic@1.0.0-beta.47":
+"@stoplight/mosaic@1.0.0-beta.47", "@stoplight/mosaic@^1.0.0-beta.36":
   version "1.0.0-beta.47"
   resolved "https://registry.yarnpkg.com/@stoplight/mosaic/-/mosaic-1.0.0-beta.47.tgz#6b212163af3ab7fb981dee75785f1b967299171e"
   integrity sha512-Rp6aXslPB0X2hqj8MFmbYSWUvSjo/ResDFNQoMHD1BCBGw0nTmlcPZaQDKQApUFQrDBzih+OGRKTk0mGxrTP3A==
-  dependencies:
-    "@fortawesome/fontawesome-svg-core" "^1.2.35"
-    "@fortawesome/free-solid-svg-icons" "^5.15.3"
-    "@fortawesome/react-fontawesome" "^0.1.14"
-    "@react-aria/button" "~3.3.1"
-    "@react-aria/dialog" "~3.1.2"
-    "@react-aria/focus" "~3.2.4"
-    "@react-aria/interactions" "~3.3.4"
-    "@react-aria/listbox" "~3.2.4"
-    "@react-aria/overlays" "~3.6.2"
-    "@react-aria/select" "~3.3.1"
-    "@react-aria/separator" "~3.1.1"
-    "@react-aria/ssr" "~3.0.1"
-    "@react-aria/tooltip" "~3.1.1"
-    "@react-aria/utils" "~3.7.0"
-    "@react-hook/size" "^2.1.1"
-    "@react-hook/window-size" "^3.0.7"
-    "@react-spectrum/utils" "~3.5.1"
-    "@react-stately/select" "~3.1.1"
-    "@react-stately/tooltip" "~3.0.3"
-    clsx "^1.1.1"
-    copy-to-clipboard "^3.3.1"
-    deepmerge "^4.2.2"
-    lodash.get "^4.4.2"
-    polished "^4.1.1"
-    reakit "npm:@stoplight/reakit@~1.3.5"
-    ts-keycode-enum "^1.0.6"
-    tslib "^2.1.0"
-    zustand "^3.3.3"
-
-"@stoplight/mosaic@^1.0.0-beta.36":
-  version "1.0.0-beta.42"
-  resolved "https://registry.yarnpkg.com/@stoplight/mosaic/-/mosaic-1.0.0-beta.42.tgz#9384cf43f335a226af70bd4d6e2df95fb8975a80"
-  integrity sha512-mYRRHN7LLZICOoNzmfI6BUOt/SFdFMOSHTqyE4/AedpXOBnoETLODJrF6B5MrmiYJ359BeMSXIZHVLqxTrFeVg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.35"
     "@fortawesome/free-solid-svg-icons" "^5.15.3"
