@@ -1,20 +1,20 @@
-import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
+import { Node } from '../interfaces/node';
+import { getNodeIdFromSlug } from '../utils/projects';
 
 export const fetchNode = async ({
   nodeSlug,
-  projectSlug,
+  projectId,
   branchSlug,
+  hostname = 'https://stoplight.io',
 }: {
   nodeSlug: string;
-  projectSlug: string;
+  projectId: string;
   branchSlug: string;
+  hostname?: string;
 }): Promise<Node> => {
   const nodeId = getNodeIdFromSlug(nodeSlug);
-  const projectId = getProjectIdFromSlug(projectSlug);
   const branchQuery = branchSlug ? `?branch=${branchSlug}` : '';
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_HOSTNAME}/api/v1/projects/${projectId}/nodes/${nodeId}${branchQuery}`,
-  );
+  const response = await fetch(`${hostname}/api/v1/projects/${projectId}/nodes/${nodeId}${branchQuery}`);
   const data = await response.json();
 
   if (!response.ok) {
@@ -22,30 +22,4 @@ export const fetchNode = async ({
   }
 
   return data;
-};
-
-export type Node = {
-  id: string;
-  type: string;
-  uri: string;
-  slug: string;
-  title: string;
-  summary: string;
-  project_id: number;
-  branch_id: number;
-  data: string;
-  links: {
-    mock_url: string;
-    export_url: string;
-  };
-  outbound_edges: NodeEdge[];
-  inbound_edges: NodeEdge[];
-};
-
-export type NodeEdge = {
-  id: string;
-  type: string;
-  uri: string;
-  slug: string;
-  title: string;
 };

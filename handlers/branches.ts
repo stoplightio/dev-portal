@@ -1,6 +1,6 @@
-import { Project } from '../interfaces/project';
+import { Branch } from '../interfaces/branch';
 
-export const fetchProject = async (
+export const fetchBranches = async (
   {
     projectId,
     hostname = 'https://stoplight.io',
@@ -9,8 +9,8 @@ export const fetchProject = async (
     hostname?: string;
   },
   requestHeaders?: Record<string, string>,
-): Promise<Project> => {
-  const response = await fetch(`${hostname}/api/v1/projects/${projectId}`, { headers: requestHeaders });
+): Promise<Branch[]> => {
+  const response = await fetch(`${hostname}/api/v1/projects/${projectId}/branches`, { headers: requestHeaders });
   const data = await response.json();
 
   if (!response.ok) {
