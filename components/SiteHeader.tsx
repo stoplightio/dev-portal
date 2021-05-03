@@ -1,9 +1,23 @@
-import { Box, Container, Flex, HStack, Icon, Menu, MenuItem, NoSsr, Pressable } from '@stoplight/mosaic';
+import {
+  Box,
+  Container,
+  Flex,
+  HStack,
+  Icon,
+  Input,
+  Menu,
+  MenuItem,
+  NoSsr,
+  Pressable,
+  useModalState,
+} from '@stoplight/mosaic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
+import { useWorkspaceNodes } from '../hooks/useWorkspaceNodes';
+import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 const SiteHeaderLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
@@ -47,6 +61,23 @@ const SiteHeaderMenuLink = ({ to, children }: { to: string; children: React.Reac
         {children}
       </Box>
     </Link>
+  );
+};
+
+const SiteHeaderSearch = () => {
+  const { isOpen, open, close } = useModalState();
+  const [search, setSearch] = React.useState('');
+  const { data } = useWorkspaceNodes({
+    search,
+    workspaceId: process.env.NEXT_PUBLIC_WORKSPACE_ID,
+    hostname: process.env.NEXT_PUBLIC_HOSTNAME,
+  });
+
+  return (
+    <>
+      <Input placeholder="Search..." onClick={open} />
+      <Search search={search} searchResults={data} onChange={setSearch} isOpen={isOpen} onClose={close} />
+    </>
   );
 };
 
@@ -124,6 +155,8 @@ const SiteHeader = React.memo(() => {
                 }}
               />
             </Menu>
+
+            <SiteHeaderSearch />
           </HStack>
         </HStack>
 

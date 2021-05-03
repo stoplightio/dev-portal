@@ -15,11 +15,13 @@ export const BranchSelector = ({
   const defaultBranch = branches.find(branch => branch.is_default);
   return (
     <Select
+      size="md"
       aria-label="Branch"
       defaultValue={branchSlug || defaultBranch?.slug}
       onChange={onChange}
+      w="full"
       renderTrigger={(props, { selectedItem }) => (
-        <FieldButton {...props} icon={['fal', 'layer-group']} w="full" px={4} h="md">
+        <FieldButton {...props} icon={['fal', 'layer-group']} px={4} h="md">
           {selectedItem.label}
         </FieldButton>
       )}
