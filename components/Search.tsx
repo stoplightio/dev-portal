@@ -1,4 +1,4 @@
-import { Box, Icon, Input, Modal, ModalProps, Stack } from '@stoplight/mosaic';
+import { Box, Flex, Icon, Input, Modal, ModalProps, Pressable, Stack } from '@stoplight/mosaic';
 import * as React from 'react';
 
 import { SearchResult } from '../interfaces/searchResult';
@@ -8,11 +8,13 @@ export const Search = ({
   searchResults,
   isOpen,
   onClose,
-  onChange,
+  onClick,
+  onSearch,
 }: {
   search?: string;
   searchResults: SearchResult[];
-  onChange: (search: string) => void;
+  onSearch: (search: string) => void;
+  onClick: (result: SearchResult) => void;
   isOpen?: boolean;
   onClose: ModalProps['onClose'];
 }) => {
@@ -26,21 +28,36 @@ export const Search = ({
           autoFocus
           placeholder="Search..."
           value={search}
-          onChange={e => onChange(e.currentTarget.value)}
+          onChange={e => onSearch(e.currentTarget.value)}
         />
       )}
       isOpen={isOpen}
       onClose={onClose}
     >
-      <Stack>
-        {searchResults
-          ? searchResults.map(searchResult => <Result key={searchResult.id} searchResult={searchResult} />)
-          : 'No search results'}
+      <Stack overflowY="auto" style={{ height: '300px' }} m={-5} pb={2}>
+        {searchResults && searchResults.length > 0 ? (
+          searchResults.map(searchResult => (
+            <Result key={searchResult.id} searchResult={searchResult} onClick={onClick} />
+          ))
+        ) : (
+          <Flex w="full" h="full" align="center" justify="center">
+            No search results
+          </Flex>
+        )}
       </Stack>
     </Modal>
   );
 };
 
-const Result = ({ searchResult }: { searchResult: SearchResult }) => {
-  return <Box>{searchResult.title}</Box>;
+const Result = ({ searchResult, onClick }: { searchResult: SearchResult; onClick: (result: SearchResult) => void }) => {
+  return (
+    <Pressable onPress={() => onClick(searchResult)}>
+      <Flex bg={{ hover: 'canvas-200' }} cursor="pointer" px={4} py={2}>
+        <Box flex={1}>
+          <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.name }} />
+          <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.summary }} color="muted" fontSize="sm" />
+        </Box>
+      </Flex>
+    </Pressable>
+  );
 };

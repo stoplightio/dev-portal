@@ -17,6 +17,8 @@ import * as React from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
 import { useWorkspaceNodes } from '../hooks/useWorkspaceNodes';
+import { SearchResult } from '../interfaces/searchResult';
+import { projectIdBySlug } from '../utils/projects';
 import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
@@ -65,18 +67,32 @@ const SiteHeaderMenuLink = ({ to, children }: { to: string; children: React.Reac
 };
 
 const SiteHeaderSearch = () => {
+  const router = useRouter();
   const { isOpen, open, close } = useModalState();
   const [search, setSearch] = React.useState('');
   const { data } = useWorkspaceNodes({
     search,
+    projectIds: Object.values(projectIdBySlug),
     workspaceId: process.env.NEXT_PUBLIC_WORKSPACE_ID,
     hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
 
+  const onClick = (searchResult: SearchResult) => {
+    router.push(`/docs/${searchResult.project_slug}/${searchResult.slug}`);
+    close();
+  };
+
   return (
     <>
       <Input placeholder="Search..." onClick={open} />
-      <Search search={search} searchResults={data} onChange={setSearch} isOpen={isOpen} onClose={close} />
+      <Search
+        search={search}
+        searchResults={data}
+        onSearch={setSearch}
+        isOpen={isOpen}
+        onClose={close}
+        onClick={onClick}
+      />
     </>
   );
 };

@@ -16,7 +16,7 @@ export const fetchWorkspaceNodes = async (
 ): Promise<SearchResult[]> => {
   const queryParams = [];
   if (projectIds && projectIds.length) {
-    queryParams.push(`projectIds=${projectIds}`);
+    queryParams.push(...projectIds.map(projectId => `project_ids=${projectId}`));
   }
   if (search) {
     queryParams.push(`search=${search}`);

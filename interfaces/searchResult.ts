@@ -6,4 +6,6 @@ export type SearchResult = NodeSummary & {
     summary: string;
     data: string;
   };
+  project_slug: string;
+  project_name: string;
 };

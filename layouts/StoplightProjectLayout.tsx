@@ -8,6 +8,7 @@ import { BranchSelector } from '../components/BranchSelector';
 import { NodeLink } from '../components/NodeLink';
 import { useBranches } from '../hooks/useBranches';
 import { useTableOfContents } from '../hooks/useTableOfContents';
+import { Branch } from '../interfaces/branch';
 import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
 import { getLayout as getSiteLayout } from './SiteLayout';
 
@@ -40,12 +41,17 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
     hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
   const onBranchSelect = React.useCallback(
-    (nextBranchSlug: string) => {
+    (selectedBranch: Branch) => {
+      let projectBranchSlug = projectSlug;
+      if (!selectedBranch.is_default) {
+        projectBranchSlug = `${projectSlug}:${selectedBranch.slug}`;
+      }
+
       router.push({
         pathname: router.route,
         query: {
           ...router.query,
-          projectBranchSlug: `${projectSlug}:${nextBranchSlug}`,
+          projectBranchSlug,
         },
       });
     },

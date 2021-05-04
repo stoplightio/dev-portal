@@ -15,8 +15,8 @@ export type NodeSummary = {
   slug: string;
   title: string;
   summary: string;
-  project_id: number;
-  branch_id: number;
+  project_id: string;
+  branch_id: string;
 };
 
 export type NodeEdge = {

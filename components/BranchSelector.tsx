@@ -10,15 +10,22 @@ export const BranchSelector = ({
 }: {
   branchSlug: string;
   branches: Branch[];
-  onChange: (branchSlug: string) => void;
+  onChange: (branch: Branch) => void;
 }) => {
   const defaultBranch = branches.find(branch => branch.is_default);
+  const handleChange = React.useCallback(
+    (selectedSlug: string) => {
+      onChange(branches.find(branch => branch.slug === selectedSlug));
+    },
+    [onChange, branches],
+  );
+
   return (
     <Select
       size="md"
       aria-label="Branch"
       defaultValue={branchSlug || defaultBranch?.slug}
-      onChange={onChange}
+      onChange={handleChange}
       w="full"
       renderTrigger={(props, { selectedItem }) => (
         <FieldButton {...props} icon={['fal', 'layer-group']} px={4} h="md">
