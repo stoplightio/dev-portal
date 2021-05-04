@@ -24,7 +24,7 @@ export const BranchSelector = ({
     <Select
       size="md"
       aria-label="Branch"
-      defaultValue={branchSlug || defaultBranch?.slug}
+      value={branchSlug || defaultBranch?.slug}
       onChange={handleChange}
       w="full"
       renderTrigger={(props, { selectedItem }) => (
