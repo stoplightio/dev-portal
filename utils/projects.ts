@@ -13,6 +13,10 @@ export function getProjectIdFromSlug(projectSlug: string) {
   return projectIdBySlug[projectSlug];
 }
 
+export function getProjectSlugFromId(projectId: string) {
+  return Object.keys(projectIdBySlug).find(key => projectIdBySlug[key] === projectId);
+}
+
 export function getNodeIdFromSlug(nodeSlug: string) {
   const [nodeId] = nodeSlug.split('-');
   return nodeId;

@@ -18,7 +18,7 @@ import * as React from 'react';
 import { usePrefetchOnHover } from '../hooks';
 import { useWorkspaceNodes } from '../hooks/useWorkspaceNodes';
 import { SearchResult } from '../interfaces/searchResult';
-import { projectIdBySlug } from '../utils/projects';
+import { getProjectSlugFromId, projectIdBySlug } from '../utils/projects';
 import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
@@ -77,9 +77,14 @@ const SiteHeaderSearch = () => {
     hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
 
-  const onClick = (searchResult: SearchResult) => {
-    router.push(`/docs/${searchResult.project_slug}/${searchResult.slug}`);
+  const handleClose = () => {
     close();
+    setSearch('');
+  };
+
+  const handleClick = (searchResult: SearchResult) => {
+    router.push(`/docs/${getProjectSlugFromId(searchResult.project_id)}/${searchResult.slug}`);
+    handleClose();
   };
 
   return (
@@ -90,8 +95,8 @@ const SiteHeaderSearch = () => {
         searchResults={data}
         onSearch={setSearch}
         isOpen={isOpen}
-        onClose={close}
-        onClick={onClick}
+        onClose={handleClose}
+        onClick={handleClick}
       />
     </>
   );

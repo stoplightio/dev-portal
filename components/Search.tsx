@@ -1,7 +1,8 @@
-import { Box, Flex, Icon, Input, Modal, ModalProps, Pressable, Stack } from '@stoplight/mosaic';
+import { Box, Flex, Icon, Input, Modal, ModalProps } from '@stoplight/mosaic';
 import * as React from 'react';
 
 import { SearchResult } from '../interfaces/searchResult';
+import { ListBox, ListBoxItem } from './ListBox';
 
 export const Search = ({
   search,
@@ -18,6 +19,8 @@ export const Search = ({
   isOpen?: boolean;
   onClose: ModalProps['onClose'];
 }) => {
+  const listBoxRef = React.useRef<HTMLUListElement>();
+
   return (
     <Modal
       renderHeader={() => (
@@ -29,35 +32,46 @@ export const Search = ({
           placeholder="Search..."
           value={search}
           onChange={e => onSearch(e.currentTarget.value)}
+          onKeyDown={e => {
+            // Focus the search results on arrow down
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              listBoxRef.current?.focus();
+            }
+          }}
         />
       )}
       isOpen={isOpen}
       onClose={onClose}
     >
-      <Stack overflowY="auto" style={{ height: '300px' }} m={-5} pb={2}>
-        {searchResults && searchResults.length > 0 ? (
-          searchResults.map(searchResult => (
-            <Result key={searchResult.id} searchResult={searchResult} onClick={onClick} />
-          ))
-        ) : (
-          <Flex w="full" h="full" align="center" justify="center">
-            No search results
-          </Flex>
-        )}
-      </Stack>
-    </Modal>
-  );
-};
-
-const Result = ({ searchResult, onClick }: { searchResult: SearchResult; onClick: (result: SearchResult) => void }) => {
-  return (
-    <Pressable onPress={() => onClick(searchResult)}>
-      <Flex bg={{ hover: 'canvas-200' }} cursor="pointer" px={4} py={2}>
-        <Box flex={1}>
-          <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.name }} />
-          <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.summary }} color="muted" fontSize="sm" />
+      {searchResults && searchResults.length > 0 ? (
+        <Box
+          as={ListBox}
+          ref={listBoxRef}
+          overflowY="auto"
+          style={{ height: '300px' }}
+          m={-5}
+          pb={2}
+          aria-label="Search"
+          items={searchResults}
+          selectionMode="single"
+          onSelectionChange={keys => {
+            const selectedId = keys.values().next().value;
+            onClick(searchResults.find(searchResult => `${searchResult.id}-${searchResult.project_id}` === selectedId));
+          }}
+        >
+          {(searchResult: SearchResult) => (
+            <ListBoxItem key={`${searchResult.id}-${searchResult.project_id}`} textValue={searchResult.title}>
+              <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.name }} />
+              <Box dangerouslySetInnerHTML={{ __html: searchResult.highlighted.summary }} color="muted" fontSize="sm" />
+            </ListBoxItem>
+          )}
         </Box>
-      </Flex>
-    </Pressable>
+      ) : (
+        <Flex w="full" h="full" align="center" justify="center" style={{ height: '300px' }} m={-5}>
+          No search results
+        </Flex>
+      )}
+    </Modal>
   );
 };

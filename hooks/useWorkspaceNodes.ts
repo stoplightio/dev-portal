@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import { useDebounce } from 'use-debounce';
 
 import { fetchWorkspaceNodes } from '../handlers/workspaceNodes';
 
@@ -16,7 +17,8 @@ export function useWorkspaceNodes(
   },
   requestHeaders?: Record<string, string>,
 ) {
-  return useQuery(['workspaceNodes', workspaceId, projectIds, search, hostname], () =>
-    fetchWorkspaceNodes({ workspaceId, projectIds, search, hostname }, requestHeaders),
+  const [debounceSearch] = useDebounce(search, 500);
+  return useQuery(['workspaceNodes', workspaceId, projectIds, debounceSearch, hostname], () =>
+    fetchWorkspaceNodes({ workspaceId, projectIds, search: debounceSearch, hostname }, requestHeaders),
   );
 }
