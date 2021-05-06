@@ -550,7 +550,12 @@
 
         var annotations = node.annotations || {};
         var title = annotations.title || metaTitle;
-        var data = node.data || (node.data = {});
+        node.annotations = tslib.__assign(tslib.__assign(tslib.__assign({}, annotations), metaProps), {
+          title: title,
+          lineNumbers: annotations.lineNumbers,
+          highlightLines: annotations.highlightLines ? json.safeStringify(annotations.highlightLines) : undefined,
+          lang: node.lang
+        });
 
         if (node.meta) {
           // babel will crap out if certain characters, like ", are not escaped
@@ -558,12 +563,8 @@
           delete node.meta;
         }
 
-        data.hProperties = tslib.__assign(tslib.__assign({}, metaProps), {
-          title: title,
-          lineNumbers: annotations.lineNumbers,
-          highlightLines: annotations.highlightLines ? json.safeStringify(annotations.highlightLines) : undefined,
-          lang: node.lang
-        });
+        var data = node.data || (node.data = {});
+        data.hProperties = tslib.__assign(tslib.__assign({}, data.hProperties || {}), annotations);
       });
     };
   }
@@ -615,10 +616,12 @@
 
   function processNode(node, annotations) {
     if (annotations) {
+      var data = node.data || {};
       return tslib.__assign(tslib.__assign({}, node), {
         annotations: annotations,
-        data: tslib.__assign(tslib.__assign({}, node.data || {}), {
-          hProperties: annotations
+        data: tslib.__assign(tslib.__assign({}, data), {
+          hName: node.type,
+          hProperties: tslib.__assign(tslib.__assign({}, data.hProperties || {}), annotations)
         })
       });
     }

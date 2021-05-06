@@ -28,6 +28,8 @@ export interface ICodeAnnotations {
     title?: string;
     lineNumbers?: boolean;
     highlightLines?: number[][];
+    json_schema?: boolean;
+    http?: boolean;
 }
 export interface ITableAnnotations {
     title?: string;

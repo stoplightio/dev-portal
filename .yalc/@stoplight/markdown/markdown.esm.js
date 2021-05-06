@@ -681,7 +681,12 @@ function codeMdast2Hast() {
 
       var annotations = node.annotations || {};
       var title = annotations.title || metaTitle;
-      var data = node.data || (node.data = {});
+      node.annotations = Object.assign(Object.assign(Object.assign({}, annotations), metaProps), {
+        title: title,
+        lineNumbers: annotations.lineNumbers,
+        highlightLines: annotations.highlightLines ? safeStringify$1(annotations.highlightLines) : undefined,
+        lang: node.lang
+      });
 
       if (node.meta) {
         // babel will crap out if certain characters, like ", are not escaped
@@ -689,12 +694,8 @@ function codeMdast2Hast() {
         delete node.meta;
       }
 
-      data.hProperties = Object.assign(Object.assign({}, metaProps), {
-        title: title,
-        lineNumbers: annotations.lineNumbers,
-        highlightLines: annotations.highlightLines ? safeStringify$1(annotations.highlightLines) : undefined,
-        lang: node.lang
-      });
+      var data = node.data || (node.data = {});
+      data.hProperties = Object.assign(Object.assign({}, data.hProperties || {}), annotations);
     });
   };
 }
@@ -747,10 +748,12 @@ function captureAnnotations(node) {
 
 function processNode(node, annotations) {
   if (annotations) {
+    var data = node.data || {};
     return Object.assign(Object.assign({}, node), {
       annotations: annotations,
-      data: Object.assign(Object.assign({}, node.data || {}), {
-        hProperties: annotations
+      data: Object.assign(Object.assign({}, data), {
+        hName: node.type,
+        hProperties: Object.assign(Object.assign({}, data.hProperties || {}), annotations)
       })
     });
   }

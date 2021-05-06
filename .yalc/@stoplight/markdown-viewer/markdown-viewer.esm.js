@@ -4,7 +4,9 @@ import { __rest } from 'tslib';
 import { ErrorBoundary } from '@stoplight/react-error-boundary';
 import cn from 'clsx';
 import { run, hasJavascriptProtocol } from '@stoplight/markdown';
+import { JsonSchemaViewer } from '@stoplight/json-schema-viewer';
 import { CodeViewer } from '@stoplight/mosaic-code-viewer';
+import { parse } from '@stoplight/yaml';
 import pick from 'lodash/pick';
 import DOMPurify from 'isomorphic-dompurify';
 
@@ -192,25 +194,36 @@ var Code = function Code(_ref7) {
   var node = _ref7.node;
   var lang = node.lang,
       value = node.value,
-      annotations = node.annotations;
+      _node$annotations = node.annotations,
+      annotations = _node$annotations === void 0 ? {} : _node$annotations;
   var language = getCodeLanguage(lang);
   var showLineNumbers = annotations !== undefined && 'lineNumbers' in annotations ? !!annotations.lineNumbers : false;
   var title = node.annotations && node.annotations.title;
-  return createElement("div", {
+  var elem;
+
+  if (language === 'json_schema' || annotations.json_schema) {
+    elem = createElement(JsonSchemaViewer, {
+      schema: parse(String(value))
+    });
+  } else {
+    elem = createElement(InvertTheme, null, createElement(CodeViewer, {
+      bg: "canvas",
+      value: String(value),
+      language: language,
+      rounded: "lg",
+      ring: {
+        focus: true
+      },
+      ringColor: "primary",
+      ringOpacity: 50,
+      showLineNumbers: showLineNumbers,
+      title: title
+    }));
+  }
+
+  return createElement(ErrorBoundary, null, createElement("div", {
     className: "sl-code-block-container"
-  }, createElement(InvertTheme, null, createElement(CodeViewer, {
-    bg: "canvas",
-    value: String(value),
-    language: language,
-    rounded: "lg",
-    ring: {
-      focus: true
-    },
-    ringColor: "primary",
-    ringOpacity: 50,
-    showLineNumbers: showLineNumbers,
-    title: title
-  })));
+  }, elem));
 };
 
 var Image = function Image(_ref8) {

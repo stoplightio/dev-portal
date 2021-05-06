@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@stoplight/mosaic": {
-      "signature": "ecebf2864d42d2193a4ed4ff7f8f0c09",
+      "signature": "91f374f064e0216d447f162895bd0669",
       "file": true,
       "replaced": "1.0.0-beta.47"
     },
@@ -16,11 +16,11 @@
       "file": true
     },
     "@stoplight/markdown-viewer": {
-      "signature": "8ef6215f4a33ee067141c043504754d2",
+      "signature": "3c4361a51a34ea335e0e3cc8d08ddd0a",
       "file": true
     },
     "@stoplight/markdown": {
-      "signature": "023471d9048785c1b566e2662e3639d8",
+      "signature": "915fbbdf1a30f9dda9706c0237f6ac40",
       "file": true
     }
   }

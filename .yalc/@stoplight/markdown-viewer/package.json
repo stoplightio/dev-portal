@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/markdown-viewer",
-  "version": "0.0.0-8ef6215f",
+  "version": "0.0.0-3c4361a5",
   "sideEffects": true,
   "license": "Apache-2.0",
   "peerDependencies": {
@@ -29,6 +29,7 @@
     "@react-stately/select": "~3.1.1",
     "@react-stately/tooltip": "~3.0.3",
     "@stoplight/json": "^3.12.0",
+    "@stoplight/json-schema-viewer": "^4.0.0-beta.16",
     "@stoplight/markdown": "0.0.0",
     "@stoplight/mosaic": "0.0.0",
     "@stoplight/mosaic-code-viewer": "0.0.0",

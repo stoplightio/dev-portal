@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/mosaic",
-  "version": "0.0.0-ecebf286",
+  "version": "0.0.0-91f374f0",
   "sideEffects": false,
   "license": "Apache-2.0",
   "peerDependencies": {

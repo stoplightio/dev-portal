@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@stoplight/mosaic'), require('react'), require('tslib'), require('@stoplight/react-error-boundary'), require('clsx'), require('@stoplight/markdown'), require('@stoplight/mosaic-code-viewer'), require('lodash/pick'), require('isomorphic-dompurify')) :
-  typeof define === 'function' && define.amd ? define(['exports', '@stoplight/mosaic', 'react', 'tslib', '@stoplight/react-error-boundary', 'clsx', '@stoplight/markdown', '@stoplight/mosaic-code-viewer', 'lodash/pick', 'isomorphic-dompurify'], factory) :
-  (global = global || self, factory(global.MarkdownViewer = {}, global.mosaic, global.React, global.tslib, global.reactErrorBoundary, global.cn, global.markdown, global.mosaicCodeViewer, global.pick, global.DOMPurify));
-}(this, (function (exports, mosaic, React, tslib, reactErrorBoundary, cn, markdown, mosaicCodeViewer, pick, DOMPurify) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@stoplight/mosaic'), require('react'), require('tslib'), require('@stoplight/react-error-boundary'), require('clsx'), require('@stoplight/markdown'), require('@stoplight/json-schema-viewer'), require('@stoplight/mosaic-code-viewer'), require('@stoplight/yaml'), require('lodash/pick'), require('isomorphic-dompurify')) :
+  typeof define === 'function' && define.amd ? define(['exports', '@stoplight/mosaic', 'react', 'tslib', '@stoplight/react-error-boundary', 'clsx', '@stoplight/markdown', '@stoplight/json-schema-viewer', '@stoplight/mosaic-code-viewer', '@stoplight/yaml', 'lodash/pick', 'isomorphic-dompurify'], factory) :
+  (global = global || self, factory(global.MarkdownViewer = {}, global.mosaic, global.React, global.tslib, global.reactErrorBoundary, global.cn, global.markdown, global.jsonSchemaViewer, global.mosaicCodeViewer, global.yaml, global.pick, global.DOMPurify));
+}(this, (function (exports, mosaic, React, tslib, reactErrorBoundary, cn, markdown, jsonSchemaViewer, mosaicCodeViewer, yaml, pick, DOMPurify) { 'use strict';
 
   var React__default = 'default' in React ? React['default'] : React;
   cn = cn && cn.hasOwnProperty('default') ? cn['default'] : cn;
@@ -160,25 +160,36 @@
     var node = _a.node;
     var lang = node.lang,
         value = node.value,
-        annotations = node.annotations;
+        _b = node.annotations,
+        annotations = _b === void 0 ? {} : _b;
     var language = getCodeLanguage(lang);
     var showLineNumbers = annotations !== undefined && 'lineNumbers' in annotations ? !!annotations.lineNumbers : false;
     var title = node.annotations && node.annotations.title;
-    return React.createElement("div", {
+    var elem;
+
+    if (language === 'json_schema' || annotations.json_schema) {
+      elem = React.createElement(jsonSchemaViewer.JsonSchemaViewer, {
+        schema: yaml.parse(String(value))
+      });
+    } else {
+      elem = React.createElement(mosaic.InvertTheme, null, React.createElement(mosaicCodeViewer.CodeViewer, {
+        bg: "canvas",
+        value: String(value),
+        language: language,
+        rounded: "lg",
+        ring: {
+          focus: true
+        },
+        ringColor: "primary",
+        ringOpacity: 50,
+        showLineNumbers: showLineNumbers,
+        title: title
+      }));
+    }
+
+    return React.createElement(reactErrorBoundary.ErrorBoundary, null, React.createElement("div", {
       className: "sl-code-block-container"
-    }, React.createElement(mosaic.InvertTheme, null, React.createElement(mosaicCodeViewer.CodeViewer, {
-      bg: "canvas",
-      value: String(value),
-      language: language,
-      rounded: "lg",
-      ring: {
-        focus: true
-      },
-      ringColor: "primary",
-      ringOpacity: 50,
-      showLineNumbers: showLineNumbers,
-      title: title
-    })));
+    }, elem));
   };
 
   var Image = function Image(_a) {
