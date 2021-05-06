@@ -4,6 +4,7 @@ import { CustomLinkComponent } from '@stoplight/elements/components/MosaicTableO
 import { PersistenceContextProvider } from '@stoplight/elements/context/Persistence';
 import { Box } from '@stoplight/mosaic';
 import { dirname, resolve } from '@stoplight/path';
+import { NodeType } from '@stoplight/types';
 import * as React from 'react';
 
 import { Node } from '../interfaces/node';
@@ -20,8 +21,8 @@ export const NodeContent = ({ node, Link }: NodeContentProps) => {
       <PersistenceContextProvider>
         <MarkdownComponentsProvider value={{ link: LinkComponent }}>
           <NodeLinkContext.Provider value={[node, Link]}>
-            <Box style={{ maxWidth: ['article', 'model'].includes(node.type) ? 1000 : undefined }}>
-              <Docs nodeType={node.type} nodeData={node.data} />
+            <Box style={{ maxWidth: ['model'].includes(node.type) ? 1000 : undefined }}>
+              <Docs nodeType={node.type as NodeType} nodeData={node.data} />
             </Box>
           </NodeLinkContext.Provider>
         </MarkdownComponentsProvider>
@@ -35,11 +36,12 @@ const NodeLinkContext = React.createContext<[Node, CustomLinkComponent] | null>(
 const LinkComponent: React.FC<{ node: { url: string } }> = ({ children, node: { url } }) => {
   const [node, Link] = React.useContext(NodeLinkContext);
   const resolvedUri = resolve(dirname(node.uri), url);
-  const edge = node.outbound_edges.find(edge => edge.uri === url || edge.uri === resolvedUri);
+  const [resolvedUriWithoutAnchor, hash] = resolvedUri.split('#');
+  const edge = node.outbound_edges.find(edge => edge.uri === url || edge.uri === resolvedUriWithoutAnchor);
 
   if (edge) {
     return (
-      <Link to={edge.slug} className="">
+      <Link to={edge.slug} hash={hash}>
         {children}
       </Link>
     );

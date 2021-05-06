@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-export const NodeLink: CustomLinkComponent = ({ className, to, children }) => {
+export const NodeLink: CustomLinkComponent = ({ className, to, children, hash }) => {
   const router = useRouter();
 
   return (
@@ -15,6 +15,7 @@ export const NodeLink: CustomLinkComponent = ({ className, to, children }) => {
           ...router.query,
           nodeSlug: to,
         },
+        hash,
       }}
       passHref
     >
