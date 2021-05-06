@@ -12,6 +12,7 @@ exports.NodeTypeColors = {
     generic: '',
     unknown: '',
     table_of_contents: '',
+    spectral_ruleset: '',
 };
 exports.NodeTypePrettyName = {
     http_operation: 'Endpoint',
@@ -22,6 +23,7 @@ exports.NodeTypePrettyName = {
     generic: '',
     unknown: '',
     table_of_contents: '',
+    spectral_ruleset: '',
 };
 exports.NodeTypeIconDefs = {
     http_operation: free_solid_svg_icons_1.faCrosshairs,
@@ -32,6 +34,7 @@ exports.NodeTypeIconDefs = {
     unknown: free_solid_svg_icons_1.faQuestionCircle,
     generic: free_solid_svg_icons_1.faQuestionCircle,
     table_of_contents: free_solid_svg_icons_1.faQuestionCircle,
+    spectral_ruleset: free_solid_svg_icons_1.faQuestionCircle,
 };
 exports.HttpSecuritySchemeColors = {
     apiKey: 'green',

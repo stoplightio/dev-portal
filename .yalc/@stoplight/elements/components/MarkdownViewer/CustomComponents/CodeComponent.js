@@ -34,7 +34,7 @@ const CodeComponent = (props) => {
         }
         return react_1.default.createElement(TryIt_1.TryIt, { httpOperation: guards_1.isHttpOperation(parsedValue) ? parsedValue : parseHttpRequest(parsedValue) });
     }
-    const DefaultCode = markdown_viewer_1.defaultComponentMapping.code;
+    const DefaultCode = markdown_viewer_1.DefaultSMDComponents.code;
     return react_1.default.createElement(DefaultCode, Object.assign({}, props));
 };
 exports.CodeComponent = CodeComponent;

@@ -1,4 +1,5 @@
 export * from './assertion';
+export * from './collection-key-accumulator';
 export * from './color-manipulation';
 export * from './css';
 export * from './function';

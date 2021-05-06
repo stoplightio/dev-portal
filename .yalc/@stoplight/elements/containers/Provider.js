@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createNamedContext = exports.StoplightComponentProvider = exports.StoplightProjectContext = exports.Provider = exports.ActiveInfoContext = exports.IconsContext = void 0;
+exports.createNamedContext = exports.MockingProvider = exports.MockingContext = exports.Provider = exports.ActiveInfoContext = void 0;
 const tslib_1 = require("tslib");
 const React = tslib_1.__importStar(require("react"));
-const defaultIcons = {};
-exports.IconsContext = createNamedContext('IconsContext', defaultIcons);
 const defaultInfo = {
     host: '',
     workspace: '',
@@ -12,10 +10,10 @@ const defaultInfo = {
     branch: '',
     node: '',
     authToken: '',
-    isStoplightProjectComponent: false,
+    showMocking: false,
 };
 exports.ActiveInfoContext = createNamedContext('ActiveInfoContext', defaultInfo);
-const Provider = ({ host, workspace, project, branch, node, children, authToken, isStoplightProjectComponent, }) => {
+const Provider = ({ host, workspace, project, branch, node, children, authToken, showMocking, }) => {
     const info = {
         host,
         workspace,
@@ -23,18 +21,17 @@ const Provider = ({ host, workspace, project, branch, node, children, authToken,
         branch,
         node,
         authToken,
-        isStoplightProjectComponent,
+        showMocking,
     };
-    return (React.createElement(exports.IconsContext.Provider, { value: defaultIcons },
-        React.createElement(exports.ActiveInfoContext.Provider, { value: info }, children)));
+    return React.createElement(exports.ActiveInfoContext.Provider, { value: info }, children);
 };
 exports.Provider = Provider;
-exports.StoplightProjectContext = createNamedContext('mockUrlValue', { mockUrl: undefined });
-const StoplightComponentProvider = ({ mockUrl, children }) => {
+exports.MockingContext = createNamedContext('MockingContext', { mockUrl: undefined });
+const MockingProvider = ({ mockUrl, children }) => {
     const info = { mockUrl };
-    return React.createElement(exports.StoplightProjectContext.Provider, { value: info }, children);
+    return React.createElement(exports.MockingContext.Provider, { value: info }, children);
 };
-exports.StoplightComponentProvider = StoplightComponentProvider;
+exports.MockingProvider = MockingProvider;
 function createNamedContext(name, defaultValue) {
     const context = React.createContext(defaultValue);
     context.displayName = name;

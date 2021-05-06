@@ -27,7 +27,7 @@ const getOauthScopeMapper = (securityScheme) => (flow) => {
     return lodash_1.keys((_a = securityScheme.flows[flow]) === null || _a === void 0 ? void 0 : _a.scopes);
 };
 function getServiceUriFromOperation(uri) {
-    const match = uri === null || uri === void 0 ? void 0 : uri.match(/(.*)\/paths/);
+    const match = uri === null || uri === void 0 ? void 0 : uri.match(/(.*)\/(paths|operations)/);
     return match && match.length > 1 ? match[1] || '/' : undefined;
 }
 exports.getServiceUriFromOperation = getServiceUriFromOperation;

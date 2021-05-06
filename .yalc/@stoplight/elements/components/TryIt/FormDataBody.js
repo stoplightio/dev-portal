@@ -22,9 +22,7 @@ const FormDataBody = ({ specification, values, onChangeValues }) => {
     }
     return (React.createElement(mosaic_1.Panel, { defaultIsOpen: true },
         React.createElement(mosaic_1.Panel.Titlebar, null, "Body"),
-        React.createElement(mosaic_1.Panel.Content, { className: "sl-overflow-y-auto ParameterGrid OperationParametersContent" }, Object.entries(parameters)
-            .map(([name, schema]) => ({ name, schema, examples: schema === null || schema === void 0 ? void 0 : schema.examples }))
-            .map(parameter => {
+        React.createElement(mosaic_1.Panel.Content, { className: "sl-overflow-y-auto ParameterGrid OperationParametersContent" }, parameter_utils_1.mapSchemaPropertiesToParameters(parameters).map(parameter => {
             const supportsFileUpload = parameter_utils_1.parameterSupportsFileUpload(parameter);
             const value = values[parameter.name];
             if (supportsFileUpload) {

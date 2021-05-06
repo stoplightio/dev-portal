@@ -33,7 +33,7 @@ const Divider = React.memo(({ item }) => {
 const GroupItem = React.memo(({ item, depth }) => {
     if (utils_1.isExternalLink(item)) {
         return (React.createElement(mosaic_1.Box, { as: "a", href: item.url, target: "_blank", rel: "noopener noreferrer", display: "block" },
-            React.createElement(Item, { depth: depth, title: item.title, meta: React.createElement(mosaic_1.Box, { as: mosaic_1.Icon, icon: ['fal', 'external-link'] }) })));
+            React.createElement(Item, { depth: depth, title: item.title, meta: React.createElement(mosaic_1.Box, { as: mosaic_1.Icon, icon: ['fas', 'external-link'] }) })));
     }
     else if (utils_1.isGroup(item) || utils_1.isNodeGroup(item)) {
         return React.createElement(Group, { depth: depth, item: item });
@@ -51,7 +51,7 @@ const Group = React.memo(({ depth, item }) => {
     const onClick = (e, forceOpen) => {
         setIsOpen(forceOpen ? true : !isOpen);
     };
-    const meta = (React.createElement(mosaic_1.Box, { as: mosaic_1.Icon, icon: ['fal', isOpen ? 'chevron-down' : 'chevron-right'], color: "muted", fixedWidth: true, onClick: (e) => {
+    const meta = (React.createElement(mosaic_1.Box, { as: mosaic_1.Icon, icon: ['fas', isOpen ? 'chevron-down' : 'chevron-right'], color: "muted", fixedWidth: true, onClick: (e) => {
             e.stopPropagation();
             e.preventDefault();
             onClick(e);

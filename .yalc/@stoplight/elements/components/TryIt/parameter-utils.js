@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initialParameterValues = exports.getPlaceholderForParameter = exports.parameterSupportsFileUpload = exports.exampleOptions = exports.selectExampleOption = exports.parameterOptions = void 0;
+exports.mapSchemaPropertiesToParameters = exports.initialParameterValues = exports.getPlaceholderForParameter = exports.parameterSupportsFileUpload = exports.exampleOptions = exports.selectExampleOption = exports.parameterOptions = void 0;
 const json_1 = require("@stoplight/json");
 const lodash_1 = require("lodash");
 const fp_1 = require("lodash/fp");
@@ -74,4 +74,12 @@ const getInitialValueForParameter = (parameter) => {
     return getValueForParameter(parameter);
 };
 exports.initialParameterValues = fp_1.pipe(fp_1.keyBy((param) => param.name), fp_1.mapValues(getInitialValueForParameter));
+function mapSchemaPropertiesToParameters(properties) {
+    return Object.entries(properties).map(([name, schema]) => ({
+        name,
+        schema: typeof schema !== 'boolean' ? schema : undefined,
+        examples: typeof schema !== 'boolean' && schema.examples ? [{ key: 'example', value: schema.examples }] : undefined,
+    }));
+}
+exports.mapSchemaPropertiesToParameters = mapSchemaPropertiesToParameters;
 //# sourceMappingURL=parameter-utils.js.map

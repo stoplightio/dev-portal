@@ -1,5 +1,5 @@
-import { IRoot } from '@stoplight/markdown';
+import { MDAST } from '@stoplight/markdown';
 export declare const ArticleHeadings: ({ tree, container }: {
-    tree: IRoot;
+    tree: MDAST.IRoot;
     container: HTMLDivElement | null;
 }) => JSX.Element;

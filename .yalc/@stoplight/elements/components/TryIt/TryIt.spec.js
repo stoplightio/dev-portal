@@ -624,7 +624,7 @@ describe('TryIt', () => {
                 React.createElement(TryItWithPersistence, { httpOperation: referenced_body_1.httpOperation })));
             clickSend();
             yield dom_1.waitFor(() => expect(jest_fetch_mock_1.default).toHaveBeenCalled());
-            expect(JSON.parse(jest_fetch_mock_1.default.mock.calls[0][1].body)).toEqual({ name: 'string', completed: null });
+            expect(JSON.parse(jest_fetch_mock_1.default.mock.calls[0][1].body)).toEqual({ name: 'string', completed: true });
         }));
     });
 });

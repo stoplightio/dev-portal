@@ -3,5 +3,6 @@ import { PartialSpectrumCollectionNode } from '../../utils';
 import { SelectActionProps } from './types';
 export declare const SelectAction: {
     (_props: SelectActionProps): React.ReactElement;
-    getCollectionNode(props: any): Generator<PartialSpectrumCollectionNode<object>>;
+    getCollectionNode(props: SelectActionProps): Generator<PartialSpectrumCollectionNode<object>>;
 };
+export declare const isSelectAction: (item: unknown) => item is SelectActionProps;

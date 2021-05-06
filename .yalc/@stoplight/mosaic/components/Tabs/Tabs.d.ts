@@ -1,36 +1,27 @@
 import * as React from 'react';
+import { AppearanceVals, OrientationVals } from './variants';
 export declare type TabsOwnProps = {
     /**
      * Must contain `TabList` and `TabPanel` components.
      */
     children: React.ReactNode;
     /**
-     * ID that will serve as a base for all the generated tab IDs.
-     */
-    id?: string;
-    /**
      * The current selected tab's `id`.
+     * If provided and `onChange` is not provided, this value acts as a default value.
      */
     selectedId?: string;
     /**
      * Callback for when the selected tab state changes.
+     * When provided you are expected to manage `selectedId` (controlled mode).
      */
     onChange?: (selectedId: string) => void;
     /**
-     * Defines the direction the tabs are displayed. Defaults to horizontal.
+     * Defines the direction the tabs are displayed. Defaults to `horizontal`.
      */
-    direction?: 'horizontal' | 'vertical';
+    orientation?: OrientationVals;
     /**
-     * Defines how large the tabs should be.
+     * Alter the tabs overall appearance - defaults to `minimal`.
      */
-    size?: 'sm' | 'lg';
-    /**
-     * The alignment of the tabs.
-     */
-    align?: 'center' | 'end' | 'start';
-    /**
-     * Performance: If `true`, the TabPanel rendering will be deferred until it is open.
-     */
-    isEager?: boolean;
+    appearance?: AppearanceVals;
 };
-export declare const Tabs: ({ children, id, selectedId, onChange, direction, size, align, isEager, }: TabsOwnProps) => JSX.Element;
+export declare const Tabs: React.ForwardRefExoticComponent<TabsOwnProps & React.RefAttributes<import("@react-types/shared").DOMRefValue<HTMLDivElement>>>;

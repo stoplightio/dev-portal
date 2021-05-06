@@ -15,10 +15,16 @@ const isOas2 = (parsed) => lodash_1.isObject(parsed) &&
 const isOas3 = (parsed) => lodash_1.isObject(parsed) &&
     'openapi' in parsed &&
     Number.parseFloat(String(parsed.openapi)) >= 3;
+const isOas31 = (parsed) => lodash_1.isObject(parsed) &&
+    'openapi' in parsed &&
+    Number.parseFloat(String(parsed.openapi)) === 3.1;
 const OAS_MODEL_REGEXP = /((definitions|components)\/?(schemas)?)\//;
 exports.MODEL_REGEXP = /schemas\//;
 exports.OPERATION_REGEXP = /\/operations\/.+|paths\/.+\/(get|post|put|patch|delete|head|options|trace)$/;
 function transformOasToServiceNode(apiDescriptionDocument) {
+    if (isOas31(apiDescriptionDocument)) {
+        return computeServiceNode(Object.assign(Object.assign({}, apiDescriptionDocument), { jsonSchemaDialect: 'http://json-schema.org/draft-07/schema#' }), oas3_2.oas3SourceMap, oas3_1.transformOas3Service, oas3_1.transformOas3Operation);
+    }
     if (isOas3(apiDescriptionDocument)) {
         return computeServiceNode(apiDescriptionDocument, oas3_2.oas3SourceMap, oas3_1.transformOas3Service, oas3_1.transformOas3Operation);
     }
@@ -68,7 +74,7 @@ function computeChildNodes(document, data, map, transformer, parentUri = '') {
                     type: types_1.NodeType.HttpOperation,
                     uri: parsedUri,
                     data: operationDocument,
-                    name: operationDocument.summary || operationDocument.path,
+                    name: operationDocument.summary || operationDocument.iid || operationDocument.path,
                     tags: ((_a = operationDocument.tags) === null || _a === void 0 ? void 0 : _a.map(tag => tag.name)) || [],
                 });
             }

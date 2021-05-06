@@ -108,5 +108,5 @@ export declare const Popover: React.ForwardRefExoticComponent<{
      * The additional offset applied along the cross axis between the element and its anchor element.
      */
     crossOffset?: number;
-} & Pick<BoxOwnProps<React.ElementType<any>>, "p"> & React.RefAttributes<HTMLDivElement>>;
+} & PopoverBoxProps & React.RefAttributes<HTMLDivElement>>;
 export {};

@@ -62,11 +62,7 @@ const useBodyParameterState = (mediaTypeContent) => {
             return {};
         }
         const properties = (_b = (_a = mediaTypeContent === null || mediaTypeContent === void 0 ? void 0 : mediaTypeContent.schema) === null || _a === void 0 ? void 0 : _a.properties) !== null && _b !== void 0 ? _b : {};
-        const parameters = Object.entries(properties).map(([key, value]) => ({
-            name: key,
-            schema: value,
-            examples: value.examples,
-        }));
+        const parameters = parameter_utils_1.mapSchemaPropertiesToParameters(properties);
         return parameter_utils_1.initialParameterValues(parameters);
     }, [isFormDataBody, mediaTypeContent]);
     const [bodyParameterValues, setBodyParameterValues] = React.useState(initialState);

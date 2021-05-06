@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateExampleFromMediaTypeContent = exports.useGenerateExampleFromMediaTypeContent = void 0;
 const tslib_1 = require("tslib");
 const json_1 = require("@stoplight/json");
-const Sampler = tslib_1.__importStar(require("openapi-sampler"));
+const Sampler = tslib_1.__importStar(require("@stoplight/json-schema-sampler"));
 const react_1 = tslib_1.__importDefault(require("react"));
 const InlineRefResolver_1 = require("../context/InlineRefResolver");
 const useGenerateExampleFromMediaTypeContent = (mediaTypeContent, chosenExampleIndex) => {

@@ -42,7 +42,7 @@ const Docs = ({ className, node }) => {
     if (!result) {
         return React.createElement(Docs_1.DocsSkeleton, null);
     }
-    return (React.createElement(Provider_2.StoplightComponentProvider, { mockUrl: mockUrlResult },
+    return (React.createElement(Provider_2.MockingProvider, { mockUrl: mockUrlResult },
         React.createElement(Provider_1.MarkdownComponentsProvider, { value: { image } },
             React.createElement(DocsPopup, { key: nodeUri, nodeType: result.type, nodeData: result.data, uri: node, className: className }))));
 };

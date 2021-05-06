@@ -1,3 +1,3 @@
 /// <reference types="react" />
 import { SelectProps } from './types';
-export declare function Select<T extends object>({ flexGrow, w, size, label, renderTrigger, triggerTextPrefix, items, selectedValue, defaultSelectedValue, onSelectionChange, allowEmptySelection, placeholder, onOpen, onClose, isReadOnly, isDisabled, children, disabledValues, ...props }: SelectProps<T>): JSX.Element;
+export declare function Select({ flexGrow, flex, w, size, renderTrigger, triggerTextPrefix, options, value, defaultValue, onChange, isClearable, placeholder, onOpen, onClose, isDisabled, ...props }: SelectProps): JSX.Element;

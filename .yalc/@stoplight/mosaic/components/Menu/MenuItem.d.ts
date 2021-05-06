@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+export declare const MENU_ITEM_IDENT_WIDTH = "20px";
 export declare type MenuItemProps = {
     /**
      * The text to display in the menu item.

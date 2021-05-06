@@ -10,8 +10,8 @@ const axios_1 = tslib_1.__importDefault(require("axios"));
 const fp_1 = require("lodash/fp");
 const React = tslib_1.__importStar(require("react"));
 const swr_1 = tslib_1.__importDefault(require("swr"));
-const SidebarLayout_1 = require("../components/API/SidebarLayout");
-const StackedLayout_1 = require("../components/API/StackedLayout");
+const APIWithSidebarLayout_1 = require("../components/API/APIWithSidebarLayout");
+const APIWithStackedLayout_1 = require("../components/API/APIWithStackedLayout");
 const InlineRefResolver_1 = require("../context/InlineRefResolver");
 const Persistence_1 = require("../context/Persistence");
 const withMosaicProvider_1 = require("../hoc/withMosaicProvider");
@@ -49,7 +49,7 @@ const APIImpl = props => {
         return (React.createElement(mosaic_1.Flex, { justify: "center", alignItems: "center", w: "full", minH: "screen" },
             React.createElement(ui_kit_1.NonIdealState, { title: "Failed to parse OpenAPI file", description: "Please make sure your OpenAPI file is valid and try again", icon: React.createElement(react_fontawesome_1.FontAwesomeIcon, { icon: free_solid_svg_icons_1.faExclamationTriangle }) })));
     }
-    return (React.createElement(InlineRefResolver_1.InlineRefResolverProvider, { document: parsedDocument }, layout === 'stacked' ? React.createElement(StackedLayout_1.StackedLayout, { serviceNode: serviceNode }) : React.createElement(SidebarLayout_1.SidebarLayout, { serviceNode: serviceNode })));
+    return (React.createElement(InlineRefResolver_1.InlineRefResolverProvider, { document: parsedDocument }, layout === 'stacked' ? (React.createElement(APIWithStackedLayout_1.APIWithStackedLayout, { serviceNode: serviceNode })) : (React.createElement(APIWithSidebarLayout_1.APIWithSidebarLayout, { serviceNode: serviceNode }))));
 };
 exports.API = fp_1.pipe(withRouter_1.withRouter, styled_1.withStyles, Persistence_1.withPersistenceBoundary, withMosaicProvider_1.withMosaicProvider)(APIImpl);
 //# sourceMappingURL=API.js.map

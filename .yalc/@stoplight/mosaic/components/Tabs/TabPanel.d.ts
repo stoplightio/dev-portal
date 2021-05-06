@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { IMarginProps, IPaddingProps } from '../../enhancers';
 export declare type TabPanelOwnProps = {
     children: React.ReactNode;
     /**
-     * A unique ID for this tab panel. If not provided, one will be generated.
+     * An optional unique identifier (within this <Tabs /> component) for the TabPanel - must match up with the id of a corresponding <Tab />.
      */
     id?: string;
-    /**
-     * ID of the tab that corresponds with this panel. If not provided, it will be inferred from tab index.
-     */
-    tabId?: string;
 };
-export declare type TabPanelProps = TabPanelOwnProps & IMarginProps & IPaddingProps;
-export declare const TabPanel: React.NamedExoticComponent<TabPanelProps>;
+export declare const TabPanel: {
+    (props: TabPanelOwnProps): JSX.Element;
+    getCollectionNode: <T>(props: import("@react-types/shared").ItemProps<T> & {
+        id?: string;
+        value?: string;
+    }, context: any) => Generator<import("@react-stately/collections").PartialNode<T>, any, unknown>;
+};

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { LegacyRef } from 'react';
 export declare type ModalProps = {
-    title: React.ReactElement | string;
     /**
      * The content to render in the Modal.
      */
@@ -25,10 +24,33 @@ export declare type ModalProps = {
      * Whether to prevent closing the overlay when the user interacts outside of it.
      */
     isNotDismissable?: boolean;
+} & ModalConditionalProps;
+export declare type ModalConditionalProps = {
+    title: React.ReactElement | string;
+} | {
+    renderHeader: (props: {
+        containerProps: ModalBoxProps['moveProps'];
+        titleProps: ModalBoxProps['titleProps'];
+        onClose?: ModalBoxProps['onClose'];
+    }) => React.ReactElement;
 };
 export declare const useModalState: () => {
     isOpen: boolean;
     open: () => void;
     close: () => void;
 };
-export declare const Modal: (props: ModalProps) => JSX.Element;
+export declare const Modal: React.FC<ModalProps>;
+declare type ModalBoxProps = Pick<ModalProps, 'children' | 'footer' | 'onClose' | 'isDraggable'> & ModalConditionalProps & {
+    ref: LegacyRef<HTMLDivElement>;
+    containerProps: Omit<React.HTMLAttributes<HTMLElement>, 'color'>;
+    dialogProps: Omit<React.HTMLAttributes<HTMLElement>, 'color'>;
+    titleProps: Omit<React.HTMLAttributes<HTMLElement>, 'color'>;
+    moveProps?: Omit<React.HTMLAttributes<HTMLElement>, 'color'>;
+    position?: {
+        x: number;
+        y: number;
+    };
+    isHidden?: boolean;
+    isNotDismissable?: boolean;
+};
+export {};

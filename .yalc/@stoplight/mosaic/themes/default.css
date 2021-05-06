@@ -71,6 +71,7 @@
 
 }
 
+  :root .sl-inverted,
   [data-theme="light"] .sl-inverted,
   [data-theme="light"] .sl-inverted .sl-inverted .sl-inverted {
     color: var(--color-text);
@@ -213,6 +214,7 @@
 
 }
 
+  
   [data-theme="dark"] .sl-inverted,
   [data-theme="dark"] .sl-inverted .sl-inverted .sl-inverted {
     color: var(--color-text);

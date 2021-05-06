@@ -2,7 +2,7 @@ import { IHttpOperation, NodeType } from '@stoplight/types';
 import { ParsedNode } from '../types';
 export declare function useDereferencedHttpOperation(parsedData: ParsedNode | undefined): {
     type: NodeType.Article;
-    data: string | import("@stoplight/markdown").IRoot;
+    data: string | import("@stoplight/markdown/ast-types/mdast").IRoot;
 } | {
     type: NodeType.HttpOperation;
     data: IHttpOperation;

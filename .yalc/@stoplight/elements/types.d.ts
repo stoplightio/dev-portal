@@ -1,4 +1,4 @@
-import * as SMDAST from '@stoplight/markdown/ast-types/smdast';
+import { SMDAST } from '@stoplight/markdown';
 import { Dictionary, IHttpOperation, IHttpService, NodeType } from '@stoplight/types';
 import type { FAIconProp, ITableOfContentsLink } from '@stoplight/ui-kit';
 import { JSONSchema4, JSONSchema6, JSONSchema7 } from 'json-schema';
@@ -144,7 +144,7 @@ export interface IActiveInfo {
     branch?: string;
     node?: string;
     authToken?: string;
-    isStoplightProjectComponent?: boolean;
+    showMocking?: boolean;
 }
 export interface IArticleHeading {
     id: string;

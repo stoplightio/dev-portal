@@ -17,9 +17,9 @@ const ServerInfo = ({ servers, mockUrl }) => {
             React.createElement("div", { className: "overflow-x-auto" },
                 React.createElement(mosaic_1.Panel.Content, { w: "max", className: "flex flex-col" },
                     productionUrl && guards_1.isProperUrl(productionUrl) && (React.createElement("div", { className: "whitespace-nowrap" },
-                        info.isStoplightProjectComponent && (React.createElement(mosaic_1.Text, { pr: 2, fontWeight: "bold" }, "Production:")),
+                        info.showMocking && (React.createElement(mosaic_1.Text, { pr: 2, fontWeight: "bold" }, "Production:")),
                         React.createElement(mosaic_1.Text, { "aria-label": "production-server" }, productionUrl))),
-                    info.isStoplightProjectComponent && mockUrl && guards_1.isProperUrl(mockUrl) && (React.createElement("div", { className: "flex flex-row" },
+                    info.showMocking && mockUrl && guards_1.isProperUrl(mockUrl) && (React.createElement("div", { className: "flex flex-row" },
                         React.createElement(mosaic_1.Text, { fontWeight: "bold" }, "Mock Server:"),
                         React.createElement(mosaic_1.Text, { "aria-label": "mock-server", pl: 2 }, mockUrl))))))));
 };

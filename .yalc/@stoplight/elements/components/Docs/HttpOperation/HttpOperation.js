@@ -17,7 +17,7 @@ const Responses_1 = require("./Responses");
 const HttpOperationComponent = React.memo(({ className, data, headless, uri }) => {
     var _a;
     const info = React.useContext(Provider_1.ActiveInfoContext);
-    const context = React.useContext(Provider_1.StoplightProjectContext);
+    const mocking = React.useContext(Provider_1.MockingContext);
     const isDeprecated = !!data.deprecated;
     const [responseMediaType, setResponseMediaType] = React.useState('');
     const [responseStatusCode, setResponseStatusCode] = React.useState('');
@@ -38,7 +38,7 @@ const HttpOperationComponent = React.memo(({ className, data, headless, uri }) =
                     data.responses && (React.createElement(Responses_1.Responses, { responses: data.responses, onMediaTypeChange: setResponseMediaType, onStatusCodeChange: setResponseStatusCode }))),
                 React.createElement(mosaic_1.Box, { ml: 16, pos: "relative", w: "2/5", style: { maxWidth: 500 } },
                     React.createElement(mosaic_1.Box, { className: "HttpOperation__gutter" },
-                        React.createElement(TryIt_1.TryItWithRequestSamples, { httpOperation: data, responseMediaType: responseMediaType, responseStatusCode: responseStatusCode, requestBodyIndex: requestBodyIndex, showMocking: info.isStoplightProjectComponent, mockUrl: info.isStoplightProjectComponent ? (_a = context.mockUrl) === null || _a === void 0 ? void 0 : _a.servicePath : undefined }))))));
+                        React.createElement(TryIt_1.TryItWithRequestSamples, { httpOperation: data, responseMediaType: responseMediaType, responseStatusCode: responseStatusCode, requestBodyIndex: requestBodyIndex, showMocking: info.showMocking, mockUrl: info.showMocking ? (_a = mocking.mockUrl) === null || _a === void 0 ? void 0 : _a.servicePath : undefined }))))));
     return (React.createElement("div", { className: classnames_1.default('HttpOperation px-5', className) },
         data.description && (React.createElement(MarkdownViewer_1.MarkdownViewer, { className: "HttpOperation__Description mb-10 ml-1", markdown: data.description })),
         React.createElement(Request_1.Request, { onChange: setTextRequestBodyIndex, operation: data }),

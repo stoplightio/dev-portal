@@ -15,9 +15,5 @@ declare type AvatarEntityNameProps = BaseEntityNameProps & {
     avatar: AvatarProps;
 };
 export declare type EntityNameProps = BaseEntityNameProps | IconEntityNameProps | AvatarEntityNameProps;
-export declare const EntityName: React.MemoExoticComponent<React.ForwardRefExoticComponent<(BaseEntityNameProps & React.RefAttributes<HTMLDivElement>) | (BaseEntityNameProps & {
-    icon: IIconProps['icon'];
-} & React.RefAttributes<HTMLDivElement>) | (BaseEntityNameProps & {
-    avatar: AvatarProps;
-} & React.RefAttributes<HTMLDivElement>)>>;
+export declare const EntityName: React.MemoExoticComponent<React.ForwardRefExoticComponent<EntityNameProps & React.RefAttributes<HTMLDivElement>>>;
 export {};

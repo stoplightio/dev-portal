@@ -19,6 +19,7 @@ const parserMap = {
     [types_1.NodeType.HttpServer]: parseUnknown,
     [types_1.NodeType.Generic]: parseUnknown,
     [types_1.NodeType.TableOfContents]: parseUnknown,
+    [types_1.NodeType.SpectralRuleset]: parseUnknown,
     [types_1.NodeType.Unknown]: parseUnknown,
 };
 function parseArticleData(rawData) {

@@ -27,12 +27,10 @@ const Responses = ({ responses: unsortedResponses, onStatusCodeChange, onMediaTy
     if (!responses.length)
         return null;
     return (React.createElement(mosaic_1.Tabs, { selectedId: activeResponseId, onChange: setActiveResponseId },
-        React.createElement(mosaic_1.Box, null,
-            React.createElement(Sections_1.SectionTitle, { title: "Responses" },
-                React.createElement(mosaic_1.TabList, null, responses.map(({ code }) => (React.createElement(mosaic_1.Tab, { key: code, id: code },
-                    React.createElement(mosaic_1.Text, { color: code === activeResponseId ? 'primary' : 'muted' }, code)))))),
-            React.createElement(mosaic_1.Box, { mt: 4 }, responses.map(response => (React.createElement(mosaic_1.TabPanel, { key: response.code, tabId: response.code },
-                React.createElement(exports.Response, { response: response, onMediaTypeChange: onMediaTypeChange }))))))));
+        React.createElement(Sections_1.SectionTitle, { title: "Responses" },
+            React.createElement(mosaic_1.TabList, null, responses.map(({ code }) => (React.createElement(mosaic_1.Tab, { key: code, id: code }, code))))),
+        React.createElement(mosaic_1.TabPanels, null, responses.map(response => (React.createElement(mosaic_1.TabPanel, { key: response.code, id: response.code },
+            React.createElement(exports.Response, { response: response, onMediaTypeChange: onMediaTypeChange })))))));
 };
 exports.Responses = Responses;
 exports.Responses.displayName = 'HttpOperation.Responses';
@@ -45,7 +43,8 @@ const Response = ({ response: { contents = [], headers = [], description }, onMe
         responseContent && onMediaTypeChange(responseContent.mediaType);
     }, [responseContent]);
     return (React.createElement(mosaic_1.Box, null,
-        description && React.createElement(MarkdownViewer_1.MarkdownViewer, { className: "ml-1 mb-6", markdown: description }),
+        description && (React.createElement(mosaic_1.Box, { ml: 1, mb: 6 },
+            React.createElement(MarkdownViewer_1.MarkdownViewer, { markdown: description }))),
         headers.length > 0 && (React.createElement(Sections_1.SubSectionPanel, { title: "Headers" },
             React.createElement(Parameters_1.Parameters, { parameterType: "header", parameters: headers }))),
         contents.length > 0 && (React.createElement(Sections_1.SubSectionPanel, { title: "Body", rightComponent: React.createElement(mosaic_1.Select, { "aria-label": "Response Body Content Type", value: String(chosenContent), onChange: (value) => setChosenContent(parseInt(String(value), 10)), options: contents.map((content, index) => ({ label: content.mediaType, value: index })), size: "sm" }) }, schema && (React.createElement(mosaic_1.Box, null,

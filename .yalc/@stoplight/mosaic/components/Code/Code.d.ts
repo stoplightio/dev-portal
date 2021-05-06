@@ -1,4 +1,3 @@
-import './style.css';
 import React from 'react';
 import { IBoxHTMLAttributes } from '../Box/types';
 export interface ICodeProps extends IBoxHTMLAttributes {
