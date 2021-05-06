@@ -18,6 +18,7 @@ import * as React from 'react';
 import { usePrefetchOnHover } from '../hooks';
 import { useWorkspaceNodes } from '../hooks/useWorkspaceNodes';
 import { SearchResult } from '../interfaces/searchResult';
+import { MAX_CONTENT_WIDTH } from '../utils/constants';
 import { getProjectSlugFromId, projectIdBySlug } from '../utils/projects';
 import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -111,85 +112,83 @@ const SiteHeader = React.memo(() => {
   console.info('SiteHeader.render');
 
   return (
-    <Flex as="header" alignItems="center" borderB style={{ height: 70 }}>
-      <Container as={Flex} size="xl">
-        <HStack flexGrow spacing={6}>
-          <Link href="/" prefetch={false}>
-            <a {...usePrefetchOnHover('/')} className="sl-no-focus-ring">
-              <Box fontSize="4xl" mt={-0.5}>
-                {icon}
-              </Box>
-            </a>
-          </Link>
-
-          <HStack spacing={4}>
-            <SiteHeaderLink to="/docs/platform">Docs</SiteHeaderLink>
-            <SiteHeaderLink to="/guides">Guides</SiteHeaderLink>
-
-            <Menu
-              label="Reference"
-              trigger={
-                <Pressable>
-                  <Box fontSize="lg" color={{ default: 'muted', hover: 'primary' }} py={2}>
-                    Reference
-                  </Box>
-                </Pressable>
-              }
-            >
-              <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/spectral">Styleguides with Spectral</SiteHeaderMenuLink>}
-                onClick={() => {
-                  // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/spectral');
-                }}
-              />
-
-              <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/prism">Mock with Prism</SiteHeaderMenuLink>}
-                onClick={() => {
-                  // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/prism');
-                }}
-              />
-
-              <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/elements">Docs with Elements</SiteHeaderMenuLink>}
-                onClick={() => {
-                  // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/elements');
-                }}
-              />
-
-              <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/cli">Stoplight CLI</SiteHeaderMenuLink>}
-                onClick={() => {
-                  // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/cli');
-                }}
-              />
-
-              <MenuItem
-                text={<SiteHeaderMenuLink to="/docs/studio-demo">Studio Demo</SiteHeaderMenuLink>}
-                onClick={() => {
-                  // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
-                  router.push('/docs/studio-demo');
-                }}
-              />
-            </Menu>
-
-            <SiteHeaderSearch />
-          </HStack>
-        </HStack>
+    <Flex as="header" alignItems="center" borderB px={4} style={{ height: 70, maxWidth: MAX_CONTENT_WIDTH }}>
+      <HStack flexGrow spacing={6}>
+        <Link href="/" prefetch={false}>
+          <a {...usePrefetchOnHover('/')} className="sl-no-focus-ring">
+            <Box fontSize="4xl" mt={-0.5}>
+              {icon}
+            </Box>
+          </a>
+        </Link>
 
         <HStack spacing={4}>
-          <SiteHeaderLink to="https://stoplight.io/blog">Blog</SiteHeaderLink>
-          <SiteHeaderLink to="/support">Support</SiteHeaderLink>
-          <SiteHeaderLink to="https://stoplight.io/welcome">Sign In</SiteHeaderLink>
-          <NoSsr>
-            <ThemeSwitcher />
-          </NoSsr>
+          <SiteHeaderLink to="/docs/platform">Docs</SiteHeaderLink>
+          <SiteHeaderLink to="/guides">Guides</SiteHeaderLink>
+
+          <Menu
+            label="Reference"
+            trigger={
+              <Pressable>
+                <Box fontSize="lg" color={{ default: 'muted', hover: 'primary' }} py={2}>
+                  Reference
+                </Box>
+              </Pressable>
+            }
+          >
+            <MenuItem
+              text={<SiteHeaderMenuLink to="/docs/spectral">Styleguides with Spectral</SiteHeaderMenuLink>}
+              onClick={() => {
+                // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
+                router.push('/docs/spectral');
+              }}
+            />
+
+            <MenuItem
+              text={<SiteHeaderMenuLink to="/docs/prism">Mock with Prism</SiteHeaderMenuLink>}
+              onClick={() => {
+                // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
+                router.push('/docs/prism');
+              }}
+            />
+
+            <MenuItem
+              text={<SiteHeaderMenuLink to="/docs/elements">Docs with Elements</SiteHeaderMenuLink>}
+              onClick={() => {
+                // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
+                router.push('/docs/elements');
+              }}
+            />
+
+            <MenuItem
+              text={<SiteHeaderMenuLink to="/docs/cli">Stoplight CLI</SiteHeaderMenuLink>}
+              onClick={() => {
+                // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
+                router.push('/docs/cli');
+              }}
+            />
+
+            <MenuItem
+              text={<SiteHeaderMenuLink to="/docs/studio-demo">Studio Demo</SiteHeaderMenuLink>}
+              onClick={() => {
+                // TODO: This is a hack because the text prop doesn't allow filling the entire row. This there's a space to the right that's unclickable by the link
+                router.push('/docs/studio-demo');
+              }}
+            />
+          </Menu>
+
+          <SiteHeaderSearch />
         </HStack>
-      </Container>
+      </HStack>
+
+      <HStack spacing={4}>
+        <SiteHeaderLink to="https://stoplight.io/blog">Blog</SiteHeaderLink>
+        <SiteHeaderLink to="/support">Support</SiteHeaderLink>
+        <SiteHeaderLink to="https://stoplight.io/welcome">Sign In</SiteHeaderLink>
+        <NoSsr>
+          <ThemeSwitcher />
+        </NoSsr>
+      </HStack>
     </Flex>
   );
 });

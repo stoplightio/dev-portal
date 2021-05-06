@@ -1,6 +1,6 @@
 import { TableOfContents } from '@stoplight/elements/components/MosaicTableOfContents';
 import { findFirstNode } from '@stoplight/elements/components/MosaicTableOfContents/utils';
-import { Box, containerSizes, Flex } from '@stoplight/mosaic';
+import { Box, Flex } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
@@ -9,6 +9,7 @@ import { NodeLink } from '../components/NodeLink';
 import { useBranches } from '../hooks/useBranches';
 import { useTableOfContents } from '../hooks/useTableOfContents';
 import { Branch } from '../interfaces/branch';
+import { MAX_CONTENT_WIDTH, SIDEBAR_WIDTH } from '../utils/constants';
 import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
 import { getLayout as getSiteLayout } from './SiteLayout';
 
@@ -18,8 +19,6 @@ interface StoplightProjectLayoutProps {
   branchSlug: string;
   nodeSlug: string;
 }
-
-const SIDEBAR_WIDTH = 300;
 
 export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
   React.useEffect(() => console.info('StoplightProjectLayout.mount'), []);
@@ -85,8 +84,8 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
           pos="sticky"
           pinY
           style={{
-            width: `calc((100% - ${containerSizes.xl.maxWidth}px) / 2 + ${SIDEBAR_WIDTH}px)`,
-            paddingLeft: `calc((100% - ${containerSizes.xl.maxWidth}px) / 2)`,
+            width: `calc((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${SIDEBAR_WIDTH}px)`,
+            paddingLeft: `calc((100% - ${MAX_CONTENT_WIDTH}px) / 2)`,
             minWidth: `${SIDEBAR_WIDTH}px`,
           }}
         >
