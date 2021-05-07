@@ -9,6 +9,7 @@ import * as React from 'react';
 
 export type ListBoxProps = ListProps<object> & { className?: string; style?: object };
 
+// TODO: Move to Mosaic
 export const ListBox = React.memo(
   React.forwardRef(({ className, style, ...props }: ListBoxProps, ref: React.RefObject<HTMLUListElement>) => {
     const state = useListState(props);
@@ -33,7 +34,6 @@ const ListBoxOption = React.memo<{ item: Node<object>; state: ListState<unknown>
     {
       key,
       isDisabled,
-      shouldFocusOnHover: true,
     },
     state,
     ref,
@@ -48,8 +48,6 @@ const ListBoxOption = React.memo<{ item: Node<object>; state: ListState<unknown>
       bg={{ default: isFocusVisible ? 'canvas-200' : 'transparent', hover: 'canvas-200' }}
       color="body"
       cursor="pointer"
-      px={4}
-      py={2}
       ref={ref}
     >
       {rendered}
