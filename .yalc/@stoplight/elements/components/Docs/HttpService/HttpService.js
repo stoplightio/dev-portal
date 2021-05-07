@@ -5,7 +5,6 @@ const tslib_1 = require("tslib");
 const mosaic_1 = require("@stoplight/mosaic");
 const react_error_boundary_1 = require("@stoplight/react-error-boundary");
 const React = tslib_1.__importStar(require("react"));
-const react_router_dom_1 = require("react-router-dom");
 const Provider_1 = require("../../../containers/Provider");
 const MarkdownViewer_1 = require("../../MarkdownViewer");
 const PoweredByLink_1 = require("../../PoweredByLink");
@@ -19,9 +18,8 @@ const enhanceVersionString = (version) => {
 };
 const HttpServiceComponent = React.memo(({ className, data, headless }) => {
     var _a, _b, _c, _d, _e;
-    const { search, pathname } = react_router_dom_1.useLocation();
     const mocking = React.useContext(Provider_1.MockingContext);
-    const query = new URLSearchParams(search);
+    const query = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
     const description = data.description && React.createElement(MarkdownViewer_1.MarkdownViewer, { className: "sl-mb-10", markdown: data.description });
     const dataPanel = (React.createElement(mosaic_1.VStack, { spacing: 6 },
         ((_a = data.servers) !== null && _a !== void 0 ? _a : (_b = mocking.mockUrl) === null || _b === void 0 ? void 0 : _b.servicePath) && (React.createElement(ServerInfo_1.ServerInfo, { servers: data.servers, mockUrl: (_c = mocking.mockUrl) === null || _c === void 0 ? void 0 : _c.servicePath })),
@@ -34,7 +32,7 @@ const HttpServiceComponent = React.memo(({ className, data, headless }) => {
             React.createElement(mosaic_1.Box, { flex: 1 }, description),
             React.createElement(mosaic_1.Box, { ml: 16, pos: "relative", w: "2/5", style: { maxWidth: 500 } }, dataPanel))) : (React.createElement(mosaic_1.Box, { mb: 10 },
             description,
-            React.createElement(PoweredByLink_1.PoweredByLink, { source: (_e = data.name) !== null && _e !== void 0 ? _e : 'no-title', pathname: pathname, packageType: "elements", headless: true }),
+            React.createElement(PoweredByLink_1.PoweredByLink, { source: (_e = data.name) !== null && _e !== void 0 ? _e : 'no-title', pathname: typeof window !== 'undefined' ? window.location.search : '', packageType: "elements", headless: true }),
             dataPanel))));
 });
 HttpServiceComponent.displayName = 'HttpService.Component';

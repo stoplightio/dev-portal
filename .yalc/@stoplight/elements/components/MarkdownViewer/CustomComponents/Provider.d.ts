@@ -2,7 +2,7 @@ import { IComponentMapping } from '@stoplight/markdown-viewer';
 import * as React from 'react';
 export declare const useMarkdownComponents: () => Partial<{
     jira: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/mdast").IJiraNode>;
-    code: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/smdast").ICode<{}>>;
+    code: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/smdast").ICode<import("@stoplight/markdown/ast-types/smdast").CodeAnnotations>>;
     heading: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/mdast").IHeading>;
     image: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/mdast").IImage>;
     link: import("@stoplight/markdown-viewer").MarkdownComponent<import("@stoplight/markdown/ast-types/mdast").ILink>;
