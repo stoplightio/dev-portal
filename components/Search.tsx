@@ -81,6 +81,7 @@ export const Search = ({
 
                   <Box
                     flex={1}
+                    fontSize="lg"
                     dangerouslySetInnerHTML={{ __html: searchResult.highlighted.name }}
                     fontWeight="medium"
                     textOverflow="overflow-ellipsis"

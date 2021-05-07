@@ -11,6 +11,7 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://kit.fontawesome.com" crossOrigin="anonymous" />
           <link
