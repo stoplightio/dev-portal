@@ -73,7 +73,7 @@ export const Search = ({
                 <Flex align="center">
                   <Box
                     as={Icon}
-                    size="2x"
+                    size="lg"
                     w={4}
                     icon={['fal', NodeIcons[searchResult.type]]}
                     color={NodeIconColor[searchResult.type]}
