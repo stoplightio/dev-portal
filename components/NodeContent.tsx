@@ -19,7 +19,7 @@ export const NodeContent = ({ node, Link }: NodeContentProps) => {
   return (
     <ErrorBoundary>
       <PersistenceContextProvider>
-        <MarkdownComponentsProvider value={{ link: LinkComponent }}>
+        <MarkdownComponentsProvider value={{ link: LinkComponent, image: ImageComponent }}>
           <NodeLinkContext.Provider value={[node, Link]}>
             <Box style={{ maxWidth: ['model'].includes(node.type) ? 1000 : undefined }}>
               <Docs nodeType={node.type as NodeType} nodeData={node.data} />
@@ -52,4 +52,14 @@ const LinkComponent: React.FC<{ node: { url: string } }> = ({ children, node: { 
       {children}
     </a>
   );
+};
+
+const ImageComponent: React.FC<{ node: { url: string } }> = ({ node: { url } }) => {
+  const [node] = React.useContext(NodeLinkContext);
+  const resolvedUri = resolve(dirname(node.uri), url);
+  const edge = node.outbound_edges.find(
+    edge => edge.type === 'image' && (edge.uri === url || edge.uri === resolvedUri),
+  );
+
+  return <Box as="img" src={edge ? edge.href : url} />;
 };

@@ -23,6 +23,7 @@ export type NodeEdge = {
   id: string;
   type: string;
   uri: string;
-  slug: string;
   title: string;
+  slug?: string;
+  href?: string;
 };
