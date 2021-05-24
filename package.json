@@ -14,18 +14,15 @@
     "deduplicate": "yarn-deduplicate --strategy fewer && yarn"
   },
   "resolutions": {
-    "@stoplight/elements": "file:.yalc/@stoplight/elements",
     "@stoplight/markdown": "file:.yalc/@stoplight/markdown",
-    "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer",
-    "@stoplight/mosaic": "file:.yalc/@stoplight/mosaic",
-    "@stoplight/mosaic-code-viewer": "file:.yalc/@stoplight/mosaic-code-viewer"
+    "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer"
   },
   "dependencies": {
-    "@stoplight/elements": "file:.yalc/@stoplight/elements",
+    "@stoplight/elements-dev-portal": "1.0.0-beta.1",
     "@stoplight/markdown": "file:.yalc/@stoplight/markdown",
     "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer",
-    "@stoplight/mosaic": "file:.yalc/@stoplight/mosaic",
-    "@stoplight/mosaic-code-viewer": "file:.yalc/@stoplight/mosaic-code-viewer",
+    "@stoplight/mosaic": "1.0.0-beta.55",
+    "@stoplight/mosaic-code-viewer": "1.0.0-beta.55",
     "framer-motion": "^3.3.0",
     "mobx": "^6.1.8",
     "next": "^10.2.0",

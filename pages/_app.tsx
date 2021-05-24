@@ -1,5 +1,6 @@
 import '../styles.css';
 
+import { DevPortalProvider } from '@stoplight/elements-dev-portal/components/DevPortalProvider';
 import { Provider, subscribeTheme } from '@stoplight/mosaic';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
@@ -42,9 +43,11 @@ function App({ Component, pageProps }: AppProps) {
       <DefaultSeo {...SEO} />
 
       <QueryClientProvider client={queryClient}>
-        <Provider style={{ minHeight: '100vh' }}>
-          {getLayout(<Component {...pageProps}></Component>, pageProps)}
-        </Provider>
+        <DevPortalProvider>
+          <Provider style={{ minHeight: '100vh' }}>
+            {getLayout(<Component {...pageProps}></Component>, pageProps)}
+          </Provider>
+        </DevPortalProvider>
       </QueryClientProvider>
 
       <GlobalProgressBar />

@@ -1,14 +1,16 @@
-import { TableOfContents } from '@stoplight/elements/components/MosaicTableOfContents';
-import { findFirstNode } from '@stoplight/elements/components/MosaicTableOfContents/utils';
+import { findFirstNode } from '@stoplight/elements-core/components/MosaicTableOfContents/utils';
+import {
+  Branch,
+  BranchSelector,
+  TableOfContents,
+  useGetBranches,
+  useGetTableOfContents,
+} from '@stoplight/elements-dev-portal';
 import { Box, Flex } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
-import { BranchSelector } from '../components/BranchSelector';
 import { NodeLink } from '../components/NodeLink';
-import { useBranches } from '../hooks/useBranches';
-import { useTableOfContents } from '../hooks/useTableOfContents';
-import { Branch } from '../interfaces/branch';
 import { MAX_CONTENT_WIDTH, SIDEBAR_WIDTH } from '../utils/constants';
 import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
 import { getLayout as getSiteLayout } from './SiteLayout';
@@ -28,16 +30,14 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
   const activeId = nodeSlug ? getNodeIdFromSlug(nodeSlug) : undefined;
   const projectId = getProjectIdFromSlug(projectSlug);
 
-  const { data: toc, isFetched: isTocFetched } = useTableOfContents({
+  const { data: toc, isFetched: isTocFetched } = useGetTableOfContents({
     projectId,
     branchSlug,
-    hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
-  const tree = isTocFetched && toc ? toc.items : undefined;
+  const tableOfContents = isTocFetched && toc ? toc : undefined;
 
-  const { data: branches, isFetched: isBranchesFetched } = useBranches({
+  const { data: branches, isFetched: isBranchesFetched } = useGetBranches({
     projectId,
-    hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
   const onBranchSelect = React.useCallback(
     (selectedBranch: Branch) => {
@@ -59,8 +59,8 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
 
   React.useEffect(() => {
     // Automatically redirect to the first node in the table of contents
-    if (!nodeSlug && tree) {
-      const firstNode = findFirstNode(tree);
+    if (!nodeSlug && tableOfContents) {
+      const firstNode = findFirstNode(tableOfContents.items);
       if (firstNode) {
         router.replace({
           pathname: router.route,
@@ -71,7 +71,7 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
         });
       }
     }
-  }, [nodeSlug, tree, router]);
+  }, [nodeSlug, tableOfContents, router]);
 
   return (
     <Box flex={1} pos="relative">
@@ -94,9 +94,9 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
               <BranchSelector branchSlug={branchSlug} branches={branches} onChange={onBranchSelect} />
             </Box>
           )}
-          {tree && (
+          {tableOfContents && (
             <Box flex={1}>
-              <TableOfContents activeId={activeId} tree={tree} Link={NodeLink} />
+              <TableOfContents activeId={activeId} tableOfContents={tableOfContents} Link={NodeLink} />
             </Box>
           )}
         </Flex>

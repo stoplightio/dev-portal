@@ -1,23 +1,19 @@
+import { getNodeContent, Node, NodeContentProps } from '@stoplight/elements-dev-portal';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { Loading } from '../../../components/Loading';
-import { NodeContentProps } from '../../../components/NodeContent';
 import { NodeLink } from '../../../components/NodeLink';
 import { NotFound } from '../../../components/NotFound';
 import { PageTransition } from '../../../components/PageTransition';
-import { fetchNode } from '../../../handlers/node';
-import { fetchProject } from '../../../handlers/project';
-import { Node } from '../../../interfaces/node';
-import { Project } from '../../../interfaces/project';
 import { getLayout as getStoplightProjectlayout } from '../../../layouts/StoplightProjectLayout';
 import { getParam } from '../../../utils/params';
 import { getProjectIdFromSlug } from '../../../utils/projects';
 
 const NodeContent = dynamic<NodeContentProps>(
-  () => import('../../../components/NodeContent').then(mod => mod.NodeContent),
+  () => import('@stoplight/elements-dev-portal').then(mod => mod.NodeContent),
   {
     ssr: false,
   },
@@ -37,20 +33,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ctx => {
   const projectId = getProjectIdFromSlug(projectSlug);
   const nodeSlug = getParam(ctx.params, 'nodeSlug');
 
-  let project: Project;
-  try {
-    project = await fetchProject({ projectId, hostname: process.env.NEXT_PUBLIC_HOSTNAME });
-  } catch (error) {
-    console.error('docs.fetchProject.getStaticProps');
-    // Show not found page if project doesn't exist
-    return {
-      notFound: true,
-    };
-  }
-
   let props: PageProps = {
-    title: project?.name || '',
-    description: project?.description || '',
+    title: '',
+    description: '',
     projectSlug,
     branchSlug,
     nodeSlug,
@@ -58,11 +43,10 @@ export const getStaticProps: GetStaticProps<PageProps> = async ctx => {
 
   if (nodeSlug) {
     try {
-      const node = await fetchNode({
+      const node = await getNodeContent({
         projectId,
         branchSlug,
         nodeSlug,
-        hostname: process.env.NEXT_PUBLIC_HOSTNAME,
       });
 
       props = {

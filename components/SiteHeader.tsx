@@ -1,14 +1,13 @@
+import { Search, useGetNodes } from '@stoplight/elements-dev-portal';
+import { NodeSearchResult } from '@stoplight/elements-dev-portal/types';
 import { Box, Flex, HStack, Icon, Input, Menu, MenuItem, NoSsr, Pressable, useModalState } from '@stoplight/mosaic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
-import { useWorkspaceNodes } from '../hooks/useWorkspaceNodes';
-import { SearchResult } from '../interfaces/searchResult';
 import { MAX_CONTENT_WIDTH } from '../utils/constants';
 import { getProjectSlugFromId, projectIdBySlug } from '../utils/projects';
-import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 const SiteHeaderLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
@@ -59,11 +58,10 @@ const SiteHeaderSearch = () => {
   const router = useRouter();
   const { isOpen, open, close } = useModalState();
   const [search, setSearch] = React.useState('');
-  const { data } = useWorkspaceNodes({
+  const { data } = useGetNodes({
     search,
     projectIds: Object.values(projectIdBySlug),
     workspaceId: process.env.NEXT_PUBLIC_WORKSPACE_ID,
-    hostname: process.env.NEXT_PUBLIC_HOSTNAME,
   });
 
   const handleClose = () => {
@@ -71,7 +69,7 @@ const SiteHeaderSearch = () => {
     setSearch('');
   };
 
-  const handleClick = (searchResult: SearchResult) => {
+  const handleClick = (searchResult: NodeSearchResult) => {
     router.push(`/docs/${getProjectSlugFromId(searchResult.project_id)}/${searchResult.slug}`);
     handleClose();
   };
