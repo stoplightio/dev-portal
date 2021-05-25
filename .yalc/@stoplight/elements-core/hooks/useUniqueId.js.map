@@ -1,0 +1,1 @@
+{"version":3,"file":"useUniqueId.js","sourceRoot":"","sources":["../../src/hooks/useUniqueId.ts"],"names":[],"mappings":";;;;AAAA,mCAAgC;AAChC,qDAA+B;AAExB,MAAM,WAAW,GAAG,CAAC,SAAiB,KAAK,EAAE,EAAE,CAAC,KAAK,CAAC,MAAM,CAAC,GAAG,MAAM,GAAG,eAAM,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,OAAO,CAAC;AAAxF,QAAA,WAAW,eAA6E"}

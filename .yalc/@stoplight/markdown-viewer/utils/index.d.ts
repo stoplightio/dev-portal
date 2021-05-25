@@ -1,3 +1,2 @@
 export * from './components';
-export * from './processMarkdown';
-export * from './classnames';
+export * from './parse';

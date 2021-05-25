@@ -1,137 +1,167 @@
-import { Dictionary } from '@stoplight/types';
-import * as Unist from 'unist';
+import { Literal as UnistLiteral, Node, Parent as UnistParent } from 'unist';
+declare type ThemeType = 'info' | 'warning' | 'danger' | 'success';
 export declare type AlignType = 'left' | 'right' | 'center' | null;
 export declare type ReferenceType = 'shortcut' | 'collapsed' | 'full';
-export interface Node extends Unist.Node {
+export declare type Content = TopLevelContent | ListContent | TableContent | RowContent | PhrasingContent | TabsContent;
+export declare type TopLevelContent = BlockContent | FrontmatterContent | DefinitionContent | Tabs | CodeGroup;
+export declare type BlockContent = Paragraph | Heading | ThematicBreak | Blockquote | List | Table | HTML | Code;
+export declare type FrontmatterContent = YAML;
+export declare type DefinitionContent = Definition | FootnoteDefinition;
+export declare type ListContent = ListItem;
+export declare type TableContent = TableRow;
+export declare type RowContent = TableCell;
+export declare type PhrasingContent = StaticPhrasingContent | Link | LinkReference;
+export declare type StaticPhrasingContent = Text | Emphasis | Strong | Delete | HTML | InlineCode | Break | Image | ImageReference | Footnote | FootnoteReference;
+export interface Parent<C extends Node = Content> extends UnistParent {
+    children: C[];
 }
-export interface Parent extends Unist.Parent {
-}
-export interface Literal extends Unist.Literal {
-}
-export interface IRoot extends Unist.Parent {
-    type: 'root';
-}
-export interface IParagraph extends Unist.Parent {
-    type: 'paragraph';
-}
-export interface IBlockquote extends Unist.Parent {
-    type: 'blockquote';
-}
-export interface IHeading extends Unist.Parent {
-    type: 'heading';
-    depth: 1 | 2 | 3 | 4 | 5 | 6;
-}
-export interface ICode extends Unist.Literal {
-    type: 'code';
-    lang?: string;
-    title?: string;
-    resolved?: null | object;
-    meta?: string;
-    lineNumbers?: boolean;
-    highlightLines?: number[] | number[][];
-    json_schema?: boolean;
-    http?: boolean;
-}
-export interface IInlineCode extends Unist.Literal {
-    type: 'inlineCode';
-}
-export interface IYAML extends Unist.Literal {
-    type: 'yaml';
-}
-export interface IHTML extends Unist.Literal {
-    type: 'html';
-}
-export interface IInlineHTML extends Unist.Parent {
-    type: 'inlineHtml';
-    attributes: Dictionary<string | true, string>;
-    tagName: string;
-}
-export interface IList extends Unist.Parent {
-    type: 'list';
-    ordered: boolean;
-    start?: number;
-    loose: boolean;
-}
-export interface IListItem extends Unist.Parent {
-    type: 'listItem';
-    loose: boolean;
-    checked?: boolean;
-}
-export interface ITable extends Unist.Parent {
-    type: 'table';
-    align: AlignType[];
-}
-export interface ITableRow extends Unist.Parent {
-    type: 'tableRow';
-}
-export interface ITableCell extends Unist.Parent {
-    type: 'tableCell';
-}
-export interface IThematicBreak extends Unist.Node {
-    type: 'thematicBreak';
-}
-export interface IBreak extends Unist.Node {
-    type: 'break';
-}
-export interface IEmphasis extends Unist.Parent {
-    type: 'emphasis';
-}
-export interface IStrong extends Unist.Parent {
-    type: 'strong';
-}
-export interface IDelete extends Unist.Parent {
-    type: 'delete';
-}
-export interface ILink extends Unist.Parent {
-    type: 'link';
-    title?: string;
-    url: string;
-}
-export interface IImage extends Unist.Node {
-    type: 'image';
-    title?: string;
-    alt?: string;
-    url: string;
-}
-export interface IFootnote extends Unist.Parent {
-    type: 'footnote';
-}
-export interface ILinkReference extends Unist.Parent {
-    type: 'linkReference';
-    identifier: string;
-    referenceType: ReferenceType;
-}
-export interface IImageReference extends Unist.Node {
-    type: 'imageReference';
-    identifier: string;
-    referenceType: ReferenceType;
-    alt?: string;
-}
-export interface IFootnoteReference extends Unist.Node {
-    type: 'footnoteReference';
-    identifier: string;
-}
-export interface IDefinition extends Unist.Node {
-    type: 'definition';
-    identifier: string;
-    title?: string;
-    url: string;
-}
-export interface IFootnoteDefinition extends Unist.Parent {
-    type: 'footnoteDefinition';
-    identifier: string;
-}
-export interface ITextNode extends Unist.Literal {
-    type: 'text';
-}
-export interface IElement extends Unist.Node {
-    type: 'element';
-    tagName: string;
-    properties: object;
-    children: Unist.Node[];
-}
-export interface IJiraNode extends Unist.Node {
-    type: 'jira';
-    code: string;
+export interface Literal extends UnistLiteral {
     value: string;
 }
+export interface Root extends Parent {
+    type: 'root';
+}
+export interface Paragraph extends Parent {
+    type: 'paragraph';
+    children: PhrasingContent[];
+}
+export interface Heading extends Parent {
+    type: 'heading';
+    depth: 1 | 2 | 3 | 4 | 5 | 6;
+    children: PhrasingContent[];
+}
+export interface ThematicBreak extends Node {
+    type: 'thematicBreak';
+}
+export interface Blockquote extends Parent {
+    type: 'blockquote';
+    children: BlockContent[];
+    annotations?: {
+        theme?: ThemeType;
+    };
+}
+export interface List extends Parent {
+    type: 'list';
+    ordered?: boolean;
+    start?: number;
+    spread?: boolean;
+    children: ListContent[];
+}
+export interface ListItem extends Parent {
+    type: 'listItem';
+    checked?: boolean;
+    spread?: boolean;
+    children: BlockContent[];
+}
+export interface Table extends Parent {
+    type: 'table';
+    align?: AlignType[];
+    children: TableContent[];
+}
+export interface TableRow extends Parent {
+    type: 'tableRow';
+    children: RowContent[];
+}
+export interface TableCell extends Parent {
+    type: 'tableCell';
+    children: PhrasingContent[];
+}
+export interface HTML extends Literal {
+    type: 'html';
+}
+export interface Code extends Literal {
+    type: 'code';
+    lang?: string;
+    meta?: string;
+    resolved?: unknown;
+    annotations?: {
+        title?: string;
+        lineNumbers?: boolean;
+        highlightLines?: string[] | string[][];
+        inline?: boolean;
+        live?: boolean;
+        jsonSchema?: boolean | 'true' | 'false';
+        http?: boolean;
+    };
+}
+export interface YAML extends Literal {
+    type: 'yaml';
+}
+export interface Definition extends Node, Association, Resource {
+    type: 'definition';
+}
+export interface FootnoteDefinition extends Parent, Association {
+    type: 'footnoteDefinition';
+    children: BlockContent[];
+}
+export interface Text extends Literal {
+    type: 'text';
+}
+export interface Emphasis extends Parent {
+    type: 'emphasis';
+    children: PhrasingContent[];
+}
+export interface Strong extends Parent {
+    type: 'strong';
+    children: PhrasingContent[];
+}
+export interface Delete extends Parent {
+    type: 'delete';
+    children: PhrasingContent[];
+}
+export interface InlineCode extends Literal {
+    type: 'inlineCode';
+}
+export interface Break extends Node {
+    type: 'break';
+}
+export interface Link extends Parent, Resource {
+    type: 'link';
+    children: StaticPhrasingContent[];
+}
+export interface Image extends Node, Resource, Alternative {
+    type: 'image';
+    annotations?: {
+        bg?: string;
+        focus?: 'top' | 'bottom' | 'center' | 'top-right' | 'top-left';
+    };
+}
+export interface LinkReference extends Parent, Reference {
+    type: 'linkReference';
+    children: StaticPhrasingContent[];
+}
+export interface ImageReference extends Node, Reference, Alternative {
+    type: 'imageReference';
+}
+export interface Footnote extends Parent {
+    type: 'footnote';
+    children: PhrasingContent[];
+}
+export interface FootnoteReference extends Node, Association {
+    type: 'footnoteReference';
+}
+export interface Resource {
+    url: string;
+    title?: string;
+}
+export interface Association {
+    identifier: string;
+    label?: string;
+}
+export interface Reference extends Association {
+    referenceType: ReferenceType;
+}
+export interface Alternative {
+    alt?: string;
+}
+export interface Tabs extends Parent<Tab> {
+    type: 'tabs';
+}
+export declare type TabsContent = Tab;
+export interface Tab extends Parent {
+    type: 'tab';
+}
+export interface CodeGroup extends Parent<Code> {
+    type: 'codegroup';
+}
+export {};

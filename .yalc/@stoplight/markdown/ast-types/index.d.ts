@@ -1,3 +1,3 @@
+import * as HAST from './hast';
 import * as MDAST from './mdast';
-import * as SMDAST from './smdast';
-export { MDAST, SMDAST };
+export { HAST, MDAST };

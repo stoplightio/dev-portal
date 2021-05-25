@@ -1,66 +1,48 @@
 {
   "name": "@stoplight/markdown-viewer",
-  "version": "0.0.0-3c4361a5",
-  "sideEffects": true,
+  "version": "0.0.0-ef4d713c",
+  "description": "A react component that renders Stoplight flavored markdown.",
+  "keywords": [],
+  "main": "./index.js",
+  "sideEffects": false,
+  "files": [
+    "**/*"
+  ],
+  "author": "Stoplight <support@stoplight.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stoplightio/markdown-viewer"
+  },
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">=12"
+  },
   "peerDependencies": {
-    "react": ">= 16.8"
+    "react": ">=16.14",
+    "react-dom": ">=16.14"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@react-aria/button": "~3.3.1",
-    "@react-aria/dialog": "~3.1.2",
-    "@react-aria/focus": "~3.2.4",
-    "@react-aria/interactions": "~3.3.4",
-    "@react-aria/listbox": "~3.2.4",
-    "@react-aria/overlays": "~3.6.2",
-    "@react-aria/select": "~3.3.1",
-    "@react-aria/separator": "~3.1.1",
-    "@react-aria/ssr": "~3.0.1",
-    "@react-aria/tooltip": "~3.1.1",
-    "@react-aria/utils": "~3.7.0",
-    "@react-hook/size": "^2.1.1",
-    "@react-hook/window-size": "^3.0.7",
-    "@react-spectrum/utils": "~3.5.1",
-    "@react-stately/collections": "~3.3.1",
-    "@react-stately/list": "~3.2.2",
-    "@react-stately/select": "~3.1.1",
-    "@react-stately/tooltip": "~3.0.3",
-    "@stoplight/json": "^3.12.0",
-    "@stoplight/json-schema-viewer": "^4.0.0-beta.16",
-    "@stoplight/markdown": "0.0.0",
-    "@stoplight/mosaic": "0.0.0",
-    "@stoplight/mosaic-code-viewer": "0.0.0",
     "@stoplight/react-error-boundary": "^1.1.0",
-    "@stoplight/types": "^12.2.0",
-    "@stoplight/yaml": "^4.2.2",
+    "@stoplight/types": "^12.3.0",
     "clsx": "^1.1.1",
-    "copy-to-clipboard": "^3.3.1",
     "deepmerge": "^4.2.2",
-    "isomorphic-dompurify": "^0.13.0",
+    "hast-util-sanitize": "^4.0.0",
     "lodash": "^4.17.21",
-    "lodash.get": "^4.4.2",
-    "mdast-util-to-string": "^2.0.0",
-    "polished": "^4.1.2",
-    "prism-react-renderer": "^1.2.0",
-    "prismjs": "^1.23.0",
-    "reakit": "npm:@stoplight/reakit@~1.3.5",
-    "remark-frontmatter": "^2.0.0",
-    "remark-inline-links": "^5.0.0",
-    "remark-parse": "^8.0.3",
-    "remark-slug": "^6.0.0",
-    "remark-stringify": "^8.1.1",
-    "source-component": "^1.2.1",
-    "ts-keycode-enum": "^1.0.6",
-    "tslib": "^2.1.0",
-    "unified": "^9.2.1",
-    "unist-util-select": "^3.0.4",
-    "unist-util-visit": "^2.0.3",
-    "zustand": "^3.4.2"
+    "rehype-raw": "^5.1.0",
+    "rehype-react": "^6.2.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.1.0"
   },
-  "main": "./markdown-viewer.umd.js",
-  "module": "./markdown-viewer.esm.js",
-  "typings": "./index.d.ts"
+  "type": "commonjs",
+  "typings": "index.d.ts",
+  "module": "./index.ejs",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
+  "bundledDependencies": [
+    "@stoplight/markdown",
+    "@stoplight/mosaic",
+    "@stoplight/mosaic-code-viewer"
+  ]
 }

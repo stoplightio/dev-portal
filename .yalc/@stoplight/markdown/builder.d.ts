@@ -2,9 +2,9 @@ import { MDAST } from './ast-types';
 import { Reader } from './reader';
 export declare class Builder {
     reader: Reader;
-    root: MDAST.IRoot;
+    root: MDAST.Root;
     constructor(reader?: Reader);
     addMarkdown(markdown: string): this;
-    addChild(node: MDAST.Node): this;
+    addChild(node: MDAST.Content): this;
     toString(): string;
 }

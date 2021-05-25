@@ -1,2 +1,2 @@
-import { IComponentMapping } from '../types';
-export declare const DefaultSMDComponents: IComponentMapping;
+import { CustomComponentMapping } from '../types';
+export declare const DefaultSMDComponents: CustomComponentMapping;

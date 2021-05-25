@@ -1,2 +1,2 @@
-import * as Unist from 'unist';
-export declare const getTags: (data?: Unist.Node) => string[];
+import { MDAST } from '../ast-types';
+export declare const getTags: (data?: MDAST.Root | undefined) => string[];

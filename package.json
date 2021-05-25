@@ -14,15 +14,24 @@
     "deduplicate": "yarn-deduplicate --strategy fewer && yarn"
   },
   "resolutions": {
-    "@stoplight/markdown": "file:.yalc/@stoplight/markdown",
-    "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer"
-  },
-  "dependencies": {
-    "@stoplight/elements-dev-portal": "1.0.0-beta.1",
+    "@stoplight/elements": "file:.yalc/@stoplight/elements",
+    "@stoplight/elements-core": "file:.yalc/@stoplight/elements-core",
+    "@stoplight/elements-dev-portal": "file:.yalc/@stoplight/elements-dev-portal",
     "@stoplight/markdown": "file:.yalc/@stoplight/markdown",
     "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer",
-    "@stoplight/mosaic": "1.0.0-beta.55",
-    "@stoplight/mosaic-code-viewer": "1.0.0-beta.55",
+    "@stoplight/mosaic": "file:.yalc/@stoplight/mosaic",
+    "@stoplight/mosaic-code-editor": "file:.yalc/@stoplight/mosaic-code-editor",
+    "@stoplight/mosaic-code-viewer": "file:.yalc/@stoplight/mosaic-code-viewer"
+  },
+  "dependencies": {
+    "@stoplight/elements": "file:.yalc/@stoplight/elements",
+    "@stoplight/elements-core": "file:.yalc/@stoplight/elements-core",
+    "@stoplight/elements-dev-portal": "file:.yalc/@stoplight/elements-dev-portal",
+    "@stoplight/markdown": "file:.yalc/@stoplight/markdown",
+    "@stoplight/markdown-viewer": "file:.yalc/@stoplight/markdown-viewer",
+    "@stoplight/mosaic": "file:.yalc/@stoplight/mosaic",
+    "@stoplight/mosaic-code-editor": "file:.yalc/@stoplight/mosaic-code-editor",
+    "@stoplight/mosaic-code-viewer": "file:.yalc/@stoplight/mosaic-code-viewer",
     "framer-motion": "^3.3.0",
     "mobx": "^6.1.8",
     "next": "^10.2.0",
