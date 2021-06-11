@@ -7,18 +7,20 @@ import SiteHeader from '../components/SiteHeader';
 interface SiteLayoutProps {
   title?: string;
   description?: string;
+  hideSearch?: boolean;
   children: React.ReactNode;
 }
 
 export function SiteLayout(props: SiteLayoutProps) {
-  const { title, description, children } = props;
+  const { title, description, children, hideSearch } = props;
 
   React.useEffect(() => console.info('SiteLayout.mount'), []);
 
   return (
     <>
       <Flex direction="col" minH="screen">
-        <SiteHeader />
+        <SiteHeader hideSearch={hideSearch} />
+
         {children}
       </Flex>
 

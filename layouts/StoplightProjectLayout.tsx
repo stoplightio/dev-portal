@@ -10,6 +10,7 @@ import { Box, Flex } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
+import { Footer } from '../components/Footer';
 import { NodeLink } from '../components/NodeLink';
 import { MAX_CONTENT_WIDTH, SIDEBAR_WIDTH } from '../utils/constants';
 import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
@@ -105,6 +106,8 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
           <Box pt={16} pb={24} style={{ maxWidth: 1500 }}>
             {children}
           </Box>
+
+          <Footer />
         </Box>
       </Flex>
     </Box>

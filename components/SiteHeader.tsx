@@ -1,13 +1,11 @@
-import { Search, useGetNodes } from '@stoplight/elements-dev-portal';
-import { NodeSearchResult } from '@stoplight/elements-dev-portal/types';
-import { Box, Flex, HStack, Icon, Input, Menu, MenuItem, NoSsr, Pressable, useModalState } from '@stoplight/mosaic';
+import { Box, Flex, HStack, Icon, Input, Menu, MenuItem, NoSsr, Pressable } from '@stoplight/mosaic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import * as React from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
 import { MAX_CONTENT_WIDTH } from '../utils/constants';
-import { getProjectSlugFromId, projectIdBySlug } from '../utils/projects';
+import { Search } from './Search';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 const SiteHeaderLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
@@ -21,7 +19,7 @@ const SiteHeaderLink = ({ to, children }: { to: string; children: React.ReactNod
       <Box as="a" {...usePrefetchOnHover(to)} noFocusRing textDecoration="no-underline">
         <Box
           fontSize="lg"
-          color={isActive ? undefined : { default: 'muted', hover: 'primary' }}
+          color={isActive ? undefined : { default: 'on-primary', hover: 'canvas-200' }}
           fontWeight={isActive ? 'semibold' : undefined}
           py={2}
         >
@@ -46,7 +44,7 @@ const SiteHeaderMenuLink = ({ to, children }: { to: string; children: React.Reac
         noFocusRing
         textDecoration="no-underline"
         fontWeight={isActive ? 'semibold' : undefined}
-        color={{ default: isActive ? 'primary' : undefined, hover: 'on-primary' }}
+        // color={{ default: isActive ? 'on-primary' : undefined, hover: 'on-primary' }}
       >
         {children}
       </Box>
@@ -54,42 +52,7 @@ const SiteHeaderMenuLink = ({ to, children }: { to: string; children: React.Reac
   );
 };
 
-const SiteHeaderSearch = () => {
-  const router = useRouter();
-  const { isOpen, open, close } = useModalState();
-  const [search, setSearch] = React.useState('');
-  const { data } = useGetNodes({
-    search,
-    projectIds: Object.values(projectIdBySlug),
-    workspaceId: process.env.NEXT_PUBLIC_WORKSPACE_ID,
-  });
-
-  const handleClose = () => {
-    close();
-    setSearch('');
-  };
-
-  const handleClick = (searchResult: NodeSearchResult) => {
-    router.push(`/docs/${getProjectSlugFromId(searchResult.project_id)}/${searchResult.slug}`);
-    handleClose();
-  };
-
-  return (
-    <>
-      <Input placeholder="Search..." onClick={open} />
-      <Search
-        search={search}
-        searchResults={data}
-        onSearch={setSearch}
-        isOpen={isOpen}
-        onClose={handleClose}
-        onClick={handleClick}
-      />
-    </>
-  );
-};
-
-const SiteHeader = React.memo(() => {
+const SiteHeader = React.memo(({ hideSearch }) => {
   // mosaic doesn't yet support `fak` (custom kit icons)
   // @ts-expect-error
   const icon = <Icon icon={['fak', 'stoplight']} />;
@@ -98,7 +61,7 @@ const SiteHeader = React.memo(() => {
   console.info('SiteHeader.render');
 
   return (
-    <Box as="header" alignItems="center" borderB>
+    <Box as="header" alignItems="center" bg="primary" color="on-primary">
       <Flex mx="auto" px={4} style={{ height: 70, maxWidth: MAX_CONTENT_WIDTH }}>
         <HStack flexGrow spacing={6}>
           <Link href="/" prefetch={false}>
@@ -117,7 +80,7 @@ const SiteHeader = React.memo(() => {
               label="Reference"
               trigger={
                 <Pressable>
-                  <Box fontSize="lg" color={{ default: 'muted', hover: 'primary' }} py={2}>
+                  <Box fontSize="lg" color={{ hover: 'canvas-200' }} py={2}>
                     Reference
                   </Box>
                 </Pressable>
@@ -164,7 +127,7 @@ const SiteHeader = React.memo(() => {
               />
             </Menu>
 
-            <SiteHeaderSearch />
+            {!hideSearch && <Search renderTrigger={({ open }) => <Input onClick={open} placeholder="Search..." />} />}
           </HStack>
         </HStack>
 
