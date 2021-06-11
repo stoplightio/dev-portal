@@ -52,7 +52,7 @@ const SiteHeaderMenuLink = ({ to, children }: { to: string; children: React.Reac
   );
 };
 
-const SiteHeader = React.memo(({ hideSearch }) => {
+const SiteHeader = React.memo(({ hideSearch }: { hideSearch?: boolean }) => {
   // mosaic doesn't yet support `fak` (custom kit icons)
   // @ts-expect-error
   const icon = <Icon icon={['fak', 'stoplight']} />;

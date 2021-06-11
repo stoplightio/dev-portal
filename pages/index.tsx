@@ -44,7 +44,15 @@ const IndexPage = () => (
               Search all docs, guides, and tutorials
             </Flex>
 
-            <Flex justify="center" align="center" w={24} bg="body" color="canvas">
+            <Flex
+              justify="center"
+              align="center"
+              w={24}
+              color="canvas"
+              // TODO: figure out what to use for a black background
+              // @ts-expect-error
+              bg="body"
+            >
               Search
             </Flex>
           </Flex>
@@ -176,15 +184,6 @@ const ExploreCard = ({
         </Box>
       </Flex>
     </Link>
-  );
-};
-
-const Triangle = ({ bg }) => {
-  return (
-    <Box
-      pos="absolute"
-      style={{ backgroundColor: bg, clipPath: 'polygon(50% 0%,0% 100%,100% 100%)', height: '100px', width: '100px' }}
-    />
   );
 };
 
