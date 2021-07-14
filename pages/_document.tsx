@@ -34,7 +34,7 @@ class CustomDocument extends Document {
           fontFamily="ui"
           fontSize="base"
           color="body"
-          className="sl-antialiased sl-elements"
+          className="sl-antialiased"
         >
           <InitTheme />
           <Main />

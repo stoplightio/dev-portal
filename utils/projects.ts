@@ -6,7 +6,7 @@ export const projectIdBySlug = {
   prism: 'cHJqOjM',
   spectral: 'cHJqOjQ',
   api: 'cHJqOjU',
-  'studio-demo': 'cHJqOjExOTY',
+  'studio-demo': 'cHJqOjM1ODEw',
 };
 
 export function getProjectIdFromSlug(projectSlug: string) {

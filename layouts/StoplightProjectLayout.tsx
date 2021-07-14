@@ -12,7 +12,7 @@ import * as React from 'react';
 
 import { Footer } from '../components/Footer';
 import { NodeLink } from '../components/NodeLink';
-import { MAX_CONTENT_WIDTH, SIDEBAR_WIDTH } from '../utils/constants';
+import { MAX_CONTENT_WIDTH, MIN_SIDEBAR_WIDTH } from '../utils/constants';
 import { getNodeIdFromSlug, getProjectIdFromSlug } from '../utils/projects';
 import { getLayout as getSiteLayout } from './SiteLayout';
 
@@ -85,9 +85,9 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
           pos="sticky"
           pinY
           style={{
-            width: `calc((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${SIDEBAR_WIDTH}px)`,
+            width: `calc((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${MIN_SIDEBAR_WIDTH}px)`,
             paddingLeft: `calc((100% - ${MAX_CONTENT_WIDTH}px) / 2)`,
-            minWidth: `${SIDEBAR_WIDTH}px`,
+            minWidth: `${MIN_SIDEBAR_WIDTH}px`,
           }}
         >
           {isBranchesFetched && branches && branches.length > 1 && (
@@ -103,7 +103,13 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
         </Flex>
 
         <Box as="main" px={24} w="full" flex={1} overflowY="auto" overflowX="hidden">
-          <Box pt={16} pb={24} style={{ maxWidth: 1500 }}>
+          <Box
+            pt={16}
+            pb={24}
+            style={{
+              maxWidth: `calc(100% - max(${MIN_SIDEBAR_WIDTH}px, ((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${MIN_SIDEBAR_WIDTH}px)))`,
+            }}
+          >
             {children}
           </Box>
 
