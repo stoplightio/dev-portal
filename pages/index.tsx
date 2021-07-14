@@ -1,4 +1,14 @@
-import { BackgroundColorVals, Box, Container, Flex, Heading, Icon, IIconProps } from '@stoplight/mosaic';
+import {
+  BackgroundColorVals,
+  Box,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  IIconProps,
+  VStack,
+} from '@stoplight/mosaic';
 import Link from 'next/link';
 import React from 'react';
 
@@ -16,12 +26,12 @@ export const getStaticProps = () => {
 
 const IndexPage = () => (
   <Box>
-    <Box bg="primary" color="on-primary" py={24}>
+    <Box bg="primary" color="on-primary" pb={24} pt={20}>
       <Heading textAlign="center" size={1}>
         Welcome to the Stoplight Learning Center
       </Heading>
 
-      <Box textAlign="center" fontSize="xl" mt={4} mb={8}>
+      <Box textAlign="center" fontSize="2xl" mt={3} mb={14}>
         A complete guide to designing and documenting APIs with Stoplight
       </Box>
 
@@ -30,7 +40,6 @@ const IndexPage = () => (
           <Flex
             onClick={open}
             mx="auto"
-            w="1/4"
             h={10}
             border={2}
             borderColor="body"
@@ -39,6 +48,7 @@ const IndexPage = () => (
             color="body"
             cursor="pointer"
             fontWeight="medium"
+            style={{ maxWidth: 500 }}
           >
             <Flex flex={1} align="center" px={4}>
               Search all docs, guides, and tutorials
@@ -60,13 +70,13 @@ const IndexPage = () => (
       />
     </Box>
 
-    <Container size="lg">
-      <Flex mt={20} mb={32} justify="between">
+    <Container size="lg" px={10}>
+      <HStack mt={20} justify="between" spacing={6}>
         <GettingStartedCard
           href="/docs/platform/ZG9jOjIwNjk2Mg-introduction-to-stoplight-platform"
           icon="rocket"
           color="danger"
-          title="Get started with Stoplight"
+          title="Get Started"
         />
 
         <GettingStartedCard
@@ -82,64 +92,70 @@ const IndexPage = () => (
           color="success"
           title="Design an API"
         />
-      </Flex>
+      </HStack>
 
-      <Box mt={20} mb={32}>
+      <Box mt={24}>
         <Heading size={2} textAlign="center" mb={16}>
           Explore using Stoplight
         </Heading>
 
-        <ExploreCard
-          color="#985DF6"
-          icon="edit"
-          href="/docs/studio"
-          title="Studio"
-          description="Create, prototype, and share OpenAPI descriptions and JSON Schemas using a visual editor."
-        />
+        <VStack spacing={12}>
+          <ExploreCard
+            color="#985DF6"
+            icon="edit"
+            href="/docs/studio"
+            title="Studio"
+            description="Create, prototype, and share OpenAPI descriptions and JSON Schemas using a visual editor."
+          />
 
-        <ExploreCard
-          color="#31C48D"
-          icon="users"
-          href="/docs/platform/ZG9jOjE4ODEyMg-creating-a-workspace"
-          title="Administration"
-          description="Provide company-wide visibility to your APIs with flexible roles and permissions depending on your organization’s needs."
-        />
+          <ExploreCard
+            color="#31C48D"
+            icon="users"
+            href="/docs/platform/ZG9jOjE4ODEyMg-creating-a-workspace"
+            title="Administration"
+            description="Provide company-wide visibility to your APIs with flexible roles and permissions depending on your organization’s needs."
+          />
 
-        <ExploreCard
-          color="#5496F7"
-          icon="shapes"
-          href="/docs/elements"
-          title="Elements"
-          description="Build beautiful, interactive API Docs with embeddable React or Web Components, powered by OpenAPI and Markdown."
-        />
+          <ExploreCard
+            color="#5496F7"
+            icon="shapes"
+            href="/docs/elements"
+            title="Elements"
+            description="Build beautiful, interactive API Docs with embeddable React or Web Components, powered by OpenAPI and Markdown."
+          />
 
-        <ExploreCard
-          color="#A0AEC0"
-          icon="database"
-          href="/docs/prism"
-          title="Prism"
-          description="Turn any OpenAPI2/3 and Postman Collection file into an API server with mocking, transformations and validations."
-        />
+          <ExploreCard
+            color="#A0AEC0"
+            icon="database"
+            href="/docs/prism"
+            title="Prism"
+            description="Turn any OpenAPI2/3 and Postman Collection file into an API server with mocking, transformations and validations."
+          />
 
-        <ExploreCard
-          color="#F05252"
-          icon="shield-check"
-          href="/docs/spectral"
-          title="Spectral"
-          description="A flexible JSON/YAML linter for creating automated style guides, with baked in support for OpenAPI v2 & v3."
-        />
+          <ExploreCard
+            color="#F05252"
+            icon="shield-check"
+            href="/docs/spectral"
+            title="Spectral"
+            description="A flexible JSON/YAML linter for creating automated style guides, with baked in support for OpenAPI v2 & v3."
+          />
 
-        <ExploreCard
-          color="#633112"
-          icon="swatchbook"
-          href="/docs/design-libraries"
-          title="Design Libraries"
-          description="Define a shared set of standardized components and promote reuse across all your APIs."
-        />
+          <ExploreCard
+            color="#633112"
+            icon="swatchbook"
+            href="/docs/design-libraries"
+            title="Design Libraries"
+            description="Define a shared set of standardized components and promote reuse across all your APIs."
+          />
+        </VStack>
       </Box>
     </Container>
 
-    <Footer />
+    <Container size="lg" px={10} mt={32}>
+      <Box borderT py={16} mx="-px" px="px">
+        <Footer />
+      </Box>
+    </Container>
   </Box>
 );
 
@@ -164,7 +180,6 @@ const ExploreCard = ({
         rounded
         boxShadow={{ hover: 'lg' }}
         h={60}
-        my={16}
         style={{ borderColor: color }}
         overflowX="hidden"
         overflowY="hidden"
@@ -209,7 +224,8 @@ const GettingStartedCard = ({
         p={8}
         rounded="lg"
         boxShadow={{ hover: 'lg' }}
-        style={{ width: '350px' }}
+        w="full"
+        style={{ maxWidth: 375, minWidth: 300 }}
         // @ts-expect-error
         color={{ default: `on-${color}`, hover: `on-${color}` }}
         bg={color}
@@ -218,7 +234,7 @@ const GettingStartedCard = ({
           <Icon icon={icon} size="6x" />
         </Box>
 
-        <Box fontWeight="semibold" fontSize="2xl" mt={4}>
+        <Box fontWeight="semibold" fontSize="2xl" mt={4} textAlign="center">
           {title}
         </Box>
       </Flex>

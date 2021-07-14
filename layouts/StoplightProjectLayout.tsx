@@ -74,6 +74,8 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
     }
   }, [nodeSlug, tableOfContents, router]);
 
+  const maxContentWidth = `calc(${MAX_CONTENT_WIDTH}px - 96px - max(${MIN_SIDEBAR_WIDTH}px, ((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${MIN_SIDEBAR_WIDTH}px)))`;
+
   return (
     <Box flex={1} pos="relative">
       <Flex pos="absolute" pin overflowY="scroll">
@@ -102,19 +104,30 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
           )}
         </Flex>
 
-        <Box as="main" px={24} w="full" flex={1} overflowY="auto" overflowX="hidden">
+        <Flex as="main" pl={24} pr={10} w="full" flex={1} overflowY="auto" overflowX="hidden" direction="col">
           <Box
             pt={16}
             pb={24}
             style={{
-              maxWidth: `calc(100% - max(${MIN_SIDEBAR_WIDTH}px, ((100% - ${MAX_CONTENT_WIDTH}px) / 2 + ${MIN_SIDEBAR_WIDTH}px)))`,
+              maxWidth: maxContentWidth,
             }}
           >
             {children}
           </Box>
 
-          <Footer />
-        </Box>
+          <Box
+            borderT
+            py={12}
+            pl="px"
+            ml="-px"
+            mt="auto"
+            style={{
+              maxWidth: maxContentWidth,
+            }}
+          >
+            <Footer />
+          </Box>
+        </Flex>
       </Flex>
     </Box>
   );
