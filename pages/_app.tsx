@@ -1,11 +1,14 @@
 import '../styles.css';
 
-import { Provider, subscribeTheme } from '@stoplight/mosaic';
+import { DevPortalProvider } from '@stoplight/elements-dev-portal/components/DevPortalProvider';
+import { Provider as MosaicProvider, subscribeTheme, useIconStore } from '@stoplight/mosaic';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Link from 'next/link';
 import { DefaultSeo } from 'next-seo';
 import * as React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import SEO from '../next-seo.config';
 
@@ -13,9 +16,27 @@ if (process.browser) {
   subscribeTheme();
 }
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60,
+    },
+  },
+});
+
 const GlobalProgressBar = dynamic(() => import('../components/GlobalProgressBar').then(mod => mod.GlobalProgressBar), {
   ssr: false,
 });
+
+const NextMosaicLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement>>(
+  function NextMosaicLink({ href, ...props }, ref) {
+    return (
+      <Link href={href}>
+        <a {...props} ref={ref} />
+      </Link>
+    );
+  },
+);
 
 function App({ Component, pageProps }: AppProps) {
   /** Keep an eye out for full remounts, we want to minimize those */
@@ -23,6 +44,13 @@ function App({ Component, pageProps }: AppProps) {
 
   // @ts-expect-error
   const getLayout = Component.getLayout || (page => page);
+
+  // Use light icons by default (in areas where specific icon set is not requested)
+  // https://mosaic.vercel.app/docs/media/icon#changing-the-default-icon-style
+  const setDefaultStyle = useIconStore(ic => ic.setDefaultStyle);
+  React.useEffect(() => {
+    setDefaultStyle('fal');
+  }, [setDefaultStyle]);
 
   return (
     <>
@@ -32,7 +60,18 @@ function App({ Component, pageProps }: AppProps) {
 
       <DefaultSeo {...SEO} />
 
-      <Provider style={{ minHeight: '100vh' }}>{getLayout(<Component {...pageProps}></Component>)}</Provider>
+      <QueryClientProvider client={queryClient}>
+        <DevPortalProvider>
+          <MosaicProvider
+            style={{ minHeight: '100vh' }}
+            componentOverrides={{
+              Link: NextMosaicLink,
+            }}
+          >
+            {getLayout(<Component {...pageProps}></Component>, pageProps)}
+          </MosaicProvider>
+        </DevPortalProvider>
+      </QueryClientProvider>
 
       <GlobalProgressBar />
     </>
