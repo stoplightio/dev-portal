@@ -26,7 +26,7 @@ export const getStaticProps = () => {
 
 const IndexPage = () => (
   <Box>
-    <Box bg="primary" color="on-primary" pb={24} pt={20}>
+    <Box bg="primary" color="on-primary" pt={24} pb={60}>
       <Heading textAlign="center" size={1}>
         Welcome to the Stoplight Learning Center
       </Heading>
@@ -70,29 +70,62 @@ const IndexPage = () => (
       />
     </Box>
 
-    <Container size="lg" px={10}>
-      <HStack mt={20} justify="between" spacing={6}>
+    <Container size="lg">
+      <Flex mt={-32} mb={32} justify="between">
         <GettingStartedCard
           href="/docs/platform/ZG9jOjIwNjk2Mg-introduction-to-stoplight-platform"
           icon="rocket"
           color="danger"
-          title="Get Started"
-        />
+          title="Get started with Stoplight"
+        >
+          <Box
+            pos="absolute"
+            style={{
+              backgroundColor: `rgba(255,255,255,0.2)`,
+              clipPath: 'polygon(89% 43%, 80% 74%, 0 100%, 48% 45%)',
+              height: '100%',
+              width: '50%',
+              left: 0,
+            }}
+          />
+        </GettingStartedCard>
 
         <GettingStartedCard
           href="/docs/platform/ZG9jOjU4NzU5NA-overview"
           icon="chart-network"
           color="warning"
           title="Setup an API program"
-        />
+        >
+          <Box
+            pos="absolute"
+            style={{
+              backgroundColor: `rgba(255,255,255,0.2)`,
+              clipPath: 'polygon(100% 63%, 100% 100%, 50% 100%, 29% 35%)',
+              height: '100%',
+              width: '50%',
+              right: 0,
+            }}
+          />
+        </GettingStartedCard>
 
         <GettingStartedCard
           href="/docs/platform/ZG9jOjIwMTI3Nw-overview"
           icon="pencil-ruler"
           color="success"
           title="Design an API"
-        />
-      </HStack>
+        >
+          <Box
+            pos="absolute"
+            style={{
+              backgroundColor: `rgba(255,255,255,0.2)`,
+              clipPath: 'polygon(36% 15%, 0 50%, 0 0, 30% 0)',
+              height: '100%',
+              width: '100%',
+              left: 0,
+            }}
+          />
+        </GettingStartedCard>
+      </Flex>
 
       <Box mt={24}>
         <Heading size={2} textAlign="center" mb={16}>
@@ -178,57 +211,92 @@ const ExploreCard = ({
         as="a"
         border={2}
         rounded
-        boxShadow={{ hover: 'lg' }}
         h={60}
-        style={{ borderColor: color }}
+        my={16}
         overflowX="hidden"
         overflowY="hidden"
+        transform
+        transitionDuration={300}
+        translateX={{ hover: 2 }}
+        translateY={{ hover: -2 }}
+        style={{
+          borderColor: color,
+          // @ts-expect-error
+          '--shadow-md': `-8px 8px 0 0 ${color}`,
+        }}
+        boxShadow={{
+          hover: true,
+        }}
       >
         <Flex align="center" justify="center" w={60} borderR={2} style={{ color, borderColor: color }}>
           <Icon icon={icon} size="6x" />
         </Flex>
 
-        <Box flex={1} px={24} my="auto" pos="relative">
+        <Flex direction="col" justify="center" flex={1} px={24} my="auto" pos="relative" h="full">
           <Box color="muted" fontSize="lg" textTransform="uppercase">
             {title}
           </Box>
 
           <Box fontSize="2xl">{description}</Box>
 
-          <Box pos="absolute" style={{ backgroundColor: color }} />
-        </Box>
+          <Box
+            pos="absolute"
+            style={{
+              backgroundColor: `${color}33`,
+              clipPath: 'polygon(87% 57%, 0% 100%, 100% 100%)',
+              height: '100%',
+              width: '50%',
+            }}
+          />
+
+          <Box
+            pos="absolute"
+            style={{
+              backgroundColor: `${color}33`,
+              clipPath: 'polygon(87% 57%, 0% 100%, 100% 100%)',
+              height: '100%',
+              width: '50%',
+              transform: 'rotate(45deg)',
+            }}
+          />
+        </Flex>
       </Flex>
     </Link>
   );
 };
 
-const GettingStartedCard = ({
-  href,
-  icon,
-  color,
-  title,
-}: {
+const GettingStartedCard: React.FC<{
   href: string;
   color: BackgroundColorVals;
   icon: IIconProps['icon'];
   title: string;
-}) => {
+}> = ({ href, icon, color, title, children }) => {
   return (
     <Link href={href} passHref>
       <Flex
         as="a"
         align="center"
+        pos="relative"
         flexDirection="col"
         justify="around"
         h={60}
         p={8}
         rounded="lg"
-        boxShadow={{ hover: 'lg' }}
-        w="full"
-        style={{ maxWidth: 375, minWidth: 300 }}
         // @ts-expect-error
         color={{ default: `on-${color}`, hover: `on-${color}` }}
         bg={color}
+        transform
+        transitionDuration={300}
+        translateX={{ hover: 2 }}
+        translateY={{ hover: -2 }}
+        style={{
+          width: '350px',
+          // @ts-expect-error
+          '--shadow-md': `-8px 8px 0 0 var(--color-text)`,
+        }}
+        boxShadow={{
+          hover: true,
+        }}
       >
         <Box>
           <Icon icon={icon} size="6x" />
@@ -237,6 +305,8 @@ const GettingStartedCard = ({
         <Box fontWeight="semibold" fontSize="2xl" mt={4} textAlign="center">
           {title}
         </Box>
+
+        {children}
       </Flex>
     </Link>
   );
