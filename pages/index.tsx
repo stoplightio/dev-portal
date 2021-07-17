@@ -179,7 +179,7 @@ const ExploreCard = ({
   description: string;
 }) => {
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref prefetch={false}>
       <Flex
         as="a"
         border={2}
@@ -220,7 +220,7 @@ const GettingStartedCard = ({
   title: string;
 }) => {
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref prefetch={false}>
       <Flex
         as="a"
         align="center"

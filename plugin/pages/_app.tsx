@@ -32,7 +32,7 @@ const GlobalProgressBar = dynamic(() => import('../components/GlobalProgressBar'
 const NextMosaicLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement>>(
   function NextMosaicLink({ href, ...props }, ref) {
     return (
-      <Link href={href || ''}>
+      <Link href={href || ''} prefetch={false}>
         <a {...props} ref={ref} />
       </Link>
     );

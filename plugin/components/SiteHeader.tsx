@@ -176,10 +176,11 @@ function SiteHeaderItems({ items, hideSearch }: { items?: SiteHeaderItem[]; hide
 
     if (!hideSearch && isSiteHeaderSearch(item)) {
       return (
-        <Search
-          key={key}
-          renderTrigger={({ open }) => <Input onClick={open} placeholder={item.placeholder || 'Search...'} />}
-        />
+        <NoSsr key={key}>
+          <Search
+            renderTrigger={({ open }) => <Input onClick={open} placeholder={item.placeholder || 'Search...'} />}
+          />
+        </NoSsr>
       );
     }
 

@@ -21,6 +21,7 @@ export const NodeLink: CustomLinkComponent = ({ className, to, children, hash })
         },
         hash,
       }}
+      prefetch={false}
       passHref
     >
       <Box as="a" {...prefetchProps} textDecoration="no-underline" className={className}>
