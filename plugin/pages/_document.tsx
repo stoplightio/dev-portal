@@ -7,7 +7,7 @@ import { DevPortalConfig } from '../utils/config';
 export type Constructor<T = object, S = object> = (new (...input: any[]) => T) & S;
 
 export function withDevPortalDocument<P = {}, Base extends Constructor<Document<P>, typeof Document> = typeof Document>(
-  config?: DevPortalConfig,
+  _config?: DevPortalConfig,
   BaseDocument?: Base,
 ): Base {
   // @ts-expect-error
