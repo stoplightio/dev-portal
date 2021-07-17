@@ -14,12 +14,11 @@ import {
 } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useContext } from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
+import { useConfig } from '../hooks/useConfig';
 import { MAX_CONTENT_WIDTH } from '../utils/constants';
 import {
-  DevPortalContext,
   isSiteHeaderLink,
   isSiteHeaderMenu,
   isSiteHeaderProjectLink,
@@ -93,8 +92,10 @@ const siteHeaderMenuLink = ({
   };
 };
 
-const SiteHeader = React.memo(({ hideSearch }: { hideSearch?: boolean }) => {
-  const { siteHeader = {}, theme } = useContext(DevPortalContext);
+export type SiteHeaderProps = { hideSearch?: boolean };
+
+export const SiteHeader = React.memo(({ hideSearch }: SiteHeaderProps) => {
+  const { siteHeader = {}, theme } = useConfig();
 
   console.info('SiteHeader.render');
 
@@ -118,7 +119,7 @@ const SiteHeader = React.memo(({ hideSearch }: { hideSearch?: boolean }) => {
 });
 
 function SiteHeaderItems({ items, hideSearch }: { items?: SiteHeaderItem[]; hideSearch?: boolean }) {
-  const { projects = {} } = useContext(DevPortalContext);
+  const { projects = {} } = useConfig();
   const router = useRouter();
   const currentPath = router.asPath;
 
@@ -195,5 +196,3 @@ function SiteHeaderItems({ items, hideSearch }: { items?: SiteHeaderItem[]; hide
 
   return <>{itemElems}</>;
 }
-
-export default SiteHeader;

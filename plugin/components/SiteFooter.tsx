@@ -1,14 +1,16 @@
 import { Box, Flex, HStack, Icon, IIconProps, Link, VStack } from '@stoplight/mosaic';
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { DevPortalContext } from './Provider';
+import { useConfig } from '../hooks/useConfig';
 import { Status } from './Status';
 
-export const Footer = () => {
+export type SiteFooterProps = {};
+
+export const SiteFooter = (_props: SiteFooterProps) => {
   // @ts-expect-error: mosaic doesn't yet support `fak` (custom kit icons)
   const logo = <Icon icon={['fak', 'stoplight']} size="2x" />;
 
-  const { siteFooter, social } = useContext(DevPortalContext);
+  const { siteFooter, social } = useConfig();
 
   const resourceElems = siteFooter?.resources?.map((r, key) => {
     return (

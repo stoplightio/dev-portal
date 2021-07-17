@@ -8,9 +8,11 @@ import { DefaultSeo } from 'next-seo';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { DevPortalProvider as DevPortalProvider2 } from '../components/Provider';
+import { CustomComponents, DevPortalConfig, DevPortalProvider as DevPortalProvider2 } from '../components/Provider';
 import SEO from '../next-seo.config';
 import { BasePageProps } from './types';
+
+type DevPortalAppProps = AppProps;
 
 if (process.browser) {
   subscribeTheme();
@@ -39,56 +41,52 @@ const NextMosaicLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttri
   },
 );
 
-type DevPortalAppProps = AppProps;
+export function withDevPortalApp(_config: DevPortalConfig, customComponents?: CustomComponents) {
+  return function App({ Component, pageProps: _pageProps }: DevPortalAppProps) {
+    const pageProps: BasePageProps = _pageProps;
+    const devPortalConfig = Object.assign({}, _config, pageProps.config || {});
 
-export function withDevPortalApp(): React.FC<DevPortalAppProps> {
-  return App;
-}
+    /** Keep an eye out for full remounts, we want to minimize those */
+    React.useEffect(() => console.info('App.mount'), []);
 
-function App({ Component, pageProps: _pageProps }: AppProps) {
-  const pageProps: BasePageProps = _pageProps;
-  const devPortalConfig = pageProps.config || {};
+    // @ts-expect-error
+    const getLayout = Component.getLayout || (page => page);
 
-  /** Keep an eye out for full remounts, we want to minimize those */
-  React.useEffect(() => console.info('App.mount'), []);
+    // Use light icons by default (in areas where specific icon set is not requested)
+    // https://mosaic.vercel.app/docs/media/icon#changing-the-default-icon-style
+    const setDefaultStyle = useIconStore(ic => ic.setDefaultStyle);
+    const defaultIconStyle = devPortalConfig.fontAwesome?.defaultIconStyle;
+    React.useEffect(() => {
+      if (defaultIconStyle) {
+        setDefaultStyle(defaultIconStyle);
+      }
+    }, [setDefaultStyle, defaultIconStyle]);
 
-  // @ts-expect-error
-  const getLayout = Component.getLayout || (page => page);
+    return (
+      <>
+        <Head>
+          <meta content="width=device-width, initial-scale=1" name="viewport" />
+        </Head>
 
-  // Use light icons by default (in areas where specific icon set is not requested)
-  // https://mosaic.vercel.app/docs/media/icon#changing-the-default-icon-style
-  const setDefaultStyle = useIconStore(ic => ic.setDefaultStyle);
-  const defaultIconStyle = devPortalConfig.fontAwesome?.defaultIconStyle;
-  React.useEffect(() => {
-    if (defaultIconStyle) {
-      setDefaultStyle(defaultIconStyle);
-    }
-  }, [setDefaultStyle, defaultIconStyle]);
+        <DefaultSeo {...SEO} />
 
-  return (
-    <>
-      <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </Head>
+        <DevPortalProvider2 {...devPortalConfig} customComponents={customComponents}>
+          <QueryClientProvider client={queryClient}>
+            <DevPortalProvider>
+              <MosaicProvider
+                style={{ minHeight: '100vh' }}
+                componentOverrides={{
+                  Link: NextMosaicLink,
+                }}
+              >
+                {getLayout(<Component {...(pageProps as any)}></Component>, pageProps)}
+              </MosaicProvider>
+            </DevPortalProvider>
+          </QueryClientProvider>
+        </DevPortalProvider2>
 
-      <DefaultSeo {...SEO} />
-
-      <DevPortalProvider2 {...devPortalConfig}>
-        <QueryClientProvider client={queryClient}>
-          <DevPortalProvider>
-            <MosaicProvider
-              style={{ minHeight: '100vh' }}
-              componentOverrides={{
-                Link: NextMosaicLink,
-              }}
-            >
-              {getLayout(<Component {...(pageProps as any)}></Component>, pageProps)}
-            </MosaicProvider>
-          </DevPortalProvider>
-        </QueryClientProvider>
-      </DevPortalProvider2>
-
-      <GlobalProgressBar />
-    </>
-  );
+        <GlobalProgressBar />
+      </>
+    );
+  };
 }

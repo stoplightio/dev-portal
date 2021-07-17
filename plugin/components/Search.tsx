@@ -3,10 +3,9 @@ import { NodeSearchResult } from '@stoplight/elements-dev-portal/types';
 import { useModalState } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useContext } from 'react';
 
+import { useConfig } from '../hooks/useConfig';
 import { getProjectIds, getProjectSlugFromId } from '../utils/config';
-import { DevPortalContext } from './Provider';
 
 export const Search = ({ renderTrigger }: { renderTrigger: (props: { open: () => void }) => JSX.Element }) => {
   const { isOpen, open, close } = useModalState();
@@ -22,7 +21,7 @@ export const Search = ({ renderTrigger }: { renderTrigger: (props: { open: () =>
 export function SearchDialog({ close }: { close: () => void }) {
   const router = useRouter();
   const [search, setSearch] = React.useState('');
-  const { workspaceId = 'DOES_NOT_EXIST', projects } = useContext(DevPortalContext);
+  const { workspaceId = 'DOES_NOT_EXIST', projects } = useConfig();
   const { data } = useGetNodes({
     search,
     projectIds: getProjectIds(projects),

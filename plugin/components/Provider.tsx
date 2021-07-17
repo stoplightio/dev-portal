@@ -1,6 +1,9 @@
 import { IIconProps } from '@stoplight/mosaic';
 import * as React from 'react';
 
+import type { SiteFooterProps } from './SiteFooter';
+import type { SiteHeaderProps } from './SiteHeader';
+
 type SiteHeaderLink = {
   href: string;
   title?: string;
@@ -37,7 +40,7 @@ export type SiteHeaderItem =
   | SiteHeaderSearch
   | SiteHeaderThemeSwitcher;
 
-type DevPortalSiteHeader = {
+export type DevPortalSiteHeader = {
   left?: SiteHeaderItem[];
   middle?: SiteHeaderItem[];
   right?: SiteHeaderItem[];
@@ -53,7 +56,7 @@ type SiteFooterLink = {
   icon?: IIconProps['icon'];
 };
 
-type DevPortalSiteFooter = {
+export type DevPortalSiteFooter = {
   resources?: SiteFooterLink[];
   copyright?: string;
 };
@@ -73,7 +76,12 @@ type FontAwesomeConfig = {
   defaultIconStyle?: 'fas' | 'far' | 'fal' | 'fad';
 };
 
-export type DevPortalProviderProps = {
+export type CustomComponents = {
+  siteHeader?: React.ComponentType<SiteHeaderProps>;
+  siteFooter?: React.ComponentType<SiteFooterProps>;
+};
+
+export type DevPortalConfig = {
   platformUrl?: string;
   workspaceId?: string;
   projects?: Record<string, DevPortalProject>;
@@ -90,6 +98,10 @@ export type DevPortalProviderProps = {
     linkedIn?: string;
     rss?: string;
   };
+};
+
+export type DevPortalProviderProps = DevPortalConfig & {
+  customComponents?: CustomComponents;
 };
 
 export function isSiteHeaderLink(item: SiteHeaderItem): item is SiteHeaderLink {

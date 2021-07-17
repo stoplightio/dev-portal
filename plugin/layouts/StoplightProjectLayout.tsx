@@ -9,11 +9,10 @@ import {
 import { Box, Flex } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useContext } from 'react';
 
-import { Footer } from '../components/Footer';
 import { NodeLink } from '../components/NodeLink';
-import { DevPortalContext } from '../components/Provider';
+import { SiteFooter } from '../components/SiteFooter';
+import { useConfig } from '../hooks/useConfig';
 import { getProjectIdFromSlug } from '../utils/config';
 import { MAX_CONTENT_WIDTH, MIN_SIDEBAR_WIDTH } from '../utils/constants';
 import { getNodeIdFromSlug } from '../utils/projects';
@@ -30,10 +29,12 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
   React.useEffect(() => console.info('StoplightProjectLayout.mount'), []);
   const { children, projectSlug, branchSlug, nodeSlug } = props;
 
-  const { theme, projects = {} } = useContext(DevPortalContext);
+  const { theme, projects = {}, customComponents } = useConfig();
   const router = useRouter();
   const activeId = nodeSlug ? getNodeIdFromSlug(nodeSlug) : undefined;
   const projectId = getProjectIdFromSlug(projectSlug, projects) || '';
+
+  const FooterImpl = customComponents?.siteFooter || SiteFooter;
 
   const maxContentWidth = theme?.maxContentWidth || MAX_CONTENT_WIDTH;
   const minSidebarWidth = theme?.minSidebarWidth || MIN_SIDEBAR_WIDTH;
@@ -132,7 +133,7 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
               maxWidth: maxContentWidthVal,
             }}
           >
-            <Footer />
+            <FooterImpl />
           </Box>
         </Flex>
       </Flex>

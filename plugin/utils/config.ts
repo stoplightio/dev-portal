@@ -1,6 +1,5 @@
-import { DevPortalProviderProps } from '../components/Provider';
+import { DevPortalConfig } from '../components/Provider';
 
-export type DevPortalConfig = DevPortalProviderProps;
 export type LoadableDevPortalConfig = DevPortalConfig | (() => Promise<DevPortalConfig>);
 
 export const resolveConfig = async (config: LoadableDevPortalConfig): Promise<DevPortalConfig> => {

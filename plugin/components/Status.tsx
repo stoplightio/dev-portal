@@ -1,11 +1,11 @@
 import { Box, Flex, Icon } from '@stoplight/mosaic';
-import React, { useContext } from 'react';
+import React from 'react';
 
+import { useConfig } from '../hooks/useConfig';
 import { useStatus } from '../hooks/useStatus';
-import { DevPortalContext } from './Provider';
 
 export const Status = () => {
-  const { statusPage } = useContext(DevPortalContext);
+  const { statusPage } = useConfig();
   const url = statusPage?.url;
   const status = useStatus(url);
 

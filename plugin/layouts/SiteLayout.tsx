@@ -2,7 +2,8 @@ import { Flex } from '@stoplight/mosaic';
 import * as React from 'react';
 
 import { SEO } from '../components/SEO';
-import SiteHeader from '../components/SiteHeader';
+import { SiteHeader } from '../components/SiteHeader';
+import { useConfig } from '../hooks/useConfig';
 
 interface SiteLayoutProps {
   title?: string;
@@ -16,10 +17,14 @@ export function SiteLayout(props: SiteLayoutProps) {
 
   React.useEffect(() => console.info('SiteLayout.mount'), []);
 
+  const { customComponents } = useConfig();
+
+  const HeaderImpl = customComponents?.siteHeader || SiteHeader;
+
   return (
     <>
       <Flex direction="col" minH="screen">
-        <SiteHeader hideSearch={hideSearch} />
+        <HeaderImpl hideSearch={hideSearch} />
 
         {children}
       </Flex>
