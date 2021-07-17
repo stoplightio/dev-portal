@@ -29,6 +29,11 @@ export const config: DevPortalConfig = {
     rss: 'https://stoplight.io/rss/index.xml',
   },
 
+  fontAwesome: {
+    kitCode: '112906ba2e',
+    defaultIconStyle: 'fal',
+  },
+
   siteHeader: {
     left: [
       {

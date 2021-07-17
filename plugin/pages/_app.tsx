@@ -47,6 +47,7 @@ export function withDevPortalApp(): React.FC<DevPortalAppProps> {
 
 function App({ Component, pageProps: _pageProps }: AppProps) {
   const pageProps: BasePageProps = _pageProps;
+  const devPortalConfig = pageProps.config || {};
 
   /** Keep an eye out for full remounts, we want to minimize those */
   React.useEffect(() => console.info('App.mount'), []);
@@ -57,9 +58,12 @@ function App({ Component, pageProps: _pageProps }: AppProps) {
   // Use light icons by default (in areas where specific icon set is not requested)
   // https://mosaic.vercel.app/docs/media/icon#changing-the-default-icon-style
   const setDefaultStyle = useIconStore(ic => ic.setDefaultStyle);
+  const defaultIconStyle = devPortalConfig.fontAwesome?.defaultIconStyle;
   React.useEffect(() => {
-    setDefaultStyle('fal');
-  }, [setDefaultStyle]);
+    if (defaultIconStyle) {
+      setDefaultStyle(defaultIconStyle);
+    }
+  }, [setDefaultStyle, defaultIconStyle]);
 
   return (
     <>
@@ -69,7 +73,7 @@ function App({ Component, pageProps: _pageProps }: AppProps) {
 
       <DefaultSeo {...SEO} />
 
-      <DevPortalProvider2 {...pageProps.config}>
+      <DevPortalProvider2 {...devPortalConfig}>
         <QueryClientProvider client={queryClient}>
           <DevPortalProvider>
             <MosaicProvider

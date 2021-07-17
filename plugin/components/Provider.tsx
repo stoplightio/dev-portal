@@ -68,11 +68,17 @@ type DevPortalTheme = {
   minSidebarWidth?: number;
 };
 
+type FontAwesomeConfig = {
+  kitCode: string;
+  defaultIconStyle?: 'fas' | 'far' | 'fal' | 'fad';
+};
+
 export type DevPortalProviderProps = {
   platformUrl?: string;
   workspaceId?: string;
   projects?: Record<string, DevPortalProject>;
   statusPage?: StatusPageConfig;
+  fontAwesome?: FontAwesomeConfig;
   siteHeader?: DevPortalSiteHeader;
   siteFooter?: DevPortalSiteFooter;
   theme?: DevPortalTheme;

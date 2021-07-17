@@ -7,7 +7,7 @@ import { DevPortalConfig } from '../utils/config';
 export type Constructor<T = object, S = object> = (new (...input: any[]) => T) & S;
 
 export function withDevPortalDocument<P = {}, Base extends Constructor<Document<P>, typeof Document> = typeof Document>(
-  _config?: DevPortalConfig,
+  config: DevPortalConfig,
   BaseDocument?: Base,
 ): Base {
   // @ts-expect-error
@@ -29,7 +29,7 @@ export function withDevPortalDocument<P = {}, Base extends Constructor<Document<
             />
 
             <script
-              src="https://kit.fontawesome.com/112906ba2e.js"
+              src={`https://kit.fontawesome.com/${config.fontAwesome?.kitCode}.js`}
               crossOrigin="anonymous"
               data-auto-replace-svg="nest"
             ></script>
