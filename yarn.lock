@@ -768,10 +768,10 @@
     "@react-types/overlays" "^3.4.0"
     "@react-types/shared" "^3.4.0"
 
-"@stoplight/elements-core@~7.1.6":
-  version "7.1.6"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.1.6.tgz#994dc34274f045d80917bcb5d22aa76494d662d2"
-  integrity sha512-hpu/D/D65QyfYVdJ32ZZuMSxDmU5qPA4q/GKZ1JkA3y407HEUMi5/vKqZT6zVfD6NbjtX4wwhXYLH4TWa9AfAw==
+"@stoplight/elements-core@~7.1.7", "@stoplight/elements-core@~7.1.8":
+  version "7.1.8"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-core/-/elements-core-7.1.8.tgz#902e7e7dbf1204498dd217924b6f2696c7ae75c3"
+  integrity sha512-8III85mD/aD5W4xy0M2SGqqFITpMbU2FGFbDECbqVIGKgHqvIMVlQkuEUQBjeVg6XaHswDzEA8lrQnXvbCbncA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.31"
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
@@ -807,13 +807,13 @@
     urijs "^1.19.6"
     util "^0.12.4"
 
-"@stoplight/elements-dev-portal@~1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements-dev-portal/-/elements-dev-portal-1.0.6.tgz#b160a72e80acc1c50c9aae4ffb6e2dfa553de2d3"
-  integrity sha512-V0IaLdPmzgvkf20Np/5ie1Q07L0Lk7NWCWycgdASKBcbbZ/e/3LWSG+hCy2txUtRH4tsr3gUnvawaoSpvOUzPA==
+"@stoplight/elements-dev-portal@~1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements-dev-portal/-/elements-dev-portal-1.0.8.tgz#7747af279d687c1d3a66c3d9207e5d92751e803e"
+  integrity sha512-dp8JtRszKmN7EZQZFPAlGvqtKfNiFhhEdgb0ETigURxKO54oOIE/TF2V85qpcR1teRwMuUdqGWcXWHalQI7drA==
   dependencies:
     "@fortawesome/free-solid-svg-icons" "^5.10.2"
-    "@stoplight/elements-core" "~7.1.6"
+    "@stoplight/elements-core" "~7.1.8"
     "@stoplight/markdown-viewer" "^5.1.0"
     "@stoplight/mosaic" "^1"
     "@stoplight/path" "^1.3.2"
@@ -824,15 +824,15 @@
     react-router-dom "^5.2.0"
     use-debounce "^6.0.1"
 
-"@stoplight/elements@~7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.0.4.tgz#749248a81f35a069311e9019e5ce5bce017542b0"
-  integrity sha512-BPdDCqyehYK8m94ehSC7Eb8ragwSdQJpTzz/a2P14mOxqz0LVf4bUkyenqO/OrLMjV22M36zL8G1U+hT7TfA4w==
+"@stoplight/elements@~7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@stoplight/elements/-/elements-7.0.5.tgz#294af1dfb42c992f0c6a00c96255d3fc35582e45"
+  integrity sha512-gSNPPHfwb0r0Ni8C0sCE7GAysJXZ5JOF5aZEa2ofzDvA/uhEGnno6owFbH5zqOQDIj6ELwZUPduxN4suSfEQzQ==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.31"
     "@fortawesome/free-solid-svg-icons" "^5.14.0"
     "@fortawesome/react-fontawesome" "^0.1.11"
-    "@stoplight/elements-core" "~7.1.6"
+    "@stoplight/elements-core" "~7.1.7"
     "@stoplight/http-spec" "^4.0.1"
     "@stoplight/json" "^3.10.0"
     "@stoplight/mosaic" "^1"
@@ -1195,10 +1195,10 @@
   resolved "https://registry.yarnpkg.com/@types/mdurl/-/mdurl-1.0.2.tgz#e2ce9d83a613bacf284c7be7d491945e39e1f8e9"
   integrity sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==
 
-"@types/node@*", "@types/node@^16.3.2":
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.3.2.tgz#655432817f83b51ac869c2d51dd8305fb8342e16"
-  integrity sha512-jJs9ErFLP403I+hMLGnqDRWT0RYKSvArxuBVh2veudHV7ifEC1WAmjJADacZ7mRbA2nWgHtn8xyECMAot0SkAw==
+"@types/node@*", "@types/node@^16.3.3":
+  version "16.3.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.3.3.tgz#0c30adff37bbbc7a50eb9b58fae2a504d0d88038"
+  integrity sha512-8h7k1YgQKxKXWckzFCMfsIwn0Y61UK6tlD6y2lOb3hTOIMlK3t9/QwHOhc81TwU+RMf0As5fj7NPjroERCnejQ==
 
 "@types/nprogress@^0.2.0":
   version "0.2.0"
@@ -5014,10 +5014,10 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-query@^3.15.2, react-query@^3.18.1:
-  version "3.18.1"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.18.1.tgz#893b5475a7b4add099e007105317446f7a2cd310"
-  integrity sha512-17lv3pQxU9n+cB5acUv0/cxNTjo9q8G+RsedC6Ax4V9D8xEM7Q5xf9xAbCPdEhDrrnzPjTls9fQEABKRSi7OJA==
+react-query@^3.15.2, react-query@^3.19.0:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.19.0.tgz#e1fe8f62b9956fb2986317686c27f79ad7ee4e7e"
+  integrity sha512-AaerSVsmBG2iIciwX2x8cWZS4Htw/4u2GFTYK8oiicpX3PY5mvat/8/Y3wZhM47KlllAzvC+P9MW81oHuEt2wg==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"

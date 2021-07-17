@@ -14,8 +14,8 @@
     "deduplicate": "yarn-deduplicate --strategy fewer && yarn"
   },
   "dependencies": {
-    "@stoplight/elements": "~7.0.4",
-    "@stoplight/elements-dev-portal": "~1.0.6",
+    "@stoplight/elements": "~7.0.5",
+    "@stoplight/elements-dev-portal": "~1.0.8",
     "@stoplight/mosaic": "1.2.0",
     "framer-motion": "^4.1.17",
     "jsdom": "^16.6.0",
@@ -25,13 +25,13 @@
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-query": "^3.18.1",
+    "react-query": "^3.19.0",
     "use-debounce": "^7.0.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^11.0.1",
     "@stoplight/eslint-config": "^2.1.0",
-    "@types/node": "^16.3.2",
+    "@types/node": "^16.3.3",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",

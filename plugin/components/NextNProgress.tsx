@@ -41,7 +41,9 @@ export class NextNProgress extends React.Component<INextNProgressProps> {
   };
 
   routeChangeEnd = () => {
+    // @ts-expect-error
     clearTimeout(this.startTimer);
+    // @ts-expect-error
     clearTimeout(this.endTimer);
     if (!this.started) return;
     this.started = false;

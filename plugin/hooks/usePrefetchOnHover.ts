@@ -5,6 +5,7 @@ export const usePrefetchOnHover = (url: string) => {
   const { prefetch } = useRouter();
 
   const doPrefetch = useCallback(() => {
+    console.debug('usePrefetchOnHover', url);
     prefetch(url);
   }, [prefetch, url]);
 

@@ -14,8 +14,8 @@ type Status = {
   description: string;
 };
 
-export const useStatus = (): Status => {
-  const { data } = useQuery<{ status: Status }>('https://status.stoplight.io/api/v2/status.json');
+export const useStatus = (url?: string): Status => {
+  const { data } = useQuery<{ status: Status }>(`${url}/api/v2/status.json`, { enabled: !!url });
 
   const indicator = data?.status?.indicator || 'none';
 

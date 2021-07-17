@@ -1,7 +1,7 @@
 import React from 'react';
 
 export class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = { hasError: false };
   }
@@ -11,7 +11,7 @@ export class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: any, errorInfo: any) {
     // eslint-disable-next-line no-console
     console.error('React error boundary', { error, errorInfo });
   }

@@ -1,10 +1,15 @@
+import { CustomLinkComponent } from '@stoplight/elements-core';
 import { Box } from '@stoplight/mosaic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-export const NodeLink = ({ className, to, children, hash }) => {
+import { usePrefetchOnHover } from '../hooks';
+
+export const NodeLink: CustomLinkComponent = ({ className, to, children, hash }) => {
   const router = useRouter();
+
+  const prefetchProps = usePrefetchOnHover(to);
 
   return (
     <Link
@@ -18,7 +23,7 @@ export const NodeLink = ({ className, to, children, hash }) => {
       }}
       passHref
     >
-      <Box as="a" textDecoration="no-underline" className={className}>
+      <Box as="a" {...prefetchProps} textDecoration="no-underline" className={className}>
         {children}
       </Box>
     </Link>

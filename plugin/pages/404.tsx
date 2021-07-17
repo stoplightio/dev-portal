@@ -11,6 +11,6 @@ const NotFoundPage = () => (
   </>
 );
 
-NotFoundPage.getLayout = page => <SiteLayout>{page}</SiteLayout>;
+NotFoundPage.getLayout = (page: React.ReactNode) => <SiteLayout>{page}</SiteLayout>;
 
 export default NotFoundPage;

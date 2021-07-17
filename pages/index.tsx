@@ -9,22 +9,28 @@ import {
   IIconProps,
   VStack,
 } from '@stoplight/mosaic';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import React from 'react';
 
-import { Footer } from '../components/Footer';
-import { Search } from '../components/Search';
-import { getLayout } from '../layouts/SiteLayout';
+import { BasePageProps } from '../plugin';
+import { Footer } from '../plugin/components/Footer';
+import { Search } from '../plugin/components/Search';
+import { getLayout } from '../plugin/layouts/SiteLayout';
+import { config } from '../stoplight.config';
 
-export const getStaticProps = () => {
+type PageProps = BasePageProps & {};
+
+export const getStaticProps: GetStaticProps<PageProps> = () => {
   return {
     props: {
       hideSearch: true,
+      config,
     },
   };
 };
 
-const IndexPage = () => (
+const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => (
   <Box>
     <Box bg="primary" color="on-primary" pb={24} pt={20}>
       <Heading textAlign="center" size={1}>
