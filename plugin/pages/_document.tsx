@@ -2,7 +2,7 @@ import { Box, InitTheme, InlineStyles } from '@stoplight/mosaic';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 
-import { DevPortalConfig } from '../utils/config';
+import { DevPortalConfig } from '../components/Provider';
 
 export type Constructor<T = object, S = object> = (new (...input: any[]) => T) & S;
 
