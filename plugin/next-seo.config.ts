@@ -1,4 +1,6 @@
-export default {
+import { DefaultSeoProps } from 'next-seo';
+
+const SEO: DefaultSeoProps = {
   titleTemplate: '%s | Stoplight Docs',
   openGraph: {
     type: 'website',
@@ -12,3 +14,5 @@ export default {
     cardType: 'summary_large_image',
   },
 };
+
+export default SEO;

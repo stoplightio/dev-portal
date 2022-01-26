@@ -6,3 +6,4 @@ coverage
 .yalc
 .yarn
 .cache
+.next

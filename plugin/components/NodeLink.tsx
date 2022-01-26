@@ -6,7 +6,7 @@ import React from 'react';
 
 import { usePrefetchOnHover } from '../hooks';
 
-export const NodeLink: CustomLinkComponent = ({ className, to, children, hash }) => {
+export const NodeLink: CustomLinkComponent = ({ className, to, children }) => {
   const router = useRouter();
 
   const prefetchProps = usePrefetchOnHover(to);
@@ -19,7 +19,6 @@ export const NodeLink: CustomLinkComponent = ({ className, to, children, hash })
           ...router.query,
           nodeSlug: to,
         },
-        hash,
       }}
       prefetch={false}
       passHref

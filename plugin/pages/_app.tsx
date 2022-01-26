@@ -6,7 +6,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { DefaultSeo } from 'next-seo';
 import * as React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { CustomComponents, DevPortalConfig, DevPortalProvider as DevPortalProvider2 } from '../components/Provider';
 import SEO from '../next-seo.config';
@@ -17,14 +16,6 @@ type DevPortalAppProps = AppProps;
 if (process.browser) {
   subscribeTheme();
 }
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60,
-    },
-  },
-});
 
 // @ts-expect-error
 const GlobalProgressBar = dynamic(() => import('../components/GlobalProgressBar').then(mod => mod.GlobalProgressBar), {
@@ -71,18 +62,16 @@ export function withDevPortalApp(_config: DevPortalConfig, customComponents?: Cu
         <DefaultSeo {...SEO} />
 
         <DevPortalProvider2 {...devPortalConfig} customComponents={customComponents}>
-          <QueryClientProvider client={queryClient}>
-            <DevPortalProvider>
-              <MosaicProvider
-                style={{ minHeight: '100vh' }}
-                componentOverrides={{
-                  Link: NextMosaicLink,
-                }}
-              >
-                {getLayout(<Component {...(pageProps as any)}></Component>, pageProps)}
-              </MosaicProvider>
-            </DevPortalProvider>
-          </QueryClientProvider>
+          <DevPortalProvider>
+            <MosaicProvider
+              style={{ minHeight: '100vh' }}
+              componentOverrides={{
+                Link: NextMosaicLink,
+              }}
+            >
+              {getLayout(<Component {...(pageProps as any)} />, pageProps)}
+            </MosaicProvider>
+          </DevPortalProvider>
         </DevPortalProvider2>
 
         <GlobalProgressBar />

@@ -1,4 +1,4 @@
-import { findFirstNode } from '@stoplight/elements-core/components/MosaicTableOfContents/utils';
+import { findFirstNode } from '@stoplight/elements-core';
 import {
   Branch,
   BranchSelector,

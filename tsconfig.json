@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -16,7 +17,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "esnext",
-    "strict": true
+    "strict": true,
+    "incremental": true
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]

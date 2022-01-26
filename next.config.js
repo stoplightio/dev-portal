@@ -3,9 +3,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const defaultConfig = {
-  target: process.env.VERCEL ? 'experimental-serverless-trace' : 'server',
-
   reactStrictMode: process.env.NODE_ENV !== 'production',
 };
 

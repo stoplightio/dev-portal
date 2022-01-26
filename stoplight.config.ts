@@ -1,8 +1,8 @@
 import { DevPortalConfig } from './plugin';
 
 export const config: DevPortalConfig = {
-  // This is marbemac.stoplight.io
-  workspaceId: 'd2s6OA',
+  // This is meta.stoplight.io
+  workspaceId: 'd2s6NA',
 
   statusPage: {
     url: 'https://status.stoplight.io',
@@ -14,12 +14,13 @@ export const config: DevPortalConfig = {
   },
 
   projects: {
-    platform: { id: 'cHJqOjczODI1', route: '/docs/platform' },
-    elements: { id: 'cHJqOjczODI0', route: '/docs/elements' },
-    prism: { id: 'cHJqOjE1', route: '/docs/prism' },
-    spectral: { id: 'cHJqOjE0', route: '/docs/spectral' },
-    api: { id: 'cHJqOjU', route: '/docs/api' },
-    'studio-demo': { id: 'cHJqOjczODIy', route: '/docs/studio-demo' },
+    platform: { id: 'cHJqOjI', route: '/docs/platform' },
+    changelog: { id: 'cHJqOjQ4Njc3', route: '/docs/changelog' },
+    elements: { id: 'cHJqOjQxODY', route: '/docs/elements' },
+    prism: { id: 'cHJqOjM', route: '/docs/prism' },
+    spectral: { id: 'cHJqOjQ', route: '/docs/spectral' },
+    studio: { id: 'cHJqOjU', route: '/docs/studio' },
+    api: { id: 'cHJqOjExMDM2Mg', route: '/docs/api' },
   },
 
   social: {
@@ -49,23 +50,17 @@ export const config: DevPortalConfig = {
       },
 
       {
-        title: 'Guides',
-        href: '/docs/guides',
+        title: 'Changelog',
+        href: '/docs/changelog',
       },
 
       {
         title: 'Reference',
         children: [
           {
-            title: 'Styleguides with Spectral',
-            project: 'spectral',
-            icon: ['fal', 'clipboard-list-check'],
-          },
-
-          {
-            title: 'Mock with Prism',
-            project: 'prism',
-            icon: ['fal', 'server'],
+            title: 'Design with Studio',
+            project: 'studio',
+            icon: ['fal', 'drafting-compass'],
           },
 
           {
@@ -75,15 +70,21 @@ export const config: DevPortalConfig = {
           },
 
           {
-            title: 'Stoplight API',
-            project: 'api',
-            icon: ['fal', 'bolt'],
+            title: 'Mock with Prism',
+            project: 'prism',
+            icon: ['fal', 'server'],
           },
 
           {
-            title: 'Studio Demo',
-            project: 'studio-demo',
-            icon: ['fal', 'paint-brush'],
+            title: 'Styleguides with Spectral',
+            project: 'spectral',
+            icon: ['fal', 'clipboard-list-check'],
+          },
+
+          {
+            title: 'Stoplight API',
+            project: 'api',
+            icon: ['fal', 'brackets-curly'],
           },
         ],
       },
