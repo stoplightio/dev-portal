@@ -1,0 +1,38 @@
+import type { TAlignContent, TAlignItems, TAlignSelf, TFlex, TFlexDirection, TFlexGrow, TFlexShrink, TFlexWrap, TJustifyContent, TJustifyItems, TJustifySelf } from '../types/tailwind';
+import { ChopPrefix } from '../types/twind';
+import { WithPseudo } from './pseudo';
+import { EnhancerFn } from './types';
+export declare type FlexVals = ChopPrefix<'flex', TFlex>;
+export declare type FlexDirectionVals = ChopPrefix<'flex', TFlexDirection>;
+export declare type FlexWrapVals = ChopPrefix<'flex', TFlexWrap, 'wrap'>;
+export declare type FlexGrowVals = ChopPrefix<'grow', TFlexGrow>;
+export declare type FlexShrinkVals = ChopPrefix<'shrink', TFlexShrink>;
+export declare type JustifyContentVals = ChopPrefix<'justify', TJustifyContent>;
+export declare type JustifyItemsVals = ChopPrefix<'justify-items', TJustifyItems>;
+export declare type JustifySelfVals = ChopPrefix<'justify-self', TJustifySelf>;
+export declare type AlignContentVals = ChopPrefix<'content', TAlignContent>;
+export declare type AlignItemsVals = ChopPrefix<'items', TAlignItems>;
+export declare type AlignSelfVals = ChopPrefix<'self', TAlignSelf>;
+export declare type IFlexProps = WithPseudo<{
+    flex?: FlexVals;
+    flexDirection?: FlexDirectionVals;
+    flexWrap?: FlexWrapVals;
+    flexGrow?: FlexGrowVals;
+    flexShrink?: FlexShrinkVals;
+    justifyContent?: JustifyContentVals;
+    justifyItems?: JustifyItemsVals;
+    justifySelf?: JustifySelfVals;
+    alignContent?: AlignContentVals;
+    alignItems?: AlignItemsVals;
+    alignSelf?: AlignSelfVals;
+}>;
+export declare type IFlexShorthandProps = {
+    align?: IFlexProps['alignItems'];
+    justify?: IFlexProps['justifyContent'];
+    wrap?: IFlexProps['flexWrap'];
+    direction?: IFlexProps['flexDirection'];
+    grow?: IFlexProps['flexGrow'];
+    shrink?: IFlexProps['flexShrink'];
+};
+export declare const flexPropNames: Array<keyof IFlexProps>;
+export declare const flexProps: EnhancerFn<IFlexProps>;

@@ -1,0 +1,40 @@
+{
+  "name": "@stoplight/mosaic-code-viewer",
+  "version": "0.0.0",
+  "sideEffects": true,
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": ">= 16.14"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@react-hook/size": "^2.1.2",
+    "@react-hook/window-size": "^3.0.7",
+    "@react-types/button": "3.4.1",
+    "@react-types/radio": "3.1.2",
+    "@react-types/shared": "3.9.0",
+    "@react-types/switch": "3.1.2",
+    "@react-types/textfield": "3.3.0",
+    "@stoplight/mosaic": "0.0.0",
+    "chroma-js": "^2.1.2",
+    "clsx": "^1.1.1",
+    "copy-to-clipboard": "^3.3.1",
+    "dom-helpers": "^3.3.1",
+    "jotai": "^1.4.6",
+    "lodash.get": "^4.4.2",
+    "nano-memoize": "^1.2.1",
+    "prism-react-renderer": "^1.2.1",
+    "prismjs": "^1.25.0",
+    "react-fast-compare": "^3.2.0",
+    "ts-keycode-enum": "^1.0.6",
+    "tslib": "^2.1.0",
+    "twind": "^1.0.0-next.33",
+    "zustand": "^3.6.6"
+  },
+  "main": "./index.umd.js",
+  "module": "./index.esm.js",
+  "typings": "./index.d.ts",
+  "yalcSig": "d480cfa261e4e072d710e1f0132adf44"
+}

@@ -1,0 +1,37 @@
+{
+  "version": "v1",
+  "packages": {
+    "@stoplight/elements-dev-portal": {
+      "signature": "8a98b79903915d17d91444614debb9df",
+      "file": true,
+      "replaced": "~1.6.8"
+    },
+    "@stoplight/elements-core": {
+      "signature": "321a7b4fbdfce271e1a6be27e0e6b1e0",
+      "file": true,
+      "replaced": "~7.5.8"
+    },
+    "@stoplight/elements": {
+      "signature": "aca7bd51d59ccfacfe9f3c4823e0e11d",
+      "file": true,
+      "replaced": "~7.3.12"
+    },
+    "@stoplight/elements-utils": {
+      "signature": "7647d4a5ada504f8b19394a3f205cc2e",
+      "file": true
+    },
+    "@stoplight/mosaic-code-viewer": {
+      "signature": "d480cfa261e4e072d710e1f0132adf44",
+      "file": true
+    },
+    "@stoplight/mosaic-code-editor": {
+      "signature": "3978185f66594be79ee8d3af4bd8abc1",
+      "file": true
+    },
+    "@stoplight/mosaic": {
+      "signature": "19ac3a260f4cfbcaafe6cf4990207115",
+      "file": true,
+      "replaced": "1.15.2"
+    }
+  }
+}

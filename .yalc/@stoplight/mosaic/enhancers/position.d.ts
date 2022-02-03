@@ -1,0 +1,21 @@
+import type { TInset, TPosition, TZIndex } from '../types/tailwind';
+import type { ChopPrefix, WithNegatives } from '../types/twind';
+import { WithPseudo } from './pseudo';
+import type { EnhancerFn } from './types';
+declare type PositionVals = TPosition;
+declare type PinVals = true | WithNegatives<ChopPrefix<'inset-x', TInset>>;
+declare type ZIndexVals = ChopPrefix<'z', TZIndex>;
+export declare type IPositionProps = WithPseudo<{
+    pos?: PositionVals;
+    pin?: PinVals;
+    pinY?: PinVals;
+    pinX?: PinVals;
+    top?: PinVals;
+    left?: PinVals;
+    right?: PinVals;
+    bottom?: PinVals;
+    zIndex?: ZIndexVals;
+}>;
+export declare const positionPropNames: Array<keyof IPositionProps>;
+export declare const positionProps: EnhancerFn<IPositionProps>;
+export {};

@@ -1,0 +1,12 @@
+import { Meta, Story } from '@storybook/react';
+import { TryItProps } from './TryIt';
+declare const _default: Meta<TryItProps>;
+export default _default;
+export declare const SimpleGET: Story<TryItProps>;
+export declare const WithParameters: Story<TryItProps>;
+export declare const UrlEncoded: Story<TryItProps>;
+export declare const Multipart: Story<TryItProps>;
+export declare const RequestBodySchema: Story<TryItProps>;
+export declare const RequestBodyExamples: Story<TryItProps>;
+export declare const TryItAuth: Story<TryItProps>;
+export declare const TryItAuthDuplicated: Story<TryItProps>;
