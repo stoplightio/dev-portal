@@ -38,7 +38,7 @@ const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Box>
       <Box bg="primary" color="on-primary" pb={24} pt={20}>
-        <Heading textAlign="center" size={1}>
+        <Heading textAlign="center" size={1} color="on-primary">
           Welcome to the Stoplight Learning Center
         </Heading>
 
@@ -65,15 +65,7 @@ const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 Search all docs, guides, and tutorials
               </Flex>
 
-              <Flex
-                justify="center"
-                align="center"
-                w={24}
-                color="canvas"
-                // TODO: figure out what to use for a black background
-                // @ts-expect-error
-                bg="body"
-              >
+              <Flex justify="center" align="center" w={24} color="canvas" bg="body">
                 Search
               </Flex>
             </Flex>

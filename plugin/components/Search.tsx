@@ -1,5 +1,4 @@
-import { Search as ElementsSearch, useGetNodes } from '@stoplight/elements-dev-portal';
-import { NodeSearchResult } from '@stoplight/elements-dev-portal/types';
+import { NodeSearchResult, Search as ElementsSearch, useGetNodes } from '@stoplight/elements-dev-portal';
 import { useModalState } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';

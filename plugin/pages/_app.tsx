@@ -1,5 +1,5 @@
 import { DevPortalProvider } from '@stoplight/elements-dev-portal';
-import { Provider as MosaicProvider, subscribeTheme, useIconStore } from '@stoplight/mosaic';
+import { Provider as MosaicProvider, useIconStore } from '@stoplight/mosaic';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -12,10 +12,6 @@ import SEO from '../next-seo.config';
 import { BasePageProps } from './types';
 
 type DevPortalAppProps = AppProps;
-
-if (process.browser) {
-  subscribeTheme();
-}
 
 // @ts-expect-error
 const GlobalProgressBar = dynamic(() => import('../components/GlobalProgressBar').then(mod => mod.GlobalProgressBar), {

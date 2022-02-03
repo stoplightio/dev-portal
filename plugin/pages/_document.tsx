@@ -1,4 +1,4 @@
-import { Box, InitTheme, InlineStyles } from '@stoplight/mosaic';
+import { Box } from '@stoplight/mosaic';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 
@@ -33,8 +33,6 @@ export function withDevPortalDocument<P = {}, Base extends Constructor<Document<
               crossOrigin="anonymous"
               data-auto-replace-svg="nest"
             ></script>
-
-            <InlineStyles />
           </Head>
 
           <Box
@@ -46,7 +44,7 @@ export function withDevPortalDocument<P = {}, Base extends Constructor<Document<
             color="body"
             className="sl-antialiased"
           >
-            <InitTheme />
+            {/* <InitTheme /> */}
             <Main />
             <NextScript />
           </Box>

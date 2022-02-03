@@ -39,6 +39,7 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
   const maxContentWidth = theme?.maxContentWidth || MAX_CONTENT_WIDTH;
   const minSidebarWidth = theme?.minSidebarWidth || MIN_SIDEBAR_WIDTH;
 
+  console.log('StoplightProjectLayout');
   const { data: toc, isFetched: isTocFetched } = useGetTableOfContents({
     projectId,
     branchSlug,
@@ -88,12 +89,13 @@ export function StoplightProjectLayout(props: StoplightProjectLayoutProps) {
     <Box flex={1} pos="relative">
       <Flex pos="absolute" pin overflowY="scroll">
         <Flex
-          bg="canvas-100"
+          bg={{ default: 'canvas-50', dark: 'transparent' }}
           direction="col"
           borderR
           overflowY="scroll"
           pos="sticky"
           pinY
+          pt={4}
           style={{
             width: `calc((100% - ${maxContentWidth}px) / 2 + ${minSidebarWidth}px)`,
             paddingLeft: `calc((100% - ${maxContentWidth}px) / 2)`,

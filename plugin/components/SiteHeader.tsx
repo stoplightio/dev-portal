@@ -11,6 +11,9 @@ import {
   MenuItems,
   NoSsr,
   Pressable,
+  rootThemeScope,
+  ThemeProvider,
+  useThemeMode,
 } from '@stoplight/mosaic';
 import { useRouter } from 'next/router';
 import * as React from 'react';
@@ -56,16 +59,10 @@ const SiteHeaderLink = ({
       py={2}
       fontSize="lg"
       target={isAbsolute ? '_blank' : undefined}
+      color={{ default: isActive ? 'primary' : 'body', hover: isActive ? 'primary' : 'muted' }}
     >
       {icon && <Icon icon={icon} size="2x" />}
-      {children && (
-        <Box
-          color={isActive ? undefined : { default: 'on-primary', hover: 'canvas-200' }}
-          fontWeight={isActive ? 'semibold' : undefined}
-        >
-          {children}
-        </Box>
-      )}
+      {children && <Box fontWeight={isActive ? 'semibold' : undefined}>{children}</Box>}
     </HStack>
   );
 };
@@ -96,11 +93,12 @@ export type SiteHeaderProps = { hideSearch?: boolean };
 
 export const SiteHeader = React.memo(({ hideSearch }: SiteHeaderProps) => {
   const { siteHeader = {}, theme } = useConfig();
+  const mode = useThemeMode(rootThemeScope);
 
   console.info('SiteHeader.render');
 
-  return (
-    <Box as="header" alignItems="center" bg="primary" color="on-primary">
+  const headerElem = (
+    <Box as="header" alignItems="center" bg={{ dark: 'canvas-50' }} borderB={{ dark: true }}>
       <Flex mx="auto" px={5} style={{ height: 70, maxWidth: theme?.maxContentWidth || MAX_CONTENT_WIDTH }}>
         <HStack flexGrow spacing={6} style={{ flexBasis: 0 }}>
           <SiteHeaderItems items={siteHeader.left} hideSearch={hideSearch} />
@@ -116,6 +114,12 @@ export const SiteHeader = React.memo(({ hideSearch }: SiteHeaderProps) => {
       </Flex>
     </Box>
   );
+
+  if (mode === 'dark') {
+    return headerElem;
+  }
+
+  return <ThemeProvider theme={{ colors: { background: '#1aabff', text: '#fff' } }}>{headerElem}</ThemeProvider>;
 });
 
 function SiteHeaderItems({ items, hideSearch }: { items?: SiteHeaderItem[]; hideSearch?: boolean }) {
@@ -166,7 +170,7 @@ function SiteHeaderItems({ items, hideSearch }: { items?: SiteHeaderItem[]; hide
           items={referenceMenuItems}
           renderTrigger={
             <Pressable>
-              <Box fontSize="lg" color={{ hover: 'canvas-200' }} py={2} cursor="auto">
+              <Box fontSize="lg" color={{ default: 'body', hover: 'muted' }} py={2} cursor="pointer">
                 {item.title}
               </Box>
             </Pressable>

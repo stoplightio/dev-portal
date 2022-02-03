@@ -1,8 +1,9 @@
-import { Button, Tooltip, useThemeMode } from '@stoplight/mosaic';
+import { Button, rootThemeScope, Tooltip, useThemeMode, useUpdateThemeMode } from '@stoplight/mosaic';
 import * as React from 'react';
 
 export const ThemeSwitcher = () => {
-  const { mode, setMode } = useThemeMode();
+  const mode = useThemeMode(rootThemeScope);
+  const updateMode = useUpdateThemeMode(rootThemeScope);
 
   return (
     <Tooltip
@@ -13,8 +14,7 @@ export const ThemeSwitcher = () => {
           label="Theme Toggle"
           onPress={() => {
             const nextTheme = mode === 'light' ? 'dark' : 'light';
-            document.body.setAttribute('data-theme', nextTheme);
-            setMode(nextTheme);
+            updateMode(nextTheme);
           }}
         />
       }
