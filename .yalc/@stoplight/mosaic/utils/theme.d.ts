@@ -14,7 +14,7 @@ export interface ITheme {
         danger: Color;
     };
 }
-export declare type PrebuiltThemeIds = 'default' | 'default_dark' | 'dracula' | 'duotone_light' | 'duotone_dark' | 'material' | 'monokai' | 'night_owl' | 'nord' | 'one_light' | 'one_dark' | 'solarized_light' | 'solarized_dark' | 'vscode' | 'winter_light' | 'winter_dark' | 'funky';
+export declare type PrebuiltThemeIds = 'default' | 'default_dark' | 'dracula' | 'duotone_light' | 'duotone_dark' | 'black' | 'material' | 'monokai' | 'night_owl' | 'nord' | 'one_light' | 'one_dark' | 'solarized_light' | 'solarized_dark' | 'vscode' | 'winter_light' | 'winter_dark' | 'funky';
 export declare type PrebuiltThemes = Record<PrebuiltThemeIds, ITheme>;
 export interface ICustomTheme {
     name?: string;

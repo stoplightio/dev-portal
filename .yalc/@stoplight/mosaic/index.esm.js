@@ -446,7 +446,7 @@ const theme$1 = {
     spacing: {
         px: '1px',
         0: '0px',
-        .../* @__PURE__ */ linear(4, 'rem', 4, 0.5, 0.5),
+        .../* #__PURE__ */ linear(4, 'rem', 4, 0.5, 0.5),
         // 0.5: '0.125rem',
         // 1: '0.25rem',
         // 1.5: '0.375rem',
@@ -455,7 +455,7 @@ const theme$1 = {
         // 3: '0.75rem',
         // 3.5: '0.875rem',
         // 4: '1rem',
-        .../* @__PURE__ */ linear(12, 'rem', 4, 5),
+        .../* #__PURE__ */ linear(12, 'rem', 4, 5),
         // 5: '1.25rem',
         // 6: '1.5rem',
         // 7: '1.75rem',
@@ -465,7 +465,7 @@ const theme$1 = {
         // 11: '2.75rem',
         // 12: '3rem',
         14: '3.5rem',
-        .../* @__PURE__ */ linear(64, 'rem', 4, 16, 4),
+        .../* #__PURE__ */ linear(64, 'rem', 4, 16, 4),
         // 16: '4rem',
         // 20: '5rem',
         // 24: '6rem',
@@ -505,20 +505,20 @@ const theme$1 = {
         square: '1/1',
         video: '16/9'
     },
-    backdropBlur: /* @__PURE__ */ alias('blur'),
-    backdropBrightness: /* @__PURE__ */ alias('brightness'),
-    backdropContrast: /* @__PURE__ */ alias('contrast'),
-    backdropGrayscale: /* @__PURE__ */ alias('grayscale'),
-    backdropHueRotate: /* @__PURE__ */ alias('hueRotate'),
-    backdropInvert: /* @__PURE__ */ alias('invert'),
-    backdropOpacity: /* @__PURE__ */ alias('opacity'),
-    backdropSaturate: /* @__PURE__ */ alias('saturate'),
-    backdropSepia: /* @__PURE__ */ alias('sepia'),
-    backgroundColor: /* @__PURE__ */ alias('colors'),
+    backdropBlur: /* #__PURE__ */ alias('blur'),
+    backdropBrightness: /* #__PURE__ */ alias('brightness'),
+    backdropContrast: /* #__PURE__ */ alias('contrast'),
+    backdropGrayscale: /* #__PURE__ */ alias('grayscale'),
+    backdropHueRotate: /* #__PURE__ */ alias('hueRotate'),
+    backdropInvert: /* #__PURE__ */ alias('invert'),
+    backdropOpacity: /* #__PURE__ */ alias('opacity'),
+    backdropSaturate: /* #__PURE__ */ alias('saturate'),
+    backdropSepia: /* #__PURE__ */ alias('sepia'),
+    backgroundColor: /* #__PURE__ */ alias('colors'),
     backgroundImage: {
         none: 'none'
     },
-    backgroundOpacity: /* @__PURE__ */ alias('opacity'),
+    backgroundOpacity: /* #__PURE__ */ alias('opacity'),
     // backgroundPosition: {
     //   // The following are already handled by the plugin:
     //   // center, right, left, bottom, top
@@ -540,12 +540,12 @@ const theme$1 = {
         '3xl': '64px'
     },
     brightness: {
-        .../* @__PURE__ */ linear(200, '', 100, 0, 50),
+        .../* #__PURE__ */ linear(200, '', 100, 0, 50),
         // 0: '0',
         // 50: '.5',
         // 150: '1.5',
         // 200: '2',
-        .../* @__PURE__ */ linear(110, '', 100, 90, 5),
+        .../* #__PURE__ */ linear(110, '', 100, 90, 5),
         // 90: '.9',
         // 95: '.95',
         // 100: '1',
@@ -559,7 +559,7 @@ const theme$1 = {
             DEFAULT: theme1('colors.gray.200', 'currentColor')
         })
     ,
-    borderOpacity: /* @__PURE__ */ alias('opacity'),
+    borderOpacity: /* #__PURE__ */ alias('opacity'),
     borderRadius: {
         none: '0px',
         sm: '0.125rem',
@@ -573,7 +573,7 @@ const theme$1 = {
         full: '9999px'
     },
     borderWidth: {
-        .../* @__PURE__ */ exponential(8, 'px'),
+        .../* #__PURE__ */ exponential(8, 'px'),
         // 0: '0px',
         // 2: '2px',
         // 4: '4px',
@@ -595,14 +595,14 @@ const theme$1 = {
     // cursor: {
     //   // Default values are handled by plugin
     // },
-    caretColor: /* @__PURE__ */ alias('colors'),
+    caretColor: /* #__PURE__ */ alias('colors'),
     accentColor: ({ theme: theme2  })=>({
             ...theme2('colors'),
             auto: 'auto'
         })
     ,
     contrast: {
-        .../* @__PURE__ */ linear(200, '', 100, 0, 50),
+        .../* #__PURE__ */ linear(200, '', 100, 0, 50),
         // 0: '0',
         // 50: '.5',
         // 150: '1.5',
@@ -613,9 +613,9 @@ const theme$1 = {
     content: {
         none: 'none'
     },
-    divideColor: /* @__PURE__ */ alias('borderColor'),
-    divideOpacity: /* @__PURE__ */ alias('borderOpacity'),
-    divideWidth: /* @__PURE__ */ alias('borderWidth'),
+    divideColor: /* #__PURE__ */ alias('borderColor'),
+    divideOpacity: /* #__PURE__ */ alias('borderOpacity'),
+    divideWidth: /* #__PURE__ */ alias('borderWidth'),
     dropShadow: {
         sm: '0 1px 1px rgba(0,0,0,0.05)',
         DEFAULT: [
@@ -637,7 +637,7 @@ const theme$1 = {
         '2xl': '0 25px 25px rgba(0,0,0,0.15)',
         none: '0 0 #0000'
     },
-    fill: /* @__PURE__ */ alias('colors'),
+    fill: /* #__PURE__ */ alias('colors'),
     grayscale: {
         0: '0',
         DEFAULT: '100%'
@@ -772,8 +772,8 @@ const theme$1 = {
         extrabold: '800',
         black: '900'
     },
-    gap: /* @__PURE__ */ alias('spacing'),
-    gradientColorStops: /* @__PURE__ */ alias('colors'),
+    gap: /* #__PURE__ */ alias('spacing'),
+    gradientColorStops: /* #__PURE__ */ alias('colors'),
     gridAutoColumns: {
         auto: 'auto',
         min: 'min-content',
@@ -899,7 +899,7 @@ const theme$1 = {
         widest: '0.1em'
     },
     lineHeight: {
-        .../* @__PURE__ */ linear(10, 'rem', 4, 3),
+        .../* #__PURE__ */ linear(10, 'rem', 4, 3),
         // 3: '.75rem',
         // 4: '1rem',
         // 5: '1.25rem',
@@ -973,7 +973,7 @@ const theme$1 = {
     //   // The plugins joins all arguments by default
     // },
     opacity: {
-        .../* @__PURE__ */ linear(100, '', 100, 0, 10),
+        .../* #__PURE__ */ linear(100, '', 100, 0, 10),
         // 0: '0',
         // 10: '0.1',
         // 20: '0.2',
@@ -1007,17 +1007,17 @@ const theme$1 = {
         last: '9999',
         none: '0'
     },
-    padding: /* @__PURE__ */ alias('spacing'),
-    placeholderColor: /* @__PURE__ */ alias('colors'),
-    placeholderOpacity: /* @__PURE__ */ alias('opacity'),
-    outlineColor: /* @__PURE__ */ alias('colors'),
-    outlineOffset: /* @__PURE__ */ exponential(8, 'px'),
+    padding: /* #__PURE__ */ alias('spacing'),
+    placeholderColor: /* #__PURE__ */ alias('colors'),
+    placeholderOpacity: /* #__PURE__ */ alias('opacity'),
+    outlineColor: /* #__PURE__ */ alias('colors'),
+    outlineOffset: /* #__PURE__ */ exponential(8, 'px'),
     // 0: '0px',
     // 1: '1px',
     // 2: '2px',
     // 4: '4px',
     // 8: '8px',,
-    outlineWidth: /* @__PURE__ */ exponential(8, 'px'),
+    outlineWidth: /* #__PURE__ */ exponential(8, 'px'),
     // 0: '0px',
     // 1: '1px',
     // 2: '2px',
@@ -1028,8 +1028,8 @@ const theme$1 = {
             DEFAULT: theme9('colors.blue.500', '#3b82f6')
         })
     ,
-    ringOffsetColor: /* @__PURE__ */ alias('colors'),
-    ringOffsetWidth: /* @__PURE__ */ exponential(8, 'px'),
+    ringOffsetColor: /* #__PURE__ */ alias('colors'),
+    ringOffsetWidth: /* #__PURE__ */ exponential(8, 'px'),
     // 0: '0px',
     // 1: '1px',
     // 2: '2px',
@@ -1041,7 +1041,7 @@ const theme$1 = {
         })
     ,
     ringWidth: {
-        .../* @__PURE__ */ exponential(8, 'px'),
+        .../* #__PURE__ */ exponential(8, 'px'),
         // 0: '0px',
         // 1: '1px',
         // 2: '2px',
@@ -1050,28 +1050,28 @@ const theme$1 = {
         DEFAULT: '3px'
     },
     rotate: {
-        .../* @__PURE__ */ exponential(2, 'deg'),
+        .../* #__PURE__ */ exponential(2, 'deg'),
         // 0: '0deg',
         // 1: '1deg',
         // 2: '2deg',
-        .../* @__PURE__ */ exponential(12, 'deg', 3),
+        .../* #__PURE__ */ exponential(12, 'deg', 3),
         // 3: '3deg',
         // 6: '6deg',
         // 12: '12deg',
-        .../* @__PURE__ */ exponential(180, 'deg', 45)
+        .../* #__PURE__ */ exponential(180, 'deg', 45)
     },
-    saturate: /* @__PURE__ */ linear(200, '', 100, 0, 50),
+    saturate: /* #__PURE__ */ linear(200, '', 100, 0, 50),
     // 0: '0',
     // 50: '.5',
     // 100: '1',
     // 150: '1.5',
     // 200: '2',
     scale: {
-        .../* @__PURE__ */ linear(150, '', 100, 0, 50),
+        .../* #__PURE__ */ linear(150, '', 100, 0, 50),
         // 0: '0',
         // 50: '.5',
         // 150: '1.5',
-        .../* @__PURE__ */ linear(110, '', 100, 90, 5),
+        .../* #__PURE__ */ linear(110, '', 100, 90, 5),
         // 90: '.9',
         // 95: '.95',
         // 100: '1',
@@ -1080,38 +1080,38 @@ const theme$1 = {
         75: '0.75',
         125: '1.25'
     },
-    scrollMargin: /* @__PURE__ */ alias('spacing'),
-    scrollPadding: /* @__PURE__ */ alias('spacing'),
+    scrollMargin: /* #__PURE__ */ alias('spacing'),
+    scrollPadding: /* #__PURE__ */ alias('spacing'),
     sepia: {
         0: '0',
         DEFAULT: '100%'
     },
     skew: {
-        .../* @__PURE__ */ exponential(2, 'deg'),
+        .../* #__PURE__ */ exponential(2, 'deg'),
         // 0: '0deg',
         // 1: '1deg',
         // 2: '2deg',
-        .../* @__PURE__ */ exponential(12, 'deg', 3)
+        .../* #__PURE__ */ exponential(12, 'deg', 3)
     },
-    space: /* @__PURE__ */ alias('spacing'),
-    stroke: /* @__PURE__ */ alias('colors'),
-    strokeWidth: /* @__PURE__ */ linear(2),
+    space: /* #__PURE__ */ alias('spacing'),
+    stroke: /* #__PURE__ */ alias('colors'),
+    strokeWidth: /* #__PURE__ */ linear(2),
     // 0: '0',
     // 1: '1',
     // 2: '2',,
-    textColor: /* @__PURE__ */ alias('colors'),
-    textDecorationColor: /* @__PURE__ */ alias('colors'),
+    textColor: /* #__PURE__ */ alias('colors'),
+    textDecorationColor: /* #__PURE__ */ alias('colors'),
     textDecorationThickness: {
         'from-font': 'from-font',
         auto: 'auto',
-        .../* @__PURE__ */ exponential(8, 'px')
+        .../* #__PURE__ */ exponential(8, 'px')
     },
     textUnderlineOffset: {
         auto: 'auto',
-        .../* @__PURE__ */ exponential(8, 'px')
+        .../* #__PURE__ */ exponential(8, 'px')
     },
-    textIndent: /* @__PURE__ */ alias('spacing'),
-    textOpacity: /* @__PURE__ */ alias('opacity'),
+    textIndent: /* #__PURE__ */ alias('spacing'),
+    textOpacity: /* #__PURE__ */ alias('opacity'),
     // transformOrigin: {
     //   // The following are already handled by the plugin:
     //   // center, right, left, bottom, top
@@ -1122,7 +1122,7 @@ const theme$1 = {
             DEFAULT: '150ms'
         })
     ,
-    transitionDelay: /* @__PURE__ */ alias('durations'),
+    transitionDelay: /* #__PURE__ */ alias('durations'),
     transitionProperty: {
         none: 'none',
         all: 'all',
@@ -1167,7 +1167,7 @@ const theme$1 = {
     //   transform: 'transform',
     // },
     zIndex: {
-        .../* @__PURE__ */ linear(50, '', 1, 0, 10),
+        .../* #__PURE__ */ linear(50, '', 1, 0, 10),
         // 0: '0',
         // 10: '10',
         // 20: '20',
@@ -1198,7 +1198,6 @@ function ratios(start, end) {
         // XXX: using var to avoid strange bug when generating cjs where `= 1` is removed
         // eslint-disable-next-line no-var
         for(var dividend = 1; dividend < start; dividend++){
-            // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
             result[`${dividend}/${start}`] = Number((dividend / start * 100).toFixed(6)) + '%';
         }
     }while (++start <= end)
@@ -1211,7 +1210,6 @@ function ratios(start, end) {
 function exponential(stop, unit, start = 0) {
     const result = {};
     for(; start <= stop; start = start * 2 || 1){
-        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         result[start] = start + unit;
     }
     return result;
@@ -1226,7 +1224,6 @@ function exponential(stop, unit, start = 0) {
 // 10: '2.5rem',
 function linear(stop, unit = '', divideBy = 1, start = 0, step = 1, result = {}) {
     for(; start <= stop; start += step){
-        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         result[start] = start / divideBy + unit;
     }
     return result;
@@ -2941,10 +2938,10 @@ const variants$7 = [
     ], 
 ];
 
-function presetTailwind({ enablePreflight =true  } = {}) {
+function presetTailwind({ disablePreflight  } = {}) {
     return ({ stringify  })=>({
             // allow other preflight to run
-            preflight: enablePreflight ? preflight : undefined,
+            preflight: disablePreflight ? undefined : preflight,
             theme: theme$1,
             variants: variants$7,
             rules,
@@ -2963,13 +2960,13 @@ function presetTailwind({ enablePreflight =true  } = {}) {
 // return value
 }
 
-function defineConfig$1({ enablePreflight , ...config } = {}) {
+function defineConfig$1({ disablePreflight , ...config } = {}) {
     return defineConfig$2({
         ...config,
         presets: [
             presetAutoprefix(),
             presetTailwind({
-                enablePreflight
+                disablePreflight
             }),
             ...asArray(config.presets), 
         ]
@@ -5586,6 +5583,28 @@ for (var COLLECTION_NAME in DOMIterables) {
 handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 const _excluded$X = ["sm", "md", "lg", "dark", "inverted"];
+const computePseudoClasses = (prop, val) => {
+  let classes = {};
+
+  if (isPseudoObject(val)) {
+    const {
+      sm,
+      md,
+      lg,
+      dark,
+      inverted
+    } = val,
+          rest = _objectWithoutPropertiesLoose$1(val, _excluded$X);
+
+    classes = Object.assign({}, computeVariantClasses(prop, rest), computeVariantClasses(prop, dark, 'dark'), computeVariantClasses(prop, inverted, 'inverted'), computeVariantClasses(prop, sm, 'sm'), computeVariantClasses(prop, md, 'md'), computeVariantClasses(prop, lg, 'lg'));
+  } else {
+    if (val || val === 0) {
+      classes[buildClassname(prop, val)] = true;
+    }
+  }
+
+  return cn(classes);
+};
 const MosaicToTwindPseudoMap = {
   active: 'active',
   after: 'after',
@@ -5621,11 +5640,13 @@ const isPseudoObject = obj => obj && typeof obj === 'object';
 const isNegative = v => {
   return v < 0 || v === '-px';
 };
+
 const buildClassname = (p, v) => {
   if (v === true) return `${p}`;
   const isNeg = isNegative(v);
   return `${isNeg ? '-' : ''}${p}${!p || isNeg ? '' : '-'}${v}`;
 };
+
 const computeVariantClasses = (prop, val, variant) => {
   let classes = {};
   const prefix = variant ? `${variant}:` : ''; // if val is literal true value, then we're trying to use default and do not need to append a value
@@ -5643,33 +5664,11 @@ const computeVariantClasses = (prop, val, variant) => {
     }
   } else {
     if (val || val === 0) {
-      classes[buildClassname(`${prefix}${prop}`, val)] = true;
+      classes[`${prefix}${buildClassname(prop, val)}`] = true;
     }
   }
 
   return classes;
-};
-const computePseudoClasses = (prop, val) => {
-  let classes = {};
-
-  if (isPseudoObject(val)) {
-    const {
-      sm,
-      md,
-      lg,
-      dark,
-      inverted
-    } = val,
-          rest = _objectWithoutPropertiesLoose$1(val, _excluded$X);
-
-    classes = Object.assign({}, computeVariantClasses(prop, rest), computeVariantClasses(prop, dark, 'dark'), computeVariantClasses(prop, inverted, 'inverted'), computeVariantClasses(prop, sm, 'sm'), computeVariantClasses(prop, md, 'md'), computeVariantClasses(prop, lg, 'lg'));
-  } else {
-    if (val || val === 0) {
-      classes[buildClassname(prop, val)] = true;
-    }
-  }
-
-  return cn(classes);
 };
 
 const _excluded$W = ["backdropBlur"];
@@ -6993,7 +6992,7 @@ const computeCssVariables = (theme, isDark) => {
     'color-canvas-tint': isDark ? textColor.alpha(0.01 * (tintMulti * 1.2)).css() : canvasColors(150).saturate(0.4).alpha(0.15).css(),
     'color-canvas-tint-more': isDark ? textColor.alpha(0.035 * (tintMulti * 1.1)).css() : canvasColors(225).saturate(0.4).alpha(0.25).css(),
     'color-canvas-50': isDark ? textColor.alpha(0.01 * tintMulti).css() : canvasColors(75).saturate(0.2).alpha(0.35).css(),
-    'color-canvas-100': isDark ? textColor.alpha(0.035 * tintMulti).css() : canvasColors(125).saturate(0.2).alpha(0.7).css(),
+    'color-canvas-100': isDark ? textColor.alpha(0.04 * tintMulti).css() : canvasColors(125).saturate(0.2).alpha(0.7).css(),
     'color-canvas-200': isDark ? textColor.alpha(0.08 * (tintMulti * 0.9)).css() : canvasColors(200).saturate(0.2).alpha(0.8).css(),
     'color-canvas-300': isDark ? textColor.alpha(0.1 * (tintMulti * 0.9)).css() : canvasColors(300).saturate(0.2).css(),
     'color-canvas-400': isDark ? textColor.alpha(0.14 * (tintMulti * 0.8)).css() : canvasColors(400).saturate(0.2).css(),
@@ -7131,6 +7130,20 @@ const PREBUILT_THEMES = {
       primary: '#ffcc99',
       secondary: '#9a86fd',
       muted: '#373440',
+      success: 'hsl(156, 60%, 35%)',
+      warning: 'hsl(20, 60%, 52%)',
+      danger: 'hsl(0, 65%, 60%)'
+    }
+  },
+  black: {
+    name: 'Black',
+    isDark: true,
+    colors: {
+      text: '#fff',
+      background: '#000',
+      primary: '#2F6EEB',
+      secondary: '#FFCB6B',
+      muted: '#333e45',
       success: 'hsl(156, 60%, 35%)',
       warning: 'hsl(20, 60%, 52%)',
       danger: 'hsl(0, 65%, 60%)'

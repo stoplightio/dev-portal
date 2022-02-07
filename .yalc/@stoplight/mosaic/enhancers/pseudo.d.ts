@@ -1,4 +1,5 @@
 import { ChopSuffix, KebabToCamelCase, TPseudoClassVariants } from '../types/twind';
+export declare const computePseudoClasses: (prop: string, val: boolean | string | number | Pseudo<boolean | string | number>) => string;
 declare type ThemeVariant = 'dark' | 'inverted';
 declare type ResponsiveVariant = 'sm' | 'md' | 'lg';
 declare type ComplexVariant = ThemeVariant | ResponsiveVariant;
@@ -15,8 +16,4 @@ export declare type Pseudo<T> = PseudoMapping<T> & {
         [key in MosaicPseudoVariant]?: T;
     };
 };
-export declare const isNegative: (v: boolean | string | number) => boolean;
-export declare const buildClassname: (p: string, v: boolean | string | number) => string;
-export declare const computeVariantClasses: (prop: string, val: boolean | string | number | PseudoMapping<boolean | string | number>, variant?: ComplexVariant) => {};
-export declare const computePseudoClasses: (prop: string, val: boolean | string | number | Pseudo<boolean | string | number>) => string;
 export {};

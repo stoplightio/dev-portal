@@ -21,15 +21,15 @@
       "file": true
     },
     "@stoplight/mosaic-code-viewer": {
-      "signature": "d480cfa261e4e072d710e1f0132adf44",
+      "signature": "caa84ee5ded47034ccb0494bcc084416",
       "file": true
     },
     "@stoplight/mosaic-code-editor": {
-      "signature": "3978185f66594be79ee8d3af4bd8abc1",
+      "signature": "ef7990cbc7e0c764faee0eade965ab0f",
       "file": true
     },
     "@stoplight/mosaic": {
-      "signature": "19ac3a260f4cfbcaafe6cf4990207115",
+      "signature": "a2e82c4832d5f04e81e6fbd4348e12a9",
       "file": true,
       "replaced": "1.15.2"
     }

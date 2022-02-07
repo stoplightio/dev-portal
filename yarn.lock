@@ -606,7 +606,7 @@
     react-fast-compare "^3.2.0"
     ts-keycode-enum "^1.0.6"
     tslib "^2.1.0"
-    twind "^1.0.0-next.33"
+    twind "^1.0.0-next.35"
     zustand "^3.6.6"
 
 "@stoplight/mosaic-code-viewer@0.0.0", "@stoplight/mosaic-code-viewer@^1.15.2", "@stoplight/mosaic-code-viewer@file:.yalc/@stoplight/mosaic-code-viewer":
@@ -635,7 +635,7 @@
     react-fast-compare "^3.2.0"
     ts-keycode-enum "^1.0.6"
     tslib "^2.1.0"
-    twind "^1.0.0-next.33"
+    twind "^1.0.0-next.35"
     zustand "^3.6.6"
 
 "@stoplight/mosaic@0.0.0", "@stoplight/mosaic@^1.15.2", "@stoplight/mosaic@file:.yalc/@stoplight/mosaic":
@@ -663,7 +663,7 @@
     react-fast-compare "^3.2.0"
     ts-keycode-enum "^1.0.6"
     tslib "^2.1.0"
-    twind "^1.0.0-next.33"
+    twind "^1.0.0-next.35"
     zustand "^3.6.6"
 
 "@stoplight/ordered-object-literal@^1.0.1", "@stoplight/ordered-object-literal@^1.0.2":
@@ -4033,10 +4033,10 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twind@^1.0.0-next.33:
-  version "1.0.0-next.34"
-  resolved "https://registry.yarnpkg.com/twind/-/twind-1.0.0-next.34.tgz#e0bee55558f2f4c2b72eff4052557a42edd9fed7"
-  integrity sha512-xjnV9wkulrtKlGXWDTFV7MHCdY9adAEc9hlCY3Si+3XRmjSA6wRxu/8oYV5PiH/Yertc/R3Rn9+1L3YaUdzEOQ==
+twind@^1.0.0-next.35:
+  version "1.0.0-next.35"
+  resolved "https://registry.yarnpkg.com/twind/-/twind-1.0.0-next.35.tgz#455924cefcba45da6e8392f36cb0d1bccd4c8ec6"
+  integrity sha512-DYNxEPOmGW8KoIsZYy5SeD0Iqzmly1C44T5qIM34ipnlZ2Z5y4mGkY3DXI3UVwSKfNb1GIe0abWHMSuOJLk7Uw==
   dependencies:
     "@swc/helpers" "^0.3.2"
     csstype "^3.0.10"

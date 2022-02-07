@@ -30,11 +30,11 @@
     "react-fast-compare": "^3.2.0",
     "ts-keycode-enum": "^1.0.6",
     "tslib": "^2.1.0",
-    "twind": "^1.0.0-next.33",
+    "twind": "^1.0.0-next.35",
     "zustand": "^3.6.6"
   },
   "main": "./index.umd.js",
   "module": "./index.esm.js",
   "typings": "./index.d.ts",
-  "yalcSig": "d480cfa261e4e072d710e1f0132adf44"
+  "yalcSig": "caa84ee5ded47034ccb0494bcc084416"
 }
