@@ -1,5 +1,5 @@
 import { DevPortalProvider } from '@stoplight/elements-dev-portal';
-import { Provider as MosaicProvider, useIconStore } from '@stoplight/mosaic';
+import { Box, Provider as MosaicProvider, useIconStore } from '@stoplight/mosaic';
 import { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -58,16 +58,19 @@ export function withDevPortalApp(_config: DevPortalConfig, customComponents?: Cu
         <DefaultSeo {...SEO} />
 
         <DevPortalProvider2 {...devPortalConfig} customComponents={customComponents}>
-          <DevPortalProvider>
-            <MosaicProvider
-              style={{ minHeight: '100vh' }}
-              componentOverrides={{
-                Link: NextMosaicLink,
-              }}
-            >
-              {getLayout(<Component {...(pageProps as any)} />, pageProps)}
-            </MosaicProvider>
-          </DevPortalProvider>
+          <Box
+            as={MosaicProvider}
+            bg="canvas"
+            minH="screen"
+            fontFamily="ui"
+            fontSize="base"
+            color="body"
+            componentOverrides={{
+              Link: NextMosaicLink,
+            }}
+          >
+            <DevPortalProvider>{getLayout(<Component {...(pageProps as any)} />, pageProps)}</DevPortalProvider>
+          </Box>
         </DevPortalProvider2>
 
         <GlobalProgressBar />

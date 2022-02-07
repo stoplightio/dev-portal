@@ -1,4 +1,3 @@
-import { Box } from '@stoplight/mosaic';
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 
@@ -42,19 +41,11 @@ export function withDevPortalDocument<P = {}, Base extends Constructor<Document<
             ></script>
           </Head>
 
-          <Box
-            as="body"
-            bg="canvas"
-            minH="screen"
-            fontFamily="ui"
-            fontSize="base"
-            color="body"
-            className="sl-antialiased"
-          >
+          <body>
             {/* <InitTheme /> */}
             <Main />
             <NextScript />
-          </Box>
+          </body>
         </Html>
       );
     }
