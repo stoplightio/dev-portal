@@ -1,8 +1,9 @@
 import { Box } from '@stoplight/mosaic';
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 
 import { DevPortalConfig } from '../components/Provider';
+import { injectStyles } from '../utils/twind/document';
 
 export type Constructor<T = object, S = object> = (new (...input: any[]) => T) & S;
 
@@ -12,8 +13,14 @@ export function withDevPortalDocument<P = {}, Base extends Constructor<Document<
 ): Base {
   // @ts-expect-error
   return class DevPortalDocument extends (BaseDocument || Document) {
-    static getInitialProps(ctx: DocumentContext) {
-      return Document.getInitialProps(ctx);
+    static async getInitialProps(
+      ctx: DocumentContext & {
+        defaultGetInitialProps: (ctx: DocumentContext, options?: { nonce?: string }) => Promise<DocumentInitialProps>;
+      },
+    ) {
+      injectStyles(ctx);
+
+      return ctx.defaultGetInitialProps(ctx);
     }
 
     render() {

@@ -37,7 +37,7 @@ const IndexPage = (_props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   return (
     <Box>
-      <Box bg="primary" color="on-primary" pb={24} pt={20}>
+      <Box bg={{ default: 'primary', dark: 'transparent' }} color="on-primary" pb={24} pt={20}>
         <Heading textAlign="center" size={1} color="on-primary">
           Welcome to the Stoplight Learning Center
         </Heading>
