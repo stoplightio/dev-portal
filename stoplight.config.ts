@@ -1,6 +1,9 @@
 import { DevPortalConfig } from './plugin';
 
 export const config: DevPortalConfig = {
+  // Can adjust this if running on premise instance, or for different environments
+  // platformUrl: 'http://stoplight-local.com:8080',
+
   // This is meta.stoplight.io
   workspaceId: 'd2s6NA',
 
