@@ -17,7 +17,7 @@ export const NodeLink: CustomLinkComponent = ({ className, to, children }) => {
         pathname: router.route,
         query: {
           ...router.query,
-          nodeSlug: to,
+          nodeSlug: to.split('/'),
         },
       }}
       prefetch={false}

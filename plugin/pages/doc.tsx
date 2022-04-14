@@ -48,6 +48,7 @@ export const docsPageStaticFuncs = ($config: LoadableDevPortalConfig) => {
     if (projectId && nodeSlug) {
       try {
         const node = await getNodeContent({
+          platformUrl: config.platformUrl,
           projectId,
           branchSlug,
           nodeSlug,
@@ -73,9 +74,18 @@ export const docsPageStaticFuncs = ($config: LoadableDevPortalConfig) => {
       }
     }
 
+    const redirect =
+      props.node && props.node.slug !== nodeSlug
+        ? {
+            destination: props.node.slug,
+            permanent: true,
+          }
+        : undefined;
+
     return {
       revalidate: 20,
       props,
+      redirect,
     };
   };
 

@@ -31,7 +31,7 @@ const NextMosaicLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttri
 export function withDevPortalApp(_config: DevPortalConfig, customComponents?: CustomComponents) {
   return function App({ Component, pageProps: _pageProps }: DevPortalAppProps) {
     const pageProps: BasePageProps = _pageProps;
-    const devPortalConfig = Object.assign({}, _config, pageProps.config || {});
+    const { platformUrl, ...devPortalConfig } = Object.assign({}, _config, pageProps.config || {});
 
     /** Keep an eye out for full remounts, we want to minimize those */
     React.useEffect(() => console.info('App.mount'), []);
@@ -69,7 +69,9 @@ export function withDevPortalApp(_config: DevPortalConfig, customComponents?: Cu
               Link: NextMosaicLink,
             }}
           >
-            <DevPortalProvider>{getLayout(<Component {...(pageProps as any)} />, pageProps)}</DevPortalProvider>
+            <DevPortalProvider platformUrl={platformUrl}>
+              {getLayout(<Component {...(pageProps as any)} />, pageProps)}
+            </DevPortalProvider>
           </Box>
         </DevPortalProvider2>
 
